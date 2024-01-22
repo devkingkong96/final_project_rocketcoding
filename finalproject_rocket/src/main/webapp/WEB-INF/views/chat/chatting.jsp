@@ -138,10 +138,10 @@
 												</c:when>
 												<c:when test="${not empty msg.MSG_FI_RENAME && msg.MSG_EMP_NO!=empinfo.EMP_NO}">
 													<img src="${path}/resources/upload/chatfile/${msg.MSG_FI_RENAME}" width="200" height="200" alt="user" class="chatUpFile" id="chatUpFile${msg.MESSAGE_ID }">
-													<button class="btn fa fa-download" id="downBtn" name="downBtn" onclick="downloadFile('${msg.MSG_FI_ORINAME}', '${msg.MSG_FI_RENAME }')"></button>
+													<button class="btn fa fa-download" id="downBtn" name="downBtn" onclick="window.location.replace('${path}/chat/file/download?reName=${msg.MSG_FI_RENAME }&oriName=${msg.MSG_FI_ORINAME }')"></button>
 												</c:when>
 												<c:otherwise>
-													<button class="btn fa fa-download" id="downBtn" name="downBtn" onclick="downloadFile('${msg.MSG_FI_ORINAME}', '${msg.MSG_FI_RENAME }')"></button>
+													<button class="btn fa fa-download" id="downBtn" name="downBtn" onclick="window.location.replace('${path}/chat/file/download?reName=${msg.MSG_FI_RENAME }&oriName=${msg.MSG_FI_ORINAME }')"></button>
 													<img src="${path}/resources/upload/chatfile/${msg.MSG_FI_RENAME}" width="200" height="200" alt="user" class="chatUpFile" id="chatUpFile${msg.MESSAGE_ID }">
 												</c:otherwise>
 											</c:choose>
@@ -413,7 +413,6 @@
   		  				dataType:"json",
 						contentType:"application/json",
   		  				success(data){
-  							console.log("꺄아악"+data);
   		  					document.getElementById('numOfChatRoom').innerHTML="채팅방 인원 수 : " + data;
   		  				},
   		  				error:function(error){
@@ -697,7 +696,7 @@
   		  						$button.id = "downBtn";
   		  						$button.name = "downBtn";
   		  						$button.onclick = function() {
-  		  						  downloadFile(''+msgFiOriName+'', ''+msgFiReName+'');
+  		  							window.location.replace(`${path}/chat/file/download?reName=`+msgFiReName+`&oriName=`+msgFiOriName);
   		  						};
   		  				if(writer==userno){
 	  		  				$chatTextStart.appendChild($button);
@@ -857,12 +856,12 @@
 			}
   			
   			//파일 다운로드
-  			function downloadFile(ori,re){
+  			/* function downloadFile(ori,re){
   				var data={
   						msgFiOriName:ori,
   						msgFiReName:re
   				}
-  				/* console.log(data); */
+  				/* console.log(data);
   				$.ajax({
   					url:'${path}/chat/file/download',
   					type:'POST',
@@ -870,14 +869,14 @@
   					dataType:"json",
   					contentType:"application/json",
   					success:function(res){
-  						/* console.log(res); */
+  						/* console.log(res);
   						console.log('다운로드 성공');
   					},
   					error:function(error){
   						alert("에러메시지 : "+error);
   					}
   				});
-  			}
+  			} */
   			
 	  		//채팅방에서 초대하기 모달 띄우기
 	  		document.getElementById('modalchatinvite').addEventListener('click',function(){
