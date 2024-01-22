@@ -413,7 +413,6 @@
   		  				dataType:"json",
 						contentType:"application/json",
   		  				success(data){
-  							console.log("꺄아악"+data);
   		  					document.getElementById('numOfChatRoom').innerHTML="채팅방 인원 수 : " + data;
   		  				},
   		  				error:function(error){
