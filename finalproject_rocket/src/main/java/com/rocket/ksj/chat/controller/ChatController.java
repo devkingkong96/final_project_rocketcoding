@@ -24,6 +24,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -121,17 +122,31 @@ public class ChatController {
 	}
 	
 	@GetMapping("/file/download")
-	public void chatFileDownload(String oriName,String reName,HttpSession session,HttpServletResponse response)
+	public void chatFileDownload(String oriName,String reName,HttpSession session,HttpServletResponse response,Model model)
 		throws ServletException, IOException{
 //		String oriName=message.getMsgFiOriName();
 //		String reName=message.getMsgFiReName();
-		
+		if(ObjectUtils.isEmpty(oriName)||ObjectUtils.isEmpty(reName)) {
+			// 빈값 처리
+	        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+	        return;
+		}
 		//파일 스트림 연결
 		//실제 경로 가져오기
 		String path = session
 				.getServletContext()
 				.getRealPath("/resources/upload/chatfile/");
-		FileInputStream fis=new FileInputStream(path+reName);
+		
+		File file = new File(path + reName);
+		
+		//파일이 존재하지 않으면 에러 처리
+		if(!file.exists()) {
+			// 파일이 존재하지 않으면 에러 처리
+	        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+	        return;
+		}
+		
+		FileInputStream fis=new FileInputStream(file);
 		BufferedInputStream bis=new BufferedInputStream(fis);
 		
 		//파일명 인코딩 처리
