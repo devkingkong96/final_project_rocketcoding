@@ -268,7 +268,14 @@ public class StockController {
 //                }
 //            }
 //        }
-
+        if (prdIdList.contains("0")) {
+            // prdIdList를 새로운 값들로 채우기
+            prdIdList = Arrays.asList("1", "2", "3", "4", "5");
+        }
+        if (branchIdList.contains("0")) {
+            // prdIdList를 새로운 값들로 채우기
+            branchIdList = Arrays.asList("1", "2", "3", "4", "5");
+        }
         List<Map<String, Object>> uniqueList = new ArrayList<>();
 
         Set<Object> prdIdSet = new HashSet<>();
@@ -349,11 +356,11 @@ public class StockController {
                 Object value = entry.getValue();
 
                 // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-                if (value instanceof String[]) {
+//                if (value instanceof String[]) {
 //                    log.error("Key: " + key + ", Value: " + Arrays.toString((String[])value));
-                } else {
+//                } else {
 //                    log.error("Key: " + key + ", Value: " + value);
-                }
+//                }
             }
         }
 
@@ -366,7 +373,6 @@ public class StockController {
             branchIdList = Arrays.asList("1", "2", "3", "4", "5");
         }
 
-
         for (Map<String, Object> stockItem : daybyStockList) {
             stockItem.put("branchIds", branchIdList);
             stockItem.put("productIds", prdIdList);
@@ -377,13 +383,12 @@ public class StockController {
         Set<Object> prdIdSet = new HashSet<>();
         for (Map<String, Object> map : daybyStockList) {
             Object popPrdId = map.get("PRD_ID");
-            /*            log.error("{}", popPrdId);*/
+            log.error("{}", popPrdId);
             if (!prdIdSet.contains(popPrdId)) {
                 prdIdSet.add(popPrdId);
                 uniqueList.add(map);
             }
         }
-
 
         List<Map<String, Object>> branchNameUniqueList = new ArrayList<>();
 
@@ -393,7 +398,7 @@ public class StockController {
             if (!brcNameSet.contains(popBrcName)) {
 
                 brcNameSet.add(popBrcName);
-                /*                log.error("popBrcName : {}", popBrcName);*/
+//                log.error("popBrcName : {}", popBrcName);
                 branchNameUniqueList.add(map);
             }
         }
@@ -426,11 +431,11 @@ public class StockController {
             Object value = entry.getValue();
 
             // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-            if (value instanceof String[]) {
+//            if (value instanceof String[]) {
 //                log.error(key + ": " + Arrays.toString((String[])value));
-            } else {
+//            } else {
 //                log.error(key + ": " + value);
-            }
+//            }
         }
 
 /*
@@ -518,6 +523,7 @@ public class StockController {
         }
 
         model.addAttribute("daybyStockList", uniqueList);
+        model.addAttribute("daybyStockList2", daybyStockList);
         return "logistics/daybyStockPage";
     }
 
@@ -538,10 +544,10 @@ public class StockController {
         Class<?> objClass = obj.getClass();
         Field[] fields = objClass.getDeclaredFields();
 
-        log.debug("Field names of class " + objClass.getName() + ":");
-        for (Field field : fields) {
-            log.debug(field.getName());
-        }
+//        log.debug("Field names of class " + objClass.getName() + ":");
+//        for (Field field : fields) {
+//            log.debug(field.getName());
+//        }
     }
 
     public String clobToString(Clob data) {
