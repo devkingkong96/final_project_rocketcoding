@@ -186,6 +186,7 @@
             <div class="modal-footer">
         		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
                 <button type="button" class="btn btn-primary holymoly">신청</button>
+            	<span class="no-holiday" style="display: none;">남은 휴가가 없어요</span>
             </div>
         </div>
     </div>
@@ -193,10 +194,16 @@
 <script>
 $(function() {
     $('.holiday.plus').click(function(e) {
-        var remainingLeave = ${employee.HOMOLY}; // 남은 연차
+        var remainingLeave = ${employee.HOMOLY}; 
+        var holidayButton = $('.holymoly'); 
+        var noHolidayText = $('.no-holiday'); 
         if (remainingLeave <= 0) {
-            alert('남은 연차가 없습니다.');
-            e.preventDefault(); // 버튼의 기본 동작(여기서는 모달 창 열기)을 막습니다.
+            holidayButton.hide(); 
+            noHolidayText.show(); 
+            e.preventDefault(); 
+        } else {
+            holidayButton.show(); 
+            noHolidayText.hide(); 
         }
     });
 });
@@ -324,7 +331,7 @@ window.onload = function() {
         document.getElementById('endWork').disabled = false;
         document.getElementById('startWorkTime').textContent = '출근시간: ' + startWorkTime;
     } else {
-        document.getElementById('startWorkTime').textContent = '출근시간: 진행되지 않음';
+        document.getElementById('startWorkTime').textContent = '';
     }
 
     // 퇴근 시간 표시
@@ -332,7 +339,7 @@ window.onload = function() {
         document.getElementById('endWork').style.display = 'none';
         document.getElementById('endWorkTime').textContent = '퇴근시간: ' + endWorkTime;
     } else {
-        document.getElementById('endWorkTime').textContent = '퇴근시간: 진행되지 않음';
+        document.getElementById('endWorkTime').textContent = '';
     }
 };
 </script>
