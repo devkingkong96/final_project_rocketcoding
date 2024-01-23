@@ -38,12 +38,19 @@ public class SecurityConfig {
                     logout.logoutUrl("/logout")
                           .logoutSuccessUrl("/login")
                           .deleteCookies("JSESSIONID")
+                          .clearAuthentication(true)
                           .invalidateHttpSession(true);
                 })
                 .rememberMe(rememberme->{
                     rememberme.tokenValiditySeconds(60*60*3)
                               .rememberMeParameter("rememberMe")
                               .userDetailsService(dbprovider);
+                })
+                .sessionManagement(maxsession->{
+                	maxsession.sessionFixation().changeSessionId()
+                				.maximumSessions(1)
+                				.expiredUrl("/login")
+                				.maxSessionsPreventsLogin(false);
                 })
                 //.userDetailsService(dbprovider)
 

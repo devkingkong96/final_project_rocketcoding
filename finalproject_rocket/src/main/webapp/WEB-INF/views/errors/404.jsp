@@ -10,17 +10,30 @@
 <meta charset="UTF-8">
 <title>에러페이지</title>
 <style>
-	body{
-		text-align: center;
-	}
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #content{
+    	
+    }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-	<img src="${path }/resources/images/404.avif" alt="에러화면" width="700" height="700">
+	<img src="${path }/resources/images/404.avif" alt="에러화면" width="450" height="450">
+	<div id="content">
+		<h1>페이지 오류</h1>
+		<h2>관리자에게 문의하세요.</h2>
+		<button type="button" class="btn btn-secondary" onclick="location.replace('${path}/');">메인페이지로 돌아가기</button>
+	</div>
 	<script>
-		setTimeout(()=>{
+		/* setTimeout(()=>{
 			location.replace('${path}/');
-		},3000)
+		},3000) */
 	</script>
 </body>
 </html>

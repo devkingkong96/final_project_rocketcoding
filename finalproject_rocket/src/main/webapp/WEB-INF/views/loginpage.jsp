@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="loginEmp" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,6 +137,12 @@
 <script src="${path}/resources/js/pages/chat-popup.js"></script>
 <script src="${path}/resources/assets/icons/feather-icons/feather.min.js"></script>
 <script>
+	var alreadyLoggedIn = '${loginEmp}'; // 서버에서 전달한 로그인 여부 변수
+	
+	if (alreadyLoggedIn) {
+	  alert("다른 사용자가 이미 해당 계정으로 로그인했습니다. 동시 접속은 허용되지 않습니다.");
+	}
+
     document.getElementById('sendEmail').addEventListener('click', function () {
         const empNo = document.getElementById('empNo').value;
         const email = document.getElementById('email').value;
@@ -194,7 +201,6 @@
             alert("메일 보내기 실패");
         })
     }
-
 </script>
 </body>
 </html>

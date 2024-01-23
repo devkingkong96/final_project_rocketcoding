@@ -38,12 +38,12 @@
             <a href="${path }/" class="logo">
                 <!-- logo-->
                 <div class="logo-mini w-30">
-                    <span class="light-logo"><img src="${path}/resources/images/logo-letter.png" alt="logo"></span>
-                    <span class="dark-logo"><img src="${path}/resources/images/logo-letter-white.png" alt="logo"></span>
+                    <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                    <span class="dark-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
                 </div>
                 <div class="logo-lg">
-                    <span class="light-logo"><img src="${path}/resources/images/logo-dark-text.png" alt="logo"></span>
-                    <span class="dark-logo"><img src="${path}/resources/images/logo-light-text.png" alt="logo"></span>
+                    <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                    <span class="dark-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
                 </div>
             </a>
         </div>
@@ -200,10 +200,10 @@
                 <a href="${path }/" class="logo">
                     <!-- logo-->
                     <div class="logo-mini">
-                        <span class="light-logo"><img src="${path}/resources/images/logo-letter.png" alt="logo"></span>
+                        <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
                     </div>
                     <div class="logo-lg">
-                        <span class="light-logo fs-36 fw-700">로고</span>
+                        <span class="light-logo fs-36 fw-700" style="color:#A374DB;">ERP</span>
                     </div>
                 </a>
             </div>
