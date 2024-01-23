@@ -1010,6 +1010,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                             ${jsonMap}';
                             var prdTitleToIdMap = JSON.parse(prdTitleToIdMapString);
 
@@ -1128,6 +1130,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
                                                             var newData = ['<button type="button" id="' + plusButtonCounter + 'plusButton" class="plusButton waves-effect waves-light btn btn-outline btn-primary-light mb-5"></button>', '', '<label class="form-label">도서 선택</label> <select class="chooseBook form-control select2" data-placeholder="도서를 선택하세요" style="width: 100%;"> <option></option>
+
+
 
 
 
@@ -1433,6 +1437,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                             ${entry.value}">
 
 
@@ -1586,7 +1592,11 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                             ${entry.key}</option>
+
+
 
 
 
@@ -2728,9 +2738,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
                                     회사명 : (주)로켓 ERP /
-                                    <c:forEach var="branch" items="${daybyStockList}">
+                                    <c:forEach var="branch" items="${daybyStockList2}">
                                         <c:set var="uniqueBranchNames" value=""/>
-                                        <c:forEach var="item" items="${daybyStockList}">
+                                        <c:forEach var="item" items="${daybyStockList2}">
                                             <c:if test="${not uniqueBranchNames.contains(item.BRANCH_NAME)}">
                                                 <c:set var="uniqueBranchNames"
                                                        value="${uniqueBranchNames}${item.BRANCH_NAME}, "/>
@@ -2741,7 +2751,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                     </c:forEach>
                                     ${uniqueBranchNames}
                                     <br>
-                                    기준 날짜 : ${daybyStockList[0]["SELECTED_STK_DATE"]}
+                                    기준 날짜 : ${daybyStockList2[0]["SELECTED_STK_DATE"]}
                                 </div>
 
                                 <table id="example1"

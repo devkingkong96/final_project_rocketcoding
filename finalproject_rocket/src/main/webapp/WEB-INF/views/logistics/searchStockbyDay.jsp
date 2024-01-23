@@ -1304,7 +1304,9 @@
 
 
 
+
                                 ${path}/logistics/stock/daybystock?
+
 
 
 
@@ -1372,6 +1374,7 @@
                             })*/
                                 /*} else {
                                     fetch("
+
 
 
 

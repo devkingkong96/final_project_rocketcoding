@@ -413,7 +413,6 @@
   		  				dataType:"json",
 						contentType:"application/json",
   		  				success(data){
-  							console.log("꺄아악"+data);
   		  					document.getElementById('numOfChatRoom').innerHTML="채팅방 인원 수 : " + data;
   		  				},
   		  				error:function(error){
@@ -857,12 +856,12 @@
 			}
   			
   			//파일 다운로드
-  			function downloadFile(ori,re){
+  			/* function downloadFile(ori,re){
   				var data={
   						msgFiOriName:ori,
   						msgFiReName:re
   				}
-  				/* console.log(data); */
+  				/* console.log(data);
   				$.ajax({
   					url:'${path}/chat/file/download',
   					type:'POST',
@@ -870,14 +869,14 @@
   					dataType:"json",
   					contentType:"application/json",
   					success:function(res){
-  						/* console.log(res); */
+  						/* console.log(res);
   						console.log('다운로드 성공');
   					},
   					error:function(error){
   						alert("에러메시지 : "+error);
   					}
   				});
-  			}
+  			} */
   			
 	  		//채팅방에서 초대하기 모달 띄우기
 	  		document.getElementById('modalchatinvite').addEventListener('click',function(){

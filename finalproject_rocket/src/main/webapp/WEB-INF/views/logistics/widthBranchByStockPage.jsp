@@ -560,7 +560,6 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                value="${fn:substring(uniqueBranchNames, 0, fn:length(uniqueBranchNames) - 1)} "/>
                     </c:forEach>
 
-
                     ${uniqueBranchNames} 외>
 
                     <input type="hidden" id="branch-names3" name="branch-names3" value=
@@ -857,6 +856,18 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                 table.row(rowIdx).data(data).draw(); // 검색 색인 업데이트
                             });
                             /*                    var prdTitleToIdMapString = '
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1409,7 +1420,31 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                             <c:forEach var="entry" items="${prdTitleToIdMap }"><c:if test="${entry.key != null}"> <option value="
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1845,7 +1880,31 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
                             ${entry.key}</option>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3054,9 +3113,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
                                     회사명 : (주)로켓 ERP /
-                                    <c:forEach var="branch" items="${branchNameUniqueList}">
+                                    <c:forEach var="branch" items="${RealdaybyStockList}">
                                         <c:set var="uniqueBranchNames" value=""/>
-                                        <c:forEach var="item" items="${branchNameUniqueList}">
+                                        <c:forEach var="item" items="${RealdaybyStockList}">
                                             <c:if test="${not uniqueBranchNames.contains(item.BRANCH_NAME)}">
                                                 <c:set var="uniqueBranchNames"
                                                        value="${uniqueBranchNames} ${item.BRANCH_NAME}, "/>
@@ -3067,7 +3126,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                     </c:forEach>
                                     ${uniqueBranchNames}
                                     <br>
-                                    기준 날짜 : ${daybyStockList[0]["SELECTED_STK_DATE"]}
+                                    기준 날짜 : ${RealdaybyStockList[0]["SELECTED_STK_DATE"]}
                                 </div>
                                 <%--                                ${branchNameUniqueList}"--%>
                                 <table id="example1"
@@ -3393,7 +3452,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
                                                         <fmt:formatNumber
-                                                                value="${RealdaybyStockList[1].BRANCH1_STOCK_SUM}"
+                                                                value="${RealdaybyStockList[6].BRANCH1_STOCK_SUM}"
                                                                 type="number" groupingUsed="true"/>
                                                     </td>
                                                     <script>console.log("1달성111111");</script>
@@ -3457,7 +3516,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
                                                         <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH2_STOCK_SUM}"
+                                                                value="${RealdaybyStockList[8].BRANCH2_STOCK_SUM}"
                                                                 type="number" groupingUsed="true"/>
                                                     </td>
                                                     <script>console.log("2달성0000000000");</script>
@@ -3467,7 +3526,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
                                                         <fmt:formatNumber
-                                                                value="${RealdaybyStockList[1].BRANCH3_STOCK_SUM}"
+                                                                value="${RealdaybyStockList[3].BRANCH3_STOCK_SUM}"
                                                                 type="number" groupingUsed="true"/>
                                                     </td>
                                                     <script>console.log("3달성00000000000000");</script>
@@ -3521,7 +3580,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
                                                         <fmt:formatNumber
-                                                                value="${RealdaybyStockList[4].BRANCH3_STOCK_SUM}"
+                                                                value="${RealdaybyStockList[0].BRANCH3_STOCK_SUM}"
                                                                 type="number" groupingUsed="true"/>
                                                     </td>
                                                     <script>console.log("3달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>
@@ -3585,7 +3644,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
                                                         <fmt:formatNumber
-                                                                value="${RealdaybyStockList[2].BRANCH4_STOCK_SUM}"
+                                                                value="${RealdaybyStockList[4].BRANCH4_STOCK_SUM}"
                                                                 type="number" groupingUsed="true"/>
                                                     </td>
                                                     <script>console.log("4달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>
@@ -3649,7 +3708,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
                                                         <fmt:formatNumber
-                                                                value="${RealdaybyStockList[0].BRANCH5_STOCK_SUM}"
+                                                                value="${RealdaybyStockList[3].BRANCH5_STOCK_SUM}"
                                                                 type="number" groupingUsed="true"/>
                                                     </td>
                                                     <script>console.log("5달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>
