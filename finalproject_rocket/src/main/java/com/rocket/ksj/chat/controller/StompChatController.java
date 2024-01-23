@@ -144,4 +144,12 @@ public class StompChatController {
 		
 		template.convertAndSend("/sub/chat/room/"+chatMsg.getMsgRoomNo(),chatMsg);
 	}
+	
+	//알림 기능(방 초대)
+	@MessageMapping("/alarm/chat")
+	public void AlarmChat(ChatMessage msg) {
+		log.info("알람 : {}"+msg);
+		
+		template.convertAndSend("/sub/*",msg);
+	}
 	}
