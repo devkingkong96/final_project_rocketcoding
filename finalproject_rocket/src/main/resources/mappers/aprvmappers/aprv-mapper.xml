@@ -18,11 +18,11 @@
          SELECT A.*,ROWNUM FROM(
             SELECT * FROM APPROVAL ORDER BY APRV_DATE DESC) A WHERE ROWNUM &lt;= 10
       </select>
-        <select id="selectAprvList" resultType="hashMap" parameterType="_int">
-           SELECT * FROM APPROVAL A LEFT JOIN DOCUMENT D USING (DOC_NO)
-                                LEFT JOIN EMPLOYEE USING (EMP_NO)
-                                 WHERE A.APRV_EMP=#{no}
-                                 ORDER BY U_DATE DESC
+        <select id="selectAprvList" resultType="hashMap">
+           SELECT * FROM APPROVAL A LEFT JOIN DOCUMENT D USING (DOC_NO) 
+                                LEFT JOIN EMPLOYEE USING (EMP_NO) 
+                                                         WHERE A.APRV_EMP=#{no}
+                                                            ORDER BY U_DATE DESC
         </select>
         
         <select id="ckLvList" resultType="hashMap">
@@ -74,7 +74,7 @@
         </update>
         
         <select id="cheackSaveFile" parameterType="_int" resultType="hashMap">
-           SELECT * FROM DOCUMENT WHERE DOC_STATCD = 2 AND EMP_NO = '${no}' 
+           SELECT * FROM DOCUMENT WHERE DOC_STATCD = 2 AND EMP_NO = '${no}' ORDER BY U_DATE DESC 
         </select>
         <update id="updateDocuBySave" parameterType="hashMap">
            UPDATE DOCUMENT SET DOC_STATCD='0',U_DATE=SYSDATE,DOC_TITLE='${DOC_TITLE}' WHERE DOC_NO='${DOC_NO}'
@@ -82,7 +82,7 @@
         
         <insert id="fistAprv" parameterType="hashMap">
           <choose>
-              <when test="DOC_NO != null">
+              <when test="DOC_NO != ''">
                   INSERT INTO APPROVAL VALUES(SEQ_APRV_NO.NEXTVAL,'${APRV_SQ}','${APRV_LV}',NULL,'${DOC_NO}',SYSDATE,'${APRV_EMP}')        
               </when>
               <otherwise>
@@ -93,7 +93,7 @@
       
       <insert id="insertAprv" parameterType="hashMap">
           <choose >
-              <when  test="DOC_NO != null" >
+              <when  test="DOC_NO != ''" >
                   INSERT INTO APPROVAL VALUES(SEQ_APRV_NO.NEXTVAL,'${APRV_SQ}','${APRV_LV}',NULL,'${DOC_NO}',NULL,'${APRV_EMP}')        
               </when>
               <otherwise>
@@ -107,10 +107,6 @@
         <select id="selectSaveList" parameterType="_int" resultType="hashMap">
            SELECT * FROM DOCUMENT WHERE DOC_STATCD=2 AND EMP_NO='${no}'
         </select>
-        
-        <delete id="deleteSaveFile">
-           DELETE DOCUMENT WHERE DOC_STATCD=2
-        </delete> 
         <select id="countSaveList" parameterType="_int" resultType="int">
            SELECT COUNT(*) FROM DOCUMENT WHERE DOC_STATCD=2 AND EMP_NO='${no}'
         </select> 
