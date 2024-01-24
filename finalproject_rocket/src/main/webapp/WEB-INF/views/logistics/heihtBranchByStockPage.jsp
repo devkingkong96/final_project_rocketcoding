@@ -694,9 +694,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         encoding: 'UTF-8',
 
                                     }
-                                }, {
+                                }, /*{
                                     extend: 'pdfHtml5',
-                                    /*          exportData: {decodeEntities: true}, */
+                                    /!*          exportData: {decodeEntities: true}, *!/
                                     messageTop: uniqueBranchNames,
                                     messageBottom: '생성 시각 : ' + getCurrentDateTime(),
                                     text: 'PDF',
@@ -708,8 +708,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         rows: ':visible',
                                         encoding: 'UTF-8',
 
-                                        /*font: 'hangul',*/
-                                        /*                              customize: function (doc) {
+                                        /!*font: 'hangul',*!/
+                                        /!*                              customize: function (doc) {
                                                                           // 폰트 설정 추가
                                                                           /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                                                                           doc.defaultStyle.fonts = 'Roboto';
@@ -718,11 +718,11 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                                               page: 'current'
                                                                           }
 
-                                                                      },*/
+                                                                      },*!/
 
                                     }
 
-                                }, {
+                                },*/ {
                                     extend: 'print',
                                     title: '재고현황 ' + uniqueBottomMessage,
                                     messageTop: uniqueBranchNames,
@@ -857,6 +857,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                 table.row(rowIdx).data(data).draw(); // 검색 색인 업데이트
                             });
                             /*                    var prdTitleToIdMapString = '
+
+
 
 
 
@@ -1353,7 +1355,11 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                             <c:forEach var="entry" items="${prdTitleToIdMap }"><c:if test="${entry.key != null}"> <option value="
+
+
 
 
 
@@ -1733,7 +1739,11 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                             ${entry.key}</option>
+
+
 
 
 

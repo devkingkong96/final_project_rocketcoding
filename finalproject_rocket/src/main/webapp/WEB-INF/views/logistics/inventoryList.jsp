@@ -392,9 +392,9 @@ ${path}";
                                         encoding: 'UTF-8'
 
                                     }
-                                }, {
+                                },/* {
                                     extend: 'pdfHtml5',
-                                    /*          exportData: {decodeEntities: true}, */
+                                    /!*          exportData: {decodeEntities: true}, *!/
                                     text: 'PDF',
                                     title: '입/출고 리스트 ' + getCurrentDateTime(),
                                     font: 'hangul',
@@ -403,21 +403,21 @@ ${path}";
                                         rows: ':visible',
                                         encoding: 'UTF-8',
 
-                                        /*font: 'hangul',*/
+                                        /!*font: 'hangul',*!/
                                         customize: function (doc) {
                                             // 폰트 설정 추가
-                                            /*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*/
+                                            /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                                             doc.defaultStyle.fonts = 'Roboto';
                                             doc.defaultStyle.font = 'Roboto';
                                             modifier: {
                                                 page: 'current'
                                             }
-                                            /*                        /!*    doc.defaultStyle.font = 'hangul'; // 폰트 패밀리 이름
+                                            /!*                        /!*    doc.defaultStyle.font = 'hangul'; // 폰트 패밀리 이름
                                                                     doc.styles.tableHeader.font = 'hangul';
                                                                     doc.styles.tableHeader.fontSize = 'hangul';
-                                                                    doc.defaultStyle.fontSize = 'hangul';// 테이블 헤더에 적용할 폰트*!/*/
+                                                                    doc.defaultStyle.fontSize = 'hangul';// 테이블 헤더에 적용할 폰트*!/!*!/
                                         },
-                                        /*                    customize: function (doc) {
+                                        /!*                    customize: function (doc) {
                                                                 // 폰트 설정 추가
                                                            /!*     doc.defaultStyle.styles.tableBodyEven.font = 'hangul';*!/
                                                                /!* doc.defaultStyle.fonts = 'hangul';*!/
@@ -426,22 +426,22 @@ ${path}";
                                                                 doc.styles.tableHeader.font = 'hangul';
                                                                 doc.styles.tableHeader.fontSize = 'hangul';
                                                                 doc.defaultStyle.fontSize = 'hangul';// 테이블 헤더에 적용할 폰트*!/
-                                                            },*/
-                                        /*          format: {
+                                                            },*!/
+                                        /!*          format: {
                                                       body: function (data, row, column, node) {
                                                           // 한글 폰트 설정
                                                           var font = 'hangul'; // 사용하고자 하는 폰트명으로 변경해주세요.
                                                           node.style.fontFamily = font;
                                                           return node;
                                                       }
-                                                  },*/
-                                        /*                    customize: function (doc) {
+                                                  },*!/
+                                        /!*                    customize: function (doc) {
                                                                 doc.defaultStyle.font = 'NanumGothic';
                                                                 doc.styles.tableHeader.font = 'NanumGothic';
-                                                            },*/
+                                                            },*!/
                                     }
 
-                                }, {
+                                },*/ {
                                     extend: 'print',
                                     title: '입/출고 리스트 ' + getCurrentDateTime(),
                                     /*           exportData: {decodeEntities: true}, */
@@ -774,7 +774,7 @@ ${path}";
                         <div class="box-header">
 
 
-                            <h4 class="box-title"><strong>입/출고내역</strong>
+                            <h4 class="box-title"><strong>입/출고 내역</strong>
                             </h4>
                             <h6 class="subtitle">수정할 row를 선택하세요</h6>
                         </div>
@@ -806,7 +806,7 @@ ${path}";
                                         <th>결재여부</th>
                                         <th>거래처</th>
                                         <th>담당자</th>
-                                        <th>금액합계</th>
+                                        <th>금액 합계</th>
                                         <th>부가세유형</th>
                                         <th>적요</th>
                                         <th>삭제</th>
@@ -846,7 +846,11 @@ ${path}";
                                             <td data-column-name="SEND_EMP_ID"
                                                 data-parent-column="EMP_NAME"
                                                 data-table-name="EMPLOYEE">${iv.SEND_EMP_NAME}</td>
-                                            <td name="dontedit">${iv.CALCULATED_PRICE2}</td>
+                                            <td name="dontedit">
+                                                <fmt:formatNumber
+                                                        value="${iv.CALCULATED_PRICE2}"
+                                                        type="number" groupingUsed="true"/></td>
+
                                             <td data-column-name="IV_VAT_TYPE"
                                                 data-parent-column="IV_VAT_TYPE"
                                                 data-table-name="INVENTORY">${iv.IV_VAT_TYPE}</td>

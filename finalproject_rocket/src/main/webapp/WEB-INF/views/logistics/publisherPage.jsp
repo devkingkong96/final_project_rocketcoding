@@ -450,9 +450,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         encoding: 'UTF-8'
 
                                     }
-                                }, {
+                                },/* {
                                     extend: 'pdfHtml5',
-                                    /*          exportData: {decodeEntities: true}, */
+                                    /!*          exportData: {decodeEntities: true}, *!/
                                     text: 'PDF',
                                     title: '출판사 리스트 ' + getCurrentDateTime(),
                                     font: 'hangul',
@@ -461,10 +461,10 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         rows: ':visible',
                                         encoding: 'UTF-8',
 
-                                        /*font: 'hangul',*/
+                                        /!*font: 'hangul',*!/
                                         customize: function (doc) {
                                             // 폰트 설정 추가
-                                            /*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*/
+                                            /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                                             doc.defaultStyle.fonts = 'Roboto';
                                             doc.defaultStyle.font = 'Roboto';
                                             modifier: {
@@ -475,7 +475,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
                                     }
 
-                                }, {
+                                }, */{
                                     extend: 'print',
                                     title: '출판사 리스트 ' + getCurrentDateTime(),
                                     /*           exportData: {decodeEntities: true}, */
@@ -1166,6 +1166,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
                             ${path}/logistics/inventory/endwrite", {
                                     method: "POST",
                                     headers: {
@@ -1191,6 +1192,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
                             } else {
                                 fetch("
+
 
 
 

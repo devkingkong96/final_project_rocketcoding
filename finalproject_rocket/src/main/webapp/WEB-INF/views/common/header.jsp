@@ -38,12 +38,12 @@
             <a href="${path }/" class="logo">
                 <!-- logo-->
                 <div class="logo-mini w-30">
-                    <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
-                    <span class="dark-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                    <span class="light-logo"><img src="${path}/resources/images/10.png" alt="logo" style="width: 3px; height: auto;"></span>
+                    <span class="dark-logo"><img src="${path}/resources/images/10.png" alt="logo" style="width: 3px; height: auto;"></span>
                 </div>
                 <div class="logo-lg">
-                    <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
-                    <span class="dark-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                    <span class="light-logo"><img src="${path}/resources/images/10.png" alt="logo" style="width: 3px; height: auto;"></span>
+                    <span class="dark-logo"><img src="${path}/resources/images/10.png" alt="logo" style="width: 3px; height: auto;"></span>
                 </div>
             </a>
         </div>
@@ -200,10 +200,10 @@
                 <a href="${path }/" class="logo">
                     <!-- logo-->
                     <div class="logo-mini">
-                        <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                        <span class="light-logo"><img src="${path}/resources/images/10.png" alt="logo" style="width: 50px; height: auto;"></span>
                     </div>
                     <div class="logo-lg">
-                        <span class="light-logo fs-36 fw-700" style="color:#A374DB;">ERP</span>
+                        <span class="light-logo fs-30 fw-700">PaperDia</span>
                     </div>
                 </a>
             </div>
@@ -463,13 +463,13 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
-	var sockJS=new SockJS("/ws/alarm");
+	/* var sockJS=new SockJS("/ws/alarm");
 	var stomp=Stomp.over(sockJS);
 		
 	stomp.connect({},onConnected,onError);
 	//연결 성공했을 때 실행하는 함수
 	function onConnected(){
-		console.log("stomp 연결 성공");
+		console.log("알람 stomp 연결 성공");
 		
 		//subscribe(path,callback)으로 메세지 받기 가능
 		
@@ -487,5 +487,5 @@
 		console.log("수신 확인");
 			
 		var chat=JSON.parse(payload.body);
-	}
+	} */
 </script>

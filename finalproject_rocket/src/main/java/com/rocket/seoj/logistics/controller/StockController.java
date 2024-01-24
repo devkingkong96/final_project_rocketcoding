@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.sql.Clob;
 import java.sql.SQLException;
 import java.util.*;
@@ -346,6 +347,32 @@ public class StockController {
 
         List<Map<String, Object>> daybyStockList = service.selectStockByBranch(params);
 
+        Map<String, Object> stockSumList = new HashMap<>();
+        String[] keys = { "BRANCH1_STOCK_SUM", "BRANCH2_STOCK_SUM", "BRANCH3_STOCK_SUM", "BRANCH4_STOCK_SUM", "BRANCH5_STOCK_SUM" };
+
+        for (Map<String, Object> dayStock : daybyStockList) {
+            boolean allFilled = true;
+
+            for (String key : keys) {
+                if (!stockSumList.containsKey(key) || (stockSumList.get(key) != null && ((Number)stockSumList.get(
+                        key)).intValue() == 0)) {
+                    Object value = dayStock.get(key);
+
+                    if (value instanceof BigDecimal && ((BigDecimal)value).intValue() != 0) {
+                        stockSumList.put(key, ((BigDecimal)value).intValue());
+                    } else if (value instanceof Integer && (Integer)value != 0) {
+                        stockSumList.put(key, value);
+                    } else {
+                        allFilled = false;
+                    }
+                }
+            }
+
+            if (allFilled) {
+                break;
+            }
+        }
+
 
         // daybyStockList의 각 항목에 대해 반복
         for (Map<String, Object> item : daybyStockList) {
@@ -355,7 +382,7 @@ public class StockController {
                 String key = entry.getKey();
                 Object value = entry.getValue();
 
-                // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
+//                // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
 //                if (value instanceof String[]) {
 //                    log.error("Key: " + key + ", Value: " + Arrays.toString((String[])value));
 //                } else {
@@ -383,7 +410,7 @@ public class StockController {
         Set<Object> prdIdSet = new HashSet<>();
         for (Map<String, Object> map : daybyStockList) {
             Object popPrdId = map.get("PRD_ID");
-            log.error("{}", popPrdId);
+//            log.error("{}", popPrdId);
             if (!prdIdSet.contains(popPrdId)) {
                 prdIdSet.add(popPrdId);
                 uniqueList.add(map);
@@ -403,6 +430,7 @@ public class StockController {
             }
         }
 
+        model.addAttribute("stockSumList", stockSumList);
         model.addAttribute("RealdaybyStockList", daybyStockList);
         model.addAttribute("branchNameUniqueList", branchNameUniqueList);
         model.addAttribute("daybyStockList", uniqueList);

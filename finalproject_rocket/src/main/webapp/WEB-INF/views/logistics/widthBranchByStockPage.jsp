@@ -693,9 +693,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         encoding: 'UTF-8',
 
                                     }
-                                }, {
+                                }, /*{
                                     extend: 'pdfHtml5',
-                                    /*          exportData: {decodeEntities: true}, */
+                                    /!*          exportData: {decodeEntities: true}, *!/
                                     messageTop: uniqueBranchNames,
                                     messageBottom: '생성 시각 : ' + getCurrentDateTime(),
                                     text: 'PDF',
@@ -707,8 +707,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         rows: ':visible',
                                         encoding: 'UTF-8',
 
-                                        /*font: 'hangul',*/
-                                        /*                              customize: function (doc) {
+                                        /!*font: 'hangul',*!/
+                                        /!*                              customize: function (doc) {
                                                                           // 폰트 설정 추가
                                                                           /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                                                                           doc.defaultStyle.fonts = 'Roboto';
@@ -717,11 +717,11 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                                               page: 'current'
                                                                           }
 
-                                                                      },*/
+                                                                      },*!/
 
                                     }
 
-                                }, {
+                                },*/ {
                                     extend: 'print',
                                     title: '재고현황 ' + uniqueBottomMessage,
                                     messageTop: uniqueBranchNames,
@@ -856,6 +856,13 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                 table.row(rowIdx).data(data).draw(); // 검색 색인 업데이트
                             });
                             /*                    var prdTitleToIdMapString = '
+
+
+
+
+
+
+
 
 
 
@@ -1432,7 +1439,21 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
+
+
+
+
+
                             <c:forEach var="entry" items="${prdTitleToIdMap }"><c:if test="${entry.key != null}"> <option value="
+
+
+
+
+
+
+
 
 
 
@@ -1892,7 +1913,21 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
+
+
+
+
+
                             ${entry.key}</option>
+
+
+
+
+
+
+
 
 
 
@@ -2846,30 +2881,6 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                     var currentData = table.rows().data().toArray();
                                     /!*                       currentData.splice(0, 0, [selectKey, parsedData.pubName, parsedData.pubAddr, parsedData.pubPhone, parsedData.pubRepresentative, parsedData.pubBank, '<form id="deleteForm" action="
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                     ${path}/logistics/inventory/list/delete" method="post" style="display: none;"> <input type="hidden" name="pub_id" id="deleteId"> </form> <button type="button" onclick="confirmDeletion(this,' + selectKey + ')" class="waves-effect waves-light btn btn-danger-light btn-flat mb-5">삭제 </button>']);*!/
 
                                     var pubName;
@@ -3186,7 +3197,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH1_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("1달성");</script>
+                                                        <%--                                                        <script>console.log("1달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[0] == 2}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3195,7 +3206,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH2_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("2달성");</script>
+                                                        <%--                                                        <script>console.log("2달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[0] == 3}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3204,7 +3215,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH3_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("3달성");</script>
+                                                        <%--                                                        <script>console.log("3달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[0] == 4}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3213,7 +3224,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH4_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("4달성");</script>
+                                                        <%--                                                        <script>console.log("4달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[0] == 5}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3222,7 +3233,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH5_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("5달성");</script>
+                                                        <%--                                                        <script>console.log("5달성");</script>--%>
                                                     </c:when>
                                                 </c:choose>
                                             </c:if>
@@ -3235,7 +3246,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH1_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("1달성");</script>
+                                                        <%--                                                        <script>console.log("1달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[1] == 2}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3244,7 +3255,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH2_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("2달성");</script>
+                                                        <%--                                                        <script>console.log("2달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[1] == 3}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3253,7 +3264,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH3_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("3달성");</script>
+                                                        <%--                                                        <script>console.log("3달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[1] == 4}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3262,7 +3273,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH4_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("4달성");</script>
+                                                        <%--                                                        <script>console.log("4달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[1] == 5}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3271,7 +3282,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH5_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("5달성");</script>
+                                                        <%--                                                        <script>console.log("5달성");</script>--%>
                                                     </c:when>
                                                 </c:choose>
                                             </c:if>
@@ -3284,7 +3295,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH1_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("1달성");</script>
+                                                        <%--                                                        <script>console.log("1달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[2] == 2}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3293,7 +3304,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH2_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("2달성");</script>
+                                                        <%--                                                        <script>console.log("2달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[2] == 3}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3302,7 +3313,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH3_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("3달성");</script>
+                                                        <%--                                                        <script>console.log("3달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[2] == 4}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3311,7 +3322,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH4_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("4달성");</script>
+                                                        <%--                                                        <script>console.log("4달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[2] == 5}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3320,7 +3331,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH5_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("5달성");</script>
+                                                        <%--                                                        <script>console.log("5달성");</script>--%>
                                                     </c:when>
                                                 </c:choose>
                                             </c:if>
@@ -3333,7 +3344,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH1_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("1달성");</script>
+                                                        <%--                                                        <script>console.log("1달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[3] == 2}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3342,7 +3353,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH2_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("2달성");</script>
+                                                        <%--                                                        <script>console.log("2달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[3] == 3}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3351,7 +3362,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH3_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("3달성");</script>
+                                                        <%--                                                        <script>console.log("3달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[3] == 4}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3360,7 +3371,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH4_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("4달성");</script>
+                                                        <%--                                                        <script>console.log("4달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[3] == 5}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3369,7 +3380,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH5_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("5달성");</script>
+                                                        <%--                                                        <script>console.log("5달성");</script>--%>
                                                     </c:when>
                                                 </c:choose>
                                             </c:if>
@@ -3382,7 +3393,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH1_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("1달성");</script>
+                                                        <%--                                                        <script>console.log("1달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[4] == 2}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3391,7 +3402,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH2_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("2달성");</script>
+                                                        <%--                                                        <script>console.log("2달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[4] == 3}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3400,7 +3411,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH3_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("3달성");</script>
+                                                        <%--                                                        <script>console.log("3달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[4] == 4}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3409,7 +3420,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH4_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("4달성");</script>
+                                                        <%--                                                        <script>console.log("4달성");</script>--%>
                                                     </c:when>
                                                     <c:when test="${daybyStockList[0].branchIds[4] == 5}">
                                                         <td name="dontedit" data-column-name="PRD_AUTHOR"
@@ -3418,7 +3429,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                             <fmt:formatNumber value="${daybyStock.BRANCH5_STOCK}"
                                                                               type="number" groupingUsed="true"/>
                                                         </td>
-                                                        <script>console.log("5달성");</script>
+                                                        <%--                                                        <script>console.log("5달성");</script>--%>
                                                     </c:when>
                                                 </c:choose>
                                             </c:if>
@@ -3451,51 +3462,46 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[6].BRANCH1_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH1_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("1달성111111");</script>
+                                                    <%--                                                    <script>console.log("1달성111111");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[0] == 2}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[0].BRANCH2_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH2_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("2달성222222222");</script>
+                                                    <%--                                                    <script>console.log("2달성222222222");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[0] == 3}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[0].BRANCH3_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH3_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("3달성333333");</script>
+                                                    <%--                                                    <script>console.log("3달성333333");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[0] == 4}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[0].BRANCH4_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH4_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("4달성4444444");</script>
+                                                    <%--                                                    <script>console.log("4달성4444444");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[0] == 5}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[0].BRANCH5_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH5_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("5달성555555");</script>
+                                                    <%--                                                    <script>console.log("5달성555555");</script>--%>
                                                 </c:when>
                                             </c:choose>
                                         </c:if>
@@ -3505,51 +3511,46 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[1].BRANCH1_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH1_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("1달성00000000000");</script>
+                                                    <%--                                                    <script>console.log("1달성00000000000");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[1] == 2}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[8].BRANCH2_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH2_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("2달성0000000000");</script>
+                                                    <%--                                                    <script>console.log("2달성0000000000");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[1] == 3}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH3_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH3_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("3달성00000000000000");</script>
+                                                    <%--                                                    <script>console.log("3달성00000000000000");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[1] == 4}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[1].BRANCH4_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH4_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("4달성000000000000");</script>
+                                                    <%--                                                    <script>console.log("4달성000000000000");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[1] == 5}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[1].BRANCH5_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH5_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("5달성000000000000000");</script>
+                                                    <%--                                                    <script>console.log("5달성000000000000000");</script>--%>
                                                 </c:when>
                                             </c:choose>
                                         </c:if>
@@ -3559,51 +3560,46 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[2].BRANCH1_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH1_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("1달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>
+                                                    <%--                                                    <script>console.log("1달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[2] == 2}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[2].BRANCH2_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH2_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("2달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>
+                                                    <%--                                                    <script>console.log("2달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[2] == 3}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[0].BRANCH3_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH3_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("3달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>
+                                                    <%--                                                    <script>console.log("3달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[2] == 4}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[2].BRANCH4_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH4_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("4달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>
+                                                    <%--                                                    <script>console.log("4달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[2] == 5}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[2].BRANCH5_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH5_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("5달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>
+                                                    <%--                                                    <script>console.log("5달성ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ");</script>--%>
                                                 </c:when>
                                             </c:choose>
                                         </c:if>
@@ -3613,51 +3609,46 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH1_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH1_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("1달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>
+                                                    <%--                                                    <script>console.log("1달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[3] == 2}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH2_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH2_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("2달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>
+                                                    <%--                                                    <script>console.log("2달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[3] == 3}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH3_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH3_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("3달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>
+                                                    <%--                                                    <script>console.log("3달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[3] == 4}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[4].BRANCH4_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH4_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("4달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>
+                                                    <%--                                                    <script>console.log("4달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[3] == 5}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH5_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH5_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("5달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>
+                                                    <%--                                                    <script>console.log("5달성ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");</script>--%>
                                                 </c:when>
                                             </c:choose>
                                         </c:if>
@@ -3667,51 +3658,46 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[4].BRANCH1_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH1_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("1달성ㅂㅂㅂㅂㅂㅂㅂㅂ");</script>
+                                                    <%--                                                    <script>console.log("1달성ㅂㅂㅂㅂㅂㅂㅂㅂ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[4] == 2}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[4].BRANCH2_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH2_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("2달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>
+                                                    <%--                                                    <script>console.log("2달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[4] == 3}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[4].BRANCH3_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH3_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("3달성ㅂㅂㅂㅂㅂㅂㅂ");</script>
+                                                    <%--                                                    <script>console.log("3달성ㅂㅂㅂㅂㅂㅂㅂ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[4] == 4}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[4].BRANCH4_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH4_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("4달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>
+                                                    <%--                                                    <script>console.log("4달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>--%>
                                                 </c:when>
                                                 <c:when test="${daybyStockList[0].branchIds[4] == 5}">
                                                     <td name="dontedit" data-column-name="PRD_AUTHOR"
                                                         data-parent-column="PRD_AUTHOR"
                                                         data-table-name="PRODUCT">
-                                                        <fmt:formatNumber
-                                                                value="${RealdaybyStockList[3].BRANCH5_STOCK_SUM}"
-                                                                type="number" groupingUsed="true"/>
+                                                        <fmt:formatNumber value="${stockSumList.BRANCH5_STOCK_SUM}"
+                                                                          type="number" groupingUsed="true"/>
                                                     </td>
-                                                    <script>console.log("5달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>
+                                                    <%--                                                    <script>console.log("5달성ㅂㅂㅂㅂㅂㅂㅂㅂㅂ");</script>--%>
                                                 </c:when>
                                             </c:choose>
                                         </c:if>
@@ -3725,6 +3711,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                     String koreanTime = dateFormat.format(new Date());
                                 %>
                                 <p>조회 시각 : <%= koreanTime %>
+
                                 </p>
                             </div>
                         </div>

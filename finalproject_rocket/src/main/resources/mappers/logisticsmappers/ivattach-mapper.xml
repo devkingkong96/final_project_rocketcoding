@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="inventoryattach">
     <resultMap id="inventoryattachMap" type="inventoryattach">
+<<<<<<< HEAD
         <id column="iv_file_id" property="ivFileId" />
         <result column="iv_file_name_ori" property="ivFileNameOri" />
         <result column="iv_file_name_re" property="ivFileNameRe" />
@@ -15,3 +16,38 @@
 
 
 </mapper>
+=======
+        <id column="iv_file_id" property="ivFileId"/>
+        <result column="iv_file_name_ori" property="ivFileNameOri"/>
+        <result column="iv_file_name_re" property="ivFileNameRe"/>
+        <result column="iv_upload_date" property="ivUploadDate"/>
+        <result column="iv_attach_isdel" property="ivAttachIsdel"/>
+        <result property="ivId" column="IV_ID"/>
+    </resultMap>
+
+    <insert id="insertInventoryAttach" parameterType="inventoryattach">
+        insert into inventory_attach(iv_file_id, iv_file_name_ori, iv_file_name_re, iv_upload_date, iv_attach_isdel,
+                                     iv_id)
+        values (SEQ_IV_FILE_ID.nextval, #{ivFileNameOri}, #{ivFileNameRe}, sysdate, 'N', #{ivId})
+    </insert>
+
+
+    <delete id="deleteInventoryAttach" parameterType="long">
+        delete
+            INVENTORY_ATTACH
+        where iv_id = ${inventoryId}
+    </delete>
+
+    <!-- 오라클 11g라서 실행 안됨-->
+    <!--    <insert id="insertInventoryAttach">
+            insert into inventory_attach(iv_file_id, iv_file_name_ori, iv_file_name_re, iv_upload_date, iv_attach_isdel,
+            iv_id)
+            values
+
+            <foreach item="item" collection="list" separator=",">
+                (SEQ_IV_FILE_ID.nextval, #{item.ivFileNameOri}, #{item.ivFileNameRe}, sysdate, 'N', #{item.ivId})
+            </foreach>
+        </insert>-->
+
+</mapper>
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
