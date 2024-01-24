@@ -70,10 +70,7 @@
         select *
         from PRODUCT
         where prd_id = #{id}
-<<<<<<< HEAD
-=======
           and prd_isdel = 'N'
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
     </select>
 
 </mapper>
