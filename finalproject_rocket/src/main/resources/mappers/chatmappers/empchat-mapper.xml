@@ -2,11 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="empchat">
 	<resultMap type="empchat" id="empchatMap">
-<<<<<<< HEAD
-		<result column="EMP_NO" property="empNo"/>
-		<result column="CHATROOM_ID" property="chatRoomId"/>
-	</resultMap>
-=======
 		<id column="EMP_CHAT_NO" property="empChatNo"/>
 		<result column="EMCH_EMP_NO" property="emChEmpNo"/>
 		<result column="EMCH_ROOM_NO" property="emChRoomNo"/>
@@ -97,5 +92,4 @@
 	<!-- <update id="hiderooms" parameterType="map">
 		UPDATE EMP_CHAT SET EMCH_DEL_CHCK='Y' WHERE EMCH_EMP_NO=#{userNo} CH_ROOM_NO=#{roomId}
 	</update> -->
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 </mapper>

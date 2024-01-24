@@ -3,15 +3,6 @@
 <mapper namespace="chatmessage">
 	<resultMap type="chatmessage" id="chatmessageMap">
 		<id column="MESSAGE_ID" property="messageId"/>
-<<<<<<< HEAD
-		<result column="MESSAGE_TYPE" property="messageType"/>
-		<result column="MESSAGE" property="message"/>
-		<result column="SEND_AT" property="sendAt"/>
-		<result column="READ_CHECK" property="readCheck"/>
-		<result column="CHATROOM_ID" property="chatRoomId"/>
-		<result column="EMP_NO" property="empNo"/>
-	</resultMap>
-=======
 		<result column="MESSAGE" property="message"/>
 		<result column="SEND_AT" property="sendAt"/>
 		<result column="READ_CHECK" property="readCheck"/>
@@ -34,5 +25,4 @@
 	<delete id="deleteMessageByNo" parameterType="_int">
 		DELETE FROM CHATMESSAGE WHERE MSG_ROOM_NO=#{roomNo}
 	</delete>
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 </mapper>

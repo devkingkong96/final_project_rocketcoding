@@ -2,14 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="chatroom">
 	<resultMap type="chatroom" id="chatroomMap">
-<<<<<<< HEAD
-		<id column="CHATROOM_ID" property="chatRoomId"/>
-		<result column="CHATROOM_NAME" property="chatRoomName"/>
-		<result column="EMP_COUNT" property="empCount"/>
-		<result column="CREATED_AT" property="createdAt"/>
-		<result column="STATUS" property="status"/>
-	</resultMap>
-=======
 		<id column="CHATROOM_NO" property="chatRoomNo"/>
 		<result column="EMP_COUNT" property="empCount"/>
 		<result column="CREATED_AT" property="createdAt"/>
@@ -59,5 +51,4 @@
 		    WHERE CH_ROOM_NO=#{roomId}
 	</select>
 	
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 </mapper>
