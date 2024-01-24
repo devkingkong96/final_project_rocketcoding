@@ -6,10 +6,6 @@
 		<result column="FBD_COMMENT" property="fbdComment"/>
 		<result column="FBD_COMMENT_DATE" property="fbdCommentDate"/>
 		<result column="FBOARD_NO" property="fboardNo"/>
-<<<<<<< HEAD
-		<result column="EMP_NO" property="empNo"/>
-	</resultMap>
-=======
 		<association javaType="employee" property="writer">
 			<id column="commentWriterId" property="empNo"/>
 			<result column="writer" property="empName"/>
@@ -51,5 +47,4 @@
 	    SET FBD_COMMENT_YN = 'Y'
 	    WHERE commentNo = #{commentNo}
 	  </update>
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 </mapper>

@@ -2,15 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="prdinventory">
     <resultMap id="prdinventoryMap" type="prdinventory">
-<<<<<<< HEAD
-        <id column="prd_iv_id" property="prdIvId" />
-        <result column="prd_iv_quantity" property="prdIvQuantity" />
-        <result property="prdId" column="PRD_ID"/>
-        <result property="ivId" column="IV_ID"/>
-    </resultMap>
-
-   
-=======
         <id column="prd_iv_id" property="prdIvId"/>
         <result column="prd_iv_quantity" property="prdIvQuantity"/>
         <result column="prd_iv_memo" property="prdIvMemo"/>
@@ -38,5 +29,4 @@
     </insert>
 
 
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 </mapper>

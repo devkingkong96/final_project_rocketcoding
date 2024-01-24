@@ -2,15 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="stock">
     <resultMap id="stockMap" type="stock">
-<<<<<<< HEAD
-        <id column="stk_id" property="stkId" />
-        <result column="stk_Stock" property="stkStock" />
-        <result property="branchId" column="BRANCH_ID"/>
-        <result property="prdId" column="PRD_ID"/>
-    </resultMap>
-
-   
-=======
         <id property="stkId" column="stk_id"/>
         <result property="stkStock" column="STK_STOCK"/>
         <result property="branchId" column="BRANCH_ID"/>
@@ -399,6 +390,5 @@
         AND p.prd_isdel = 'N'
         AND b.branch_isdel = 'N'
     </select>
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 
 </mapper>

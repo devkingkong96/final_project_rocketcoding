@@ -4,20 +4,6 @@
 	<resultMap type="fboard" id="fboardMap">
 		<id column="FBOARD_NO" property="fboardNo"/>
 		<result column="FBOARD_TITLE" property="fboardTitle"/>
-<<<<<<< HEAD
-		<result column="FBOARD_CONTENT" property="fobardContent"/>
-		<result column="FBOARD_VIEWS" property="fboardViews"/>
-		<result column="FBOARD_DATE" property="fboardDate"/>
-		<result column="EMP_NO" property="empNo"/>
-	</resultMap>
-		
-		<select id="selectFboardMainPage" resultType="hashMap">
-			SELECT F.*,ROWNUM FROM(
-				SELECT * FROM FBOARD ORDER BY FBOARD_DATE DESC) F WHERE ROWNUM &lt;= 10
-		</select>
-	
-</mapper>
-=======
 		<result column="FBOARD_CONTENT" property="fboardContent"/>
 		<result column="FBOARD_VIEWS" property="fboardViews"/>
 		<result column="FBOARD_DATE" property="fboardDate"/>
@@ -101,4 +87,3 @@
     </insert>
 </mapper>
 
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
