@@ -32,7 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 #src/main/resources/
-src/main/webapp/resources/upload/
+#src/main/webapp/resources/upload/
 Scripts/
 .dbeaver/
 springboot/
