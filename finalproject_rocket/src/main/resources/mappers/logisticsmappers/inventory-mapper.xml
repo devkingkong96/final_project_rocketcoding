@@ -233,12 +233,10 @@
                  LEFT JOIN product P2 ON pi.prd_id = P2.prd_id
         WHERE i.iv_isdel = 'N'
           and sendbrc.BRANCH_ID = #{branchId}
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
+
         ORDER BY iv_date DESC
 
     </select>
-
-
     <!-- <update id="updateColumn" parameterType="map"> UPDATE EMPLOYEE SET
         EMP_NAME = '김영희' WHERE EMP_NO = (SELECT send_emp_id FROM INVENTORY WHERE
         iv_id = 163); </update> -->

@@ -1,6 +1,10 @@
 /*!
  * FullCalendar v3.9.0
+<<<<<<< HEAD
+ * Docs & License: ht	
+=======
  * Docs & License: https://fullcalendar.io/
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
  * (c) 2018 Adam Shaw
  */
 (function webpackUniversalModuleDefinition(root, factory) {

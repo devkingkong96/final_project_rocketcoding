@@ -239,4 +239,8 @@ $(function () {
     });
 
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
