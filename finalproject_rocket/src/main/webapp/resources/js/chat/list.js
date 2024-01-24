@@ -13,7 +13,7 @@ function onConnected(){
 	console.log("채팅방 리스트 stomp 연결 성공");
 	
 	//subscribe(path,callback)으로 메세지 받기 가능
-	stomp.subscribe("/sub/chat/list",onMessageReceived);
+	stomp.subscribe("/sub/GJD71_rocket_final/chat/list",onMessageReceived);
 }
 
 function onMessageReceived(payload){
@@ -120,7 +120,7 @@ function onError(){
 			success:function(res){
 					alert("채팅방 생성 성공");
 					console.log("초대한 멤버 번호 리스트 : "+res);
-						stomp.send('/pub/list/invite',{},JSON.stringify(res));
+						stomp.send('/pub/GJD71_rocket_final/list/invite',{},JSON.stringify(res));
 						//채팅방 생성 모달 닫기
 						closeModal();
 			},
@@ -167,7 +167,7 @@ function onError(){
   				  	  					msgEmpName:username
   				  				}
 					
-							stomp.send('/pub/chat/leave',{},JSON.stringify(data));
+							stomp.send('/pub/GJD71_rocket_final/chat/leave',{},JSON.stringify(data));
 							
 							})
 					
@@ -333,7 +333,7 @@ function onError(){
 
   						// avatar 내부의 img 요소를 생성합니다.
   						var img = document.createElement("img");
-  						img.src = "${path}/resources/images/avatar/1.jpg";
+  						img.src = path + "/resources/upload/profile/" + data.EMP_FILE;
   						img.alt = "...";
   						avatar.appendChild(img);
 

@@ -79,9 +79,9 @@
 							<div class="box">
 							  <div class="box-header">
 								<div class="media align-items-top p-0">
-								  <a class="avatar avatar-lg status-success mx-0" href="#">
+								  <%-- <a class="avatar avatar-lg status-success mx-0" href="#">
 									<img src="${path}/resources/images/avatar/2.jpg" class="rounded-circle" alt="...">
-								  </a>
+								  </a> --%>
 									<div class="d-lg-flex d-block justify-content-between align-items-center w-p100">
 										<div class="media-body mb-lg-0 mb-20">
 											<p class="fs-16">
@@ -193,7 +193,7 @@
                                             <div class="media-list media-list-hover" id="attendlist${e.EMP_NO }">
                                                 <div class="media py-10 px-0 align-items-center">
                                                   <p class="avatar avatar-lg status-success">
-                                                    <img src="${path}/resources/images/avatar/1.jpg" alt="...">
+                                                    <img src="${path}/resources/upload/profile/${e.EMP_FILE}" alt="...">
                                                   </p>
                                                   <div class="media-body">
                                                     <p class="fs-20" id="chatEmpName${e.EMP_NO }">
@@ -253,7 +253,7 @@
                     	<div class="media-list media-list-hover" id="emplist${e.EMP_NO }">
                                    <div class="media py-10 px-0 align-items-center">
                                       <p class="avatar avatar-lg status-success">
-                                        <img src="${path}/resources/images/avatar/1.jpg" alt="...">
+                                        <img src="${path}/resources/upload/profile/${e.EMP_FILE}" alt="...">
                                       </p>
                                    <div class="media-body">
                                       <p class="fs-20">
@@ -286,6 +286,7 @@
   		var userno='${empinfo.EMP_NO }';
   		var userlv='${empinfo.EMP_LV}';
   		var userdept='${empinfo.DEP_NAME}';
+  		var userfile='${empinfo.EMP_FILE}';
   		var path = '${path}';
 		var date = dayjs();
 		var nowDate = date.format("a HH:mm");
