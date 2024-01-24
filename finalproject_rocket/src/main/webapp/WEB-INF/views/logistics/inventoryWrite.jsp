@@ -438,9 +438,9 @@
                         encoding: 'UTF-8'
 
                     }
-                }, {
+                },/* {
                     extend: 'pdfHtml5',
-                    /*          exportData: {decodeEntities: true}, */
+                    /!*          exportData: {decodeEntities: true}, *!/
                     text: 'PDF',
                     title: '입/출고 추가 ' + getCurrentDateTime(),
                     font: 'hangul',
@@ -449,10 +449,10 @@
                         rows: ':visible',
                         encoding: 'UTF-8',
 
-                        /*font: 'hangul',*/
+                        /!*font: 'hangul',*!/
                         customize: function (doc) {
                             // 폰트 설정 추가
-                            /*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*/
+                            /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                             font: 'Roboto';
                             doc.defaultStyle.fonts = 'Roboto';
                             doc.defaultStyle.font = 'Roboto';
@@ -464,7 +464,7 @@
 
                     }
 
-                }, {
+                },*/ {
                     extend: 'print',
                     title: '입/출고 추가 ' + getCurrentDateTime(),
                     /*           exportData: {decodeEntities: true}, */
@@ -537,6 +537,10 @@
 
 
                 var prdTitleToIdMapString2 = '
+
+
+
+
         ${jsonMap2}';
         var prdTitleToIdMap2 = JSON.parse(prdTitleToIdMapString2);
         // 변환된 객체의 내용을 콘솔에 로그로 출력합니다.
@@ -1179,7 +1183,6 @@
                                                         orderable: false
                                                         }--%>
                                         </td>
-
                                     </tr>
                                     <%--          </c:forEach>--%>
                                     </tbody>

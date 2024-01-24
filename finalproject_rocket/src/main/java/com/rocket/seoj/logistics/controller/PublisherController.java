@@ -92,10 +92,10 @@ public class PublisherController {
 
         HashMap<String, Object> params = Getrequest.getParameterMap(request);
 //        params.put("pubId", 0);
-        log.debug("{}", params);
+//        log.debug("{}", params);
         // param.stream().map(e->)
         long selectKey = service.insertPublisher(params);
-        log.debug("selectKey : " + params.get("pubId"));
+//        log.debug("selectKey : " + params.get("pubId"));
         if ((long)params.get("pubId") != 0) {
             return ResponseEntity
                     .ok()
@@ -150,7 +150,7 @@ public class PublisherController {
     @PostMapping("publisher/list/delete")
     public ResponseEntity<?> deletePublisher(@RequestParam("pub_id") Long pubId) {
 
-        log.debug("딜리트: " + pubId);
+//        log.debug("딜리트: " + pubId);
         boolean deletionSuccess = service.isdelUpdatePublisher(pubId);
 
 

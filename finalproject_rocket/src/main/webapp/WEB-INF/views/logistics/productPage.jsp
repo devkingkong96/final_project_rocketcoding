@@ -646,9 +646,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         encoding: 'UTF-8'
 
                                     }
-                                }, {
+                                },/* {
                                     extend: 'pdfHtml5',
-                                    /*          exportData: {decodeEntities: true}, */
+                                    /!*          exportData: {decodeEntities: true}, *!/
                                     text: 'PDF',
                                     title: '출판사 리스트 ' + getCurrentDateTime(),
                                     font: 'hangul',
@@ -657,10 +657,10 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                         rows: ':visible',
                                         encoding: 'UTF-8',
 
-                                        /*font: 'hangul',*/
+                                        /!*font: 'hangul',*!/
                                         customize: function (doc) {
                                             // 폰트 설정 추가
-                                            /*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*/
+                                            /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                                             doc.defaultStyle.fonts = 'Roboto';
                                             doc.defaultStyle.font = 'Roboto';
                                             modifier: {
@@ -671,7 +671,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
                                     }
 
-                                }, {
+                                },*/ {
                                     extend: 'print',
                                     title: '출판사 리스트 ' + getCurrentDateTime(),
                                     /*           exportData: {decodeEntities: true}, */
@@ -1596,6 +1596,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                                     ${path}/logistics/inventory/list/delete" method="post" style="display: none;"> <input type="hidden" name="pub_id" id="deleteId"> </form> <button type="button" onclick="confirmDeletion(this,' + selectKey + ')" class="waves-effect waves-light btn btn-danger-light btn-flat mb-5">삭제 </button>']);*/
 
                                     var pubName;
@@ -1729,6 +1731,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
 
+
+
                             ${path}/logistics/inventory/endwrite", {
                                     method: "POST",
                                     headers: {
@@ -1754,6 +1758,8 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
                             } else {
                                 fetch("
+
+
 
 
 
@@ -1867,16 +1873,21 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
                                             <td data-column-name="PRD_PRICE"
                                                 data-table-name="PRODUCT"
-                                                data-parent-column="PRD_PRICE">${prd.PRD_PRICE}</td>
-
+                                                data-parent-column="PRD_PRICE">
+                                                <fmt:formatNumber
+                                                        value="${prd.PRD_PRICE}"
+                                                        type="number" groupingUsed="true"/></td>
                                             <td data-column-name="PRICE_IN_STK"
                                                 data-table-name="PRODUCT"
-                                                data-parent-column="PRICE_IN_STK">${prd.PRICE_IN_STK}</td>
-
+                                                data-parent-column="PRICE_IN_STK">
+                                                <fmt:formatNumber
+                                                        value="${prd.PRICE_IN_STK}"
+                                                        type="number" groupingUsed="true"/></td>
                                             <td data-column-name="PRICE_OUT_STK"
                                                 data-table-name="PRODUCT"
-                                                data-parent-column="PRICE_OUT_STK">${prd.PRICE_OUT_STK}</td>
-
+                                                data-parent-column="PRICE_OUT_STK"><fmt:formatNumber
+                                                    value="${prd.PRICE_OUT_STK}"
+                                                    type="number" groupingUsed="true"/></td>
                                             <td name="dontedit">
                                                 <form id="deleteForm"
                                                       action="${path}/logistics/product/list/delete"
