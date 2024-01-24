@@ -510,21 +510,21 @@ public class StockController {
 // 배열을 List로 변환
         List<String> branchIdList = branchIdArray != null ? Arrays.asList(branchIdArray) : new ArrayList<>();
         List<String> prdIdList = prdIdArray != null ? Arrays.asList(prdIdArray) : new ArrayList<>();
-
+        int branchCount = 0;
         if (branchIdList == null || branchIdList.isEmpty()) {
             branchIdList = new ArrayList<>();
             branchIdList.add("0"); // '0'을 기본값으로 사용
+            branchCount = 0;
+        }else{
+            branchCount = branchIdList.size();
         }
         if (prdIdList == null || prdIdList.isEmpty()) {
             prdIdList = new ArrayList<>();
             prdIdList.add("0"); // '0'을 기본값으로 사용
         }
-        int branchCount = branchIdList.size();
 //        branchCount.add(branchIdList.size() + "");
-        params.put("branchCount", String.valueOf(branchCount));
-
-
-
+        log.error("branchCount : {}", branchCount);
+        params.put("branchCount", branchCount);
         params.put("branchIdList", branchIdList);
         params.put("prdIdList", prdIdList);
 

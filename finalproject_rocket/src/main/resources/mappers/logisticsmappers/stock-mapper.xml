@@ -333,52 +333,6 @@
         WHERE stk_date <![CDATA[ <=]]> TO_DATE(#{stkDate}, 'YYYY-MM-DD HH24:MI:SS')
         <if test="branchIdList != null">
             <choose>
-                <when test="branchIdList.isEmpty() or branchIdList.contains('0')">
-                    -- no branch filter
-                </when>
-                <otherwise>
-                    AND s.branch_id IN
-                    <foreach item="branchId" collection="branchIdList" open="(" separator="," close=")">
-                        #{branchId}
-                    </foreach>
-                </otherwise>
-            </choose>
-        </if>
-        <if test="prdIdList != null">
-            <choose>
-                <when test="prdIdList.isEmpty() or prdIdList.contains('0')">
-                    -- no product filter
-                </when>
-                <otherwise>
-                    AND s.prd_id IN
-                    <foreach item="prdId" collection="prdIdList" open="(" separator="," close=")">
-                        #{prdId}
-                    </foreach>
-                </otherwise>
-            </choose>
-        </if>
-        GROUP BY s.branch_id, s.prd_id
-        ),
-        UniquePrices AS (
-        SELECT DISTINCT p.prd_id, p.price_in_stk
-        FROM product p
-        JOIN stock s ON p.prd_id = s.prd_id
-        JOIN RecentStockDate rsd ON s.stk_date = rsd.recent_date AND s.branch_id = rsd.branch_id AND s.prd_id = rsd.prd_id
-        WHERE p.prd_isdel = 'N'
-        )
-        SELECT p.*, s.*,
-        SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS TOTAL_STOCK_BY_PRD,
-        (SELECT SUM(price_in_stk) FROM UniquePrices) AS TOTAL_PURCHASE_COST,
-        p.prd_price * SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS TOTAL_PRICE,
-        (SELECT SUM(total_price) / #{branchCount} AS DIVIDED_TOTAL_PRICE_ALLPRD
-        FROM (
-        SELECT p.prd_id, p.prd_price * SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS total_price
-        FROM stock s
-        JOIN product p ON s.prd_id = p.prd_id
-        JOIN RecentStockDate rsd ON s.stk_date = rsd.recent_date AND s.branch_id = rsd.branch_id AND s.prd_id = rsd.prd_id
-        WHERE p.prd_isdel = 'N'
-        <if test="branchIdList != null">
-            <choose>
                 <when test="branchIdList == null or branchIdList[0] == '0' or branchIdList.isEmpty() or branchIdList[0] == 0">
                     AND 1=1
                 </when>
@@ -403,8 +357,95 @@
                 </otherwise>
             </choose>
         </if>
-        ) SubQuery
-        ) AS TOTAL_PRICE_ALLPRD,
+        GROUP BY s.branch_id, s.prd_id
+        ),
+        UniquePrices AS (
+        SELECT DISTINCT p.prd_id, p.price_in_stk
+        FROM product p
+        JOIN stock s ON p.prd_id = s.prd_id
+        JOIN RecentStockDate rsd ON s.stk_date = rsd.recent_date AND s.branch_id = rsd.branch_id AND s.prd_id = rsd.prd_id
+        WHERE p.prd_isdel = 'N'
+        )
+        SELECT p.*, s.*,
+        SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS TOTAL_STOCK_BY_PRD,
+        (SELECT SUM(price_in_stk) FROM UniquePrices) AS TOTAL_PURCHASE_COST,
+        p.prd_price * SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS TOTAL_PRICE,
+        <choose>
+            <when test="branchCount == '0' or branchCount == ''">
+            (SELECT SUM(total_price)
+            FROM (
+            SELECT p.prd_id, p.prd_price * SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS total_price
+            FROM stock s
+            JOIN product p ON s.prd_id = p.prd_id
+            JOIN RecentStockDate rsd ON s.stk_date = rsd.recent_date AND s.branch_id = rsd.branch_id AND s.prd_id = rsd.prd_id
+            WHERE p.prd_isdel = 'N'
+            <if test="branchIdList != null">
+                <choose>
+                    <when test="branchIdList == null or branchIdList[0] == '0' or branchIdList.isEmpty() or branchIdList[0] == 0">
+                        AND 1=1
+                    </when>
+                    <otherwise>
+                        AND s.branch_id IN
+                        <foreach item="branchId" collection="branchIdList" open="(" separator="," close=")">
+                            #{branchId}
+                        </foreach>
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="prdIdList != null">
+                <choose>
+                    <when test="prdIdList == null or prdIdList[0] == '0' or prdIdList.isEmpty() or prdIdList[0] == 0">
+                        AND 1=1
+                    </when>
+                    <otherwise>
+                        AND s.prd_id IN
+                        <foreach item="prdId" collection="prdIdList" open="(" separator="," close=")">
+                            #{prdId}
+                        </foreach>
+                    </otherwise>
+                </choose>
+            </if>
+            ) SubQuery
+            ) AS TOTAL_PRICE_ALLPRD
+        </when>
+            <otherwise>
+                (SELECT SUM(total_price) / #{branchCount} AS DIVIDED_TOTAL_PRICE_ALLPRD
+                FROM (
+                SELECT p.prd_id, p.prd_price * SUM(s.stk_stock) OVER (PARTITION BY p.prd_id) AS total_price
+                FROM stock s
+                JOIN product p ON s.prd_id = p.prd_id
+                JOIN RecentStockDate rsd ON s.stk_date = rsd.recent_date AND s.branch_id = rsd.branch_id AND s.prd_id = rsd.prd_id
+                WHERE p.prd_isdel = 'N'
+                <if test="branchIdList != null">
+                    <choose>
+                        <when test="branchIdList == null or branchIdList[0] == '0' or branchIdList.isEmpty() or branchIdList[0] == 0">
+                            AND 1=1
+                        </when>
+                        <otherwise>
+                            AND s.branch_id IN
+                            <foreach item="branchId" collection="branchIdList" open="(" separator="," close=")">
+                                #{branchId}
+                            </foreach>
+                        </otherwise>
+                    </choose>
+                </if>
+                <if test="prdIdList != null">
+                    <choose>
+                        <when test="prdIdList == null or prdIdList[0] == '0' or prdIdList.isEmpty() or prdIdList[0] == 0">
+                            AND 1=1
+                        </when>
+                        <otherwise>
+                            AND s.prd_id IN
+                            <foreach item="prdId" collection="prdIdList" open="(" separator="," close=")">
+                                #{prdId}
+                            </foreach>
+                        </otherwise>
+                    </choose>
+                </if>
+                ) SubQuery
+                ) AS TOTAL_PRICE_ALLPRD
+            </otherwise>
+        </choose>,
         SUM(s.stk_stock) OVER () AS TOTAL_STOCK_BY_ALLPRD,
         b.branch_name,
         #{stkDate} AS selected_stk_date
