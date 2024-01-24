@@ -3,6 +3,7 @@
 #server.port=8080
 server:
   port: 8080
+<<<<<<< HEAD
   servlet:
     encoding:
       charset: UTF-8
@@ -10,12 +11,17 @@ server:
     max-http-header-size: 819200
 
     #    spring.datasource.driver-class-name
+=======
+
+#spring.datasource.driver-class-name
+>>>>>>> 537452f57daac929dd3ddfc0cc0de1f5dfe83a61
 spring:
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:log4jdbc:oracle:thin:@14.36.141.71:10052:xe
     username: rocket_erp
     password: rocket_erp
+<<<<<<< HEAD
     #                username: rocket_erp
     #                password: rocket_erp
     #spring:
@@ -29,6 +35,11 @@ spring:
     hikari:
       maximum-pool-size: 24
       minimum-idle: 19
+=======
+    hikari:
+      maximum-pool-size: 1
+      minimum-idle: 1
+>>>>>>> 537452f57daac929dd3ddfc0cc0de1f5dfe83a61
       idle-timeout: 50
   servlet:
     multipart:
@@ -53,6 +64,7 @@ spring:
             enable: true
   aop:
     auto: true
+<<<<<<< HEAD
   #  web:
   #    resources:
   #      static-locations: classpath:/static/,classpath:/public/,classpath:/resources/,classpath:/META-INF/resources/
@@ -61,6 +73,8 @@ spring:
     #      enabled: false
     livereload:
       enabled: true
+=======
+>>>>>>> 537452f57daac929dd3ddfc0cc0de1f5dfe83a61
 
 #mybatis 설정
 mybatis:
@@ -71,12 +85,21 @@ logging:
   level:
     '[com.rocket]': debug
     '[jdbc.sqlonly]': off
+<<<<<<< HEAD
     '[jdbc.resultsettable]': debug
+=======
+    '[jdbc.resultsettable]': off
+>>>>>>> 537452f57daac929dd3ddfc0cc0de1f5dfe83a61
     '[jdbc.audit]': off
     '[jdbc.resultset]': off
     '[jdbc.connection]': error
     '[jdbc.sqltiming]': debug
     '[org.springframework.web]': info
+<<<<<<< HEAD
 
 pattern:
   console: "%d{yyyy/MM/dd HH:mm:ss.SSS} %-5level --- [%thread] %logger[%method:%line] - %msg  - ResultSet: %msg %rowCount row(s)%n"
+=======
+pattern:
+  console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+>>>>>>> 537452f57daac929dd3ddfc0cc0de1f5dfe83a61

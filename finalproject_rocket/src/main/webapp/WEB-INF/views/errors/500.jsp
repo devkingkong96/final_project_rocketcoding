@@ -18,17 +18,19 @@
         margin: 0;
     }
     #content{
-    	
+    	text-align: center;
+    	align-items: center;
     }
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-	<img src="${path }/resources/images/500.avif" alt="에러화면" width="450" height="450">
+	<%-- <img src="${path }/resources/images/500.avif" alt="에러화면" width="450" height="450"> --%>
 	<div id="content">
-		<h1>서버 오류</h1>
-		<h2>관리자에게 문의하세요.</h2>
-		<button type="button" class="btn btn-secondary" onclick="location.replace('${path}/');">메인페이지로 돌아가기</button>
+		<h1>권한이 없거나 존재하지 않는</h1>
+		<h1>페이지입니다.</h1><br>
+		<p>관리자에게 문의하세요.</p><br>
+		<button type="button" class="btn btn-warning" onclick="location.replace('${path}/');">메인페이지로 돌아가기</button>
 	</div>
 	<script>
 		/* setTimeout(()=>{
