@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+		 pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <title>로켓코딩ERP</title>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -19,31 +19,31 @@
 						<div class="box-header">
 							<h3 class="box-title">공지사항</h3>
 						</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<div class="table-responsive">
-					  <table class="table mb-0">
-						  <tbody>
-							<tr>
-							  <th scope="col" colspan="3">제목</th>
-							  <th scope="col">작성일</th>
-							</tr>
-						  </tbody>
-						  <tbody>
-							<c:if test="${not empty notices }">
-							  <c:forEach var="n" items="${notices }">
-							<tr>
-							  <th scope="row" colspan="3"><c:out value="${n.NOTICE_TITLE }"/></th>
-								  <td><fmt:formatDate value="${n.NOTICE_DATE}" pattern="yyyy.MM.dd" /></td>
-							</tr>
-								</c:forEach>
-							  </c:if>
-						  </tbody>
-						</table>
-					</div>
-				</div>
-				<!-- /.box-body -->
-			  <!-- /.box -->
+						<!-- /.box-header -->
+						<div class="box-body">
+							<div class="table-responsive">
+								<table class="table mb-0">
+									<tbody>
+									<tr>
+										<th scope="col" colspan="3">제목</th>
+										<th scope="col">작성일</th>
+									</tr>
+									</tbody>
+									<tbody>
+									<c:if test="${not empty notices }">
+										<c:forEach var="n" items="${notices }">
+											<tr>
+												<th scope="row" colspan="3"><c:out value="${n.NOTICE_TITLE }"/></th>
+												<td><fmt:formatDate value="${n.NOTICE_DATE}" pattern="yyyy.MM.dd"/></td>
+											</tr>
+										</c:forEach>
+									</c:if>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- /.box-body -->
+						<!-- /.box -->
 					</div>
 				</div>
 				<div class="col-lg-6 col-12">
@@ -53,23 +53,23 @@
 						</div>
 						<div class="box-body">
 							<div class="table-responsive">
-							  <table class="table mb-0">
-								  <tbody>
+								<table class="table mb-0">
+									<tbody>
 									<tr>
-									  <th scope="col" colspan="3">제목</th>
-									  <th scope="col">작성일</th>
+										<th scope="col" colspan="3">제목</th>
+										<th scope="col">작성일</th>
 									</tr>
-								  </tbody>
-								  <tbody>
+									</tbody>
+									<tbody>
 									<c:if test="${not empty fboardList }">
-									  <c:forEach var="f" items="${fboardList }">
-									<tr>
-									  <th scope="row" colspan="3"><c:out value="${f.FBOARD_TITLE }"/></th>
-										  <td><fmt:formatDate value="${f.FBOARD_DATE}" pattern="yyyy.MM.dd" /></td>
-									</tr>
+										<c:forEach var="f" items="${fboardList }">
+											<tr>
+												<th scope="row" colspan="3"><c:out value="${f.FBOARD_TITLE }"/></th>
+												<td><fmt:formatDate value="${f.FBOARD_DATE}" pattern="yyyy.MM.dd"/></td>
+											</tr>
 										</c:forEach>
-									  </c:if>
-								  </tbody>
+									</c:if>
+									</tbody>
 								</table>
 							</div>
 						</div>
@@ -91,7 +91,7 @@
 							<h3 class="box-title">캘린더</h3>
 						</div>
 						<div class="box-body">
-						
+
 						</div>
 					</div>
 				</div>

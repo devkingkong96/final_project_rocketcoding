@@ -34,7 +34,11 @@ build/
 <<<<<<< HEAD
 =======
 #src/main/resources/
+<<<<<<< HEAD
 src/main/webapp/resources/upload/
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
+=======
+#src/main/webapp/resources/
 >>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 Scripts/
 .dbeaver/

@@ -136,7 +136,7 @@ $(function () {
                 '이번 달': [moment().startOf('month'), moment().endOf('month')],
                 /*'Last Month'*/
                 '마지막 달 ': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
-                '1년 전': [moment().subtract(1, 'year').startOf('month'), moment().subtract(1, 'year').endOf('month')]
+                '1년 전': [moment().subtract(1, 'year').startOf('month'), moment().subtract(1, 'year').endOf('year')]
             },
             locale: {
                 format: 'YYYY년 MM월 DD일',
@@ -239,4 +239,4 @@ $(function () {
     });
 
 });
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
+

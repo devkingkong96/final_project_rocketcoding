@@ -4,15 +4,31 @@
 server:
   port: 8080
 
-#spring.datasource.driver-class-name
+  servlet:
+    encoding:
+      charset: UTF-8
+  tomcat:
+    max-http-header-size: 819200
+
+  
 spring:
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:log4jdbc:oracle:thin:@14.36.141.71:10052:xe
     username: rocket_erp
     password: rocket_erp
+
+    #                username: rocket_erp
+    #                password: rocket_erp
+    #spring:
+    #  datasource:
+    #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #    url: jdbc:log4jdbc:oracle:thin:@localhost:1521:xe
+    #    username: erptest02
+    #    password: erptest02
+    #        username: rocket_erp
+    #        password: rocket_erp
     hikari:
-<<<<<<< HEAD
       maximum-pool-size: 24
       minimum-idle: 19
       idle-timeout: 50
@@ -64,9 +80,10 @@ logging:
 
 pattern:
   console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} : [%l] - %msg%n"
-=======
+
       maximum-pool-size: 1
       minimum-idle: 1
+
       idle-timeout: 50
   servlet:
     multipart:
@@ -92,6 +109,16 @@ pattern:
   aop:
     auto: true
 
+  #  web:
+  #    resources:
+  #      static-locations: classpath:/static/,classpath:/public/,classpath:/resources/,classpath:/META-INF/resources/
+  devtools:
+    #    restart:
+    #      enabled: false
+    livereload:
+      enabled: true
+
+
 #mybatis 설정
 mybatis:
   mapper-locations: classpath:mappers/**/*.xml
@@ -101,12 +128,23 @@ logging:
   level:
     '[com.rocket]': debug
     '[jdbc.sqlonly]': off
+
+    '[jdbc.resultsettable]': debug
+
     '[jdbc.resultsettable]': off
+
     '[jdbc.audit]': off
     '[jdbc.resultset]': off
     '[jdbc.connection]': error
     '[jdbc.sqltiming]': debug
     '[org.springframework.web]': info
+
+
 pattern:
+
   console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
+
+
+  console: "%d{yyyy/MM/dd HH:mm:ss.SSS} %-5level --- [%thread] %logger[%method:%line] - %msg  - ResultSet: %msg %rowCount row(s)%n"
+
+

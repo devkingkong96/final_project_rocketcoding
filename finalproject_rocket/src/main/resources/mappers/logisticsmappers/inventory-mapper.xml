@@ -114,7 +114,7 @@
     </select>
 
 
-<<<<<<< HEAD
+
     <select id="selectAllInventories" resultType="hashMap">
         SELECT i.*,
                d.*,
@@ -173,7 +173,7 @@
                  LEFT JOIN prdinventory pi ON i.iv_id = pi.iv_id
                  LEFT JOIN product P2 ON pi.prd_id = P2.prd_id
         WHERE i.iv_isdel = 'N'
-=======
+
     <select id="selectAllInventories" resultType="hashMap" parameterType="_int">
         SELECT i.*,
                d.*,
@@ -237,6 +237,8 @@
         ORDER BY iv_date DESC
 
     </select>
+
+
     <!-- <update id="updateColumn" parameterType="map"> UPDATE EMPLOYEE SET
         EMP_NAME = '김영희' WHERE EMP_NO = (SELECT send_emp_id FROM INVENTORY WHERE
         iv_id = 163); </update> -->
