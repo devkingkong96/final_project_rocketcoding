@@ -237,51 +237,60 @@
 
                         <%--         <%=request.getRequestURI()%>--%>
                         <li class="treeview">
-                       <!-- 인사관리 메뉴  -->
-   			<script>
-			    $(document).ready(function() {
-			        var depName = '${loginEmp.dep.depName}';
-			        if (depName !== '인사팀') {
-			            $('#employeeHolidayList, #employeeCommuteList, #departmentList, #dwRulesList, #employeeCommute').click(function(e) {
-			                e.preventDefault();
-			                alert('권한이 없습니다.');
-			            });
-			        }
-			    });
-			</script>
-			<a href="#">
-			    <i class="icon-Add-user"><span class="path1"></span><span class="path2"></span></i>
-			    <span>인사 관리</span>
-			    <span class="pull-right-container">
+                            <!-- 인사관리 메뉴  -->
+                            <script>
+                                $(document).ready(function () {
+                                    var depName = '${loginEmp.dep.depName}';
+                                    if (depName !== '인사팀') {
+                                        $('#employeeHolidayList, #employeeCommuteList, #departmentList, #dwRulesList, #employeeCommute').click(function (e) {
+                                            e.preventDefault();
+                                            alert('권한이 없습니다.');
+                                        });
+                                    }
+                                });
+                            </script>
+                            <a href="#">
+                                <i class="icon-Add-user"><span class="path1"></span><span class="path2"></span></i>
+                                <span>인사 관리</span>
+                                <span class="pull-right-container">
 			        <i class="fa fa-angle-right pull-right"></i>
 			    </span>
-			</a>
-			<ul class="treeview-menu">
-			    <li class="treeview">
-			        <a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
-			            <span>사원 관리</span>
-			            <i class="fa fa-angle-right pull-right"></i> 
-			        </a>
-			        <ul class="treeview-menu">
-			            <li class='<%= request.getRequestURI().contains("/employeelist") ? "active" : "" %>'>
-			                <a href="${path}/employeelist" id="employeeInfoManage"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>사원 정보관리</a>
-			            </li>
-			            <li class='<%= request.getRequestURI().contains("/employeeholidaylist") ? "active" : "" %>'>
-			                <a href="${path}/employeeholidaylist" id="employeeHolidayList"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>사원별 휴가사용 조회</a>
-			            </li>
-			            <li class='<%= request.getRequestURI().contains("/employeecommute") ? "active" : "" %>'>
-			                <a href="${path}/employeecommute" id="employeeCommute"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>사원별 근태관리</a>
-			            </li>
-			        </ul>
-			    </li>
-			    <li class='<%= request.getRequestURI().contains("/departmentlist") ? "active" : "" %>'>
-			        <a href="${path}/departmentlist" id="departmentList"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>부서 관리</a>
-			    </li>
-			    <li class='<%= request.getRequestURI().contains("/dwruleslist") ? "active" : "" %>'>
-			        <a href="${path}/dwruleslist" id="dwRulesList"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>근무시간 관리</a>
-			    </li>
-			</ul>
-					<!-- 인사관리 메뉴  끝 -->
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="treeview">
+                                    <a href="#"><i class="icon-Commit"><span class="path1"></span><span
+                                            class="path2"></span></i>
+                                        <span>사원 관리</span>
+                                        <i class="fa fa-angle-right pull-right"></i>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li class='<%= request.getRequestURI().contains("/employeelist") ? "active" : "" %>'>
+                                            <a href="${path}/employeelist" id="employeeInfoManage"><i
+                                                    class="icon-Commit"><span class="path1"></span><span
+                                                    class="path2"></span></i>사원 정보관리</a>
+                                        </li>
+                                        <li class='<%= request.getRequestURI().contains("/employeeholidaylist") ? "active" : "" %>'>
+                                            <a href="${path}/employeeholidaylist" id="employeeHolidayList"><i
+                                                    class="icon-Commit"><span class="path1"></span><span
+                                                    class="path2"></span></i>사원별 휴가사용 조회</a>
+                                        </li>
+                                        <li class='<%= request.getRequestURI().contains("/employeecommute") ? "active" : "" %>'>
+                                            <a href="${path}/employeecommute" id="employeeCommute"><i
+                                                    class="icon-Commit"><span class="path1"></span><span
+                                                    class="path2"></span></i>사원별 근태관리</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class='<%= request.getRequestURI().contains("/departmentlist") ? "active" : "" %>'>
+                                    <a href="${path}/departmentlist" id="departmentList"><i class="icon-Commit"><span
+                                            class="path1"></span><span class="path2"></span></i>부서 관리</a>
+                                </li>
+                                <li class='<%= request.getRequestURI().contains("/dwruleslist") ? "active" : "" %>'>
+                                    <a href="${path}/dwruleslist" id="dwRulesList"><i class="icon-Commit"><span
+                                            class="path1"></span><span class="path2"></span></i>근무시간 관리</a>
+                                </li>
+                            </ul>
+                            <!-- 인사관리 메뉴  끝 -->
 
                             <!-- 물류 메뉴-->
                         <li class="treeview">
@@ -371,9 +380,11 @@
                                 <span>채팅</span>
                             </a>
                         </li>
-						<li class="treeview">
+                        <li class="treeview">
                             <a href="#">
-                                <img style="width: 28px; height: 28px; filter : grayscale(100%)"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy9Jc1pfkjTgTIyPDX2byAiDFXg9X-vbgiQA&usqp=CAU"><span class="path1"></span><span class="path2"></span></i>
+                                <img style="width: 28px; height: 28px; filter : grayscale(100%)"
+                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy9Jc1pfkjTgTIyPDX2byAiDFXg9X-vbgiQA&usqp=CAU"><span
+                                    class="path1"></span><span class="path2"></span></i>
                                 <span>전자결재</span>
                                 <span class="pull-right-container">
 					  <i class="fa fa-angle-right pull-right"></i>
@@ -381,10 +392,10 @@
                             </a>
                             <ul class="treeview-menu">
 
-                                
+
                                 <li class="treeview">
                                     <a href="#">
-                                        <i	 class="icon-Commit"><span class="path1"></span><span
+                                        <i class="icon-Commit"><span class="path1"></span><span
                                                 class="path2"></span></i>진행중인 문서
                                         <span class="pull-right-container">
 								<i class="fa fa-angle-right pull-right"></i>
@@ -411,7 +422,7 @@
                                             <a href="${path}/docu/lists/p"><i class="icon-Commit"><span
                                                     class="path1"></span><span class="path2"></span></i>진행</a>
                                         </li>
-                                        
+
                                     </ul>
                                 </li>
                                 <li class="treeview">
@@ -460,32 +471,34 @@
             </div>
         </section>
     </aside>
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-<script>
-	var sockJS=new SockJS("/ws/alarm");
-	var stomp=Stomp.over(sockJS);
-		
-	stomp.connect({},onConnected,onError);
-	//연결 성공했을 때 실행하는 함수
-	function onConnected(){
-		console.log("알람 stomp 연결 성공");
-		
-		//subscribe(path,callback)으로 메세지 받기 가능
-		
-		//sub 할 url -> /sub/chat/room/roomId로 구독 시작
-		stomp.subscribe("/sub/*",onMessageReceived);
-		//StompChatController의 @MessageMapping("/chat/enter")에서 template.convertAndSend()를 통해 메시지 전달받음.
-			
-	}
-	//통신 실패했을 때 함수
-	function onError(){
-		alert('header 통신 종료');
-	}
-	
-	function onMessageReceived(payload){
-		console.log("수신 확인");
-			
-		var chat=JSON.parse(payload.body);
-	}
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script>
+        var sockJS = new SockJS("/ws/alarm");
+        var stomp = Stomp.over(sockJS);
+
+        stomp.connect({}, onConnected, onError);
+
+        //연결 성공했을 때 실행하는 함수
+        function onConnected() {
+            console.log("알람 stomp 연결 성공");
+
+            //subscribe(path,callback)으로 메세지 받기 가능
+
+            //sub 할 url -> /sub/chat/room/roomId로 구독 시작
+            stomp.subscribe("/sub/*", onMessageReceived);
+            //StompChatController의 @MessageMapping("/chat/enter")에서 template.convertAndSend()를 통해 메시지 전달받음.
+
+        }
+
+        //통신 실패했을 때 함수
+        function onError() {
+            alert('header 통신 종료');
+        }
+
+        function onMessageReceived(payload) {
+            console.log("수신 확인");
+
+            var chat = JSON.parse(payload.body);
+        }
+    </script>
