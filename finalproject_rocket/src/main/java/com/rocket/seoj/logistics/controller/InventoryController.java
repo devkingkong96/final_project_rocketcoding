@@ -95,7 +95,7 @@ public class InventoryController {
         if (parentColumnName.equals("IV_VAT_TYPE")) {
             value = value.toUpperCase();
         }
-
+        log.debug("로그");
 //        log.debug("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ컨트롤러ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ" + String.valueOf(
 //                id) + ", " + columnName + ", " + tableName + ", " + value + ", " + parentTableName + ", " + parentColumnId + ", " + parentColumnName + ", " + columnId);
 

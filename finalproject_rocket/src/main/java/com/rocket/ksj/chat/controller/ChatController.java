@@ -32,6 +32,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,6 +65,7 @@ public class ChatController {
 	
 	@GetMapping("/list")
 	public String chatlist(Model m) {
+		
 		Employee emp=(Employee)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
 		//로그인한 회원 번호

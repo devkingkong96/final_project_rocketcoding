@@ -180,6 +180,7 @@
 	var deletebtn = document.getElementById('chatRoomDelete');
 	var createbtn = document.getElementById('createBtn');
 	var path = "${path}";
+	console.log(path);
 </script>
 <script src="${path }/resources/js/chat/list.js" type="text/javascript"></script>
 <script src="${path }/resources/js/chat/common.js" type="text/javascript"></script>
