@@ -218,9 +218,9 @@
                         encoding: 'UTF-8'
 
                     }
-                }, {
+                }, /*{
                     extend: 'pdfHtml5',
-                    /*          exportData: {decodeEntities: true}, */
+                    /!*          exportData: {decodeEntities: true}, *!/
                     text: 'PDF',
                     title: '입/출고 추가 ' + getCurrentDateTime(),
                     font: 'hangul',
@@ -229,10 +229,10 @@
                         rows: ':visible',
                         encoding: 'UTF-8',
 
-                        /*font: 'hangul',*/
+                        /!*font: 'hangul',*!/
                         customize: function (doc) {
                             // 폰트 설정 추가
-                            /*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*/
+                            /!*                       doc.defaultStyle.styles.tableBodyEven.font = 'Roboto';*!/
                             font: 'Roboto';
                             doc.defaultStyle.fonts = 'Roboto';
                             doc.defaultStyle.font = 'Roboto';
@@ -244,7 +244,7 @@
 
                     }
 
-                }, {
+                },*/ {
                     extend: 'print',
                     title: '입/출고 추가 ' + getCurrentDateTime(),
                     /*           exportData: {decodeEntities: true}, */
@@ -1305,7 +1305,9 @@
 
 
 
+
                                 ${path}/logistics/stock/daybystock?
+
 
 
 
@@ -1374,6 +1376,7 @@
                             })*/
                                 /*} else {
                                     fetch("
+
 
 
 

@@ -50,7 +50,6 @@ public class InventoryDao {
 //                id) + ", " + columnName + ", " + tableName + ", " + value + ", " + parentTableName + ", " + parentColumnId + ", " + parentColumnName + ", " + columnId);
 
         try {
-
             if (parentTableName.equals(tableName)) {
                 return session.update("inventory.updateColumn_sameTable", params);
             } else {
