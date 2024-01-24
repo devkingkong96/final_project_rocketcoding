@@ -469,7 +469,7 @@
 	stomp.connect({},onConnected,onError);
 	//연결 성공했을 때 실행하는 함수
 	function onConnected(){
-		console.log("stomp 연결 성공");
+		console.log("알람 stomp 연결 성공");
 		
 		//subscribe(path,callback)으로 메세지 받기 가능
 		
