@@ -65,11 +65,6 @@ public class ChatController {
 	
 	@GetMapping("/list")
 	public String chatlist(Model m) {
-		HttpSession session=(HttpSession)RequestContextHolder
-				.currentRequestAttributes()
-				.resolveReference(RequestAttributes.REFERENCE_SESSION);
-		String path=session.getServletContext().getContextPath();
-		log.info("경로 어케돼있냐{}",path);
 		
 		Employee emp=(Employee)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		
