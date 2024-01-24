@@ -38,12 +38,12 @@
             <a href="${path }/" class="logo">
                 <!-- logo-->
                 <div class="logo-mini w-30">
-                    <span class="light-logo"><img src="${path}/resources/images/logo-letter.png" alt="logo"></span>
-                    <span class="dark-logo"><img src="${path}/resources/images/logo-letter-white.png" alt="logo"></span>
+                    <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                    <span class="dark-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
                 </div>
                 <div class="logo-lg">
-                    <span class="light-logo"><img src="${path}/resources/images/logo-dark-text.png" alt="logo"></span>
-                    <span class="dark-logo"><img src="${path}/resources/images/logo-light-text.png" alt="logo"></span>
+                    <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
+                    <span class="dark-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
                 </div>
             </a>
         </div>
@@ -200,10 +200,10 @@
                 <a href="${path }/" class="logo">
                     <!-- logo-->
                     <div class="logo-mini">
-                        <span class="light-logo"><img src="${path}/resources/images/logo-letter.png" alt="logo"></span>
+                        <span class="light-logo"><img src="${path}/resources/images/1.png" alt="logo"></span>
                     </div>
                     <div class="logo-lg">
-                        <span class="light-logo fs-36 fw-700">로고</span>
+                        <span class="light-logo fs-36 fw-700" style="color:#A374DB;">ERP</span>
                     </div>
                 </a>
             </div>
@@ -460,4 +460,32 @@
             </div>
         </section>
     </aside>
-
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script>
+	var sockJS=new SockJS("/ws/alarm");
+	var stomp=Stomp.over(sockJS);
+		
+	stomp.connect({},onConnected,onError);
+	//연결 성공했을 때 실행하는 함수
+	function onConnected(){
+		console.log("stomp 연결 성공");
+		
+		//subscribe(path,callback)으로 메세지 받기 가능
+		
+		//sub 할 url -> /sub/chat/room/roomId로 구독 시작
+		stomp.subscribe("/sub/*",onMessageReceived);
+		//StompChatController의 @MessageMapping("/chat/enter")에서 template.convertAndSend()를 통해 메시지 전달받음.
+			
+	}
+	//통신 실패했을 때 함수
+	function onError(){
+		alert('header 통신 종료');
+	}
+	
+	function onMessageReceived(payload){
+		console.log("수신 확인");
+			
+		var chat=JSON.parse(payload.body);
+	}
+</script>

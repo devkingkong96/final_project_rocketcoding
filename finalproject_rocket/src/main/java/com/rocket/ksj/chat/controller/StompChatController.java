@@ -94,7 +94,7 @@ public class StompChatController {
 		
 		log.info("delresult:{}",param.get("delEmps"));
 		//대화방에서 초대된 직원 목록에서 없애기
-		if((param.get("delEmps")!=null)) {
+		if(!ObjectUtils.isEmpty(param.get("delEmps"))) {
 			responseData.put("delEmps", param.get("delEmps"));
 		}
 		
@@ -119,5 +119,37 @@ public class StompChatController {
 		
 		template.convertAndSend("/sub/chat/list",responseData);
 	}
+	//채팅방에서 초대한 멤버들 리스트 갱신 시키기)
+	@MessageMapping("/list/refresh")
+	public void ListRefreshEmployees(List<Object>param) {
+		log.info("초대한 리스트 MessageMapping{}",param);
+		Map<String, Object>responseData = new HashMap<>();
+		responseData.put("refreshemps",param);
+		responseData.put("type", "REFRESHROOM");
+		
+		template.convertAndSend("/sub/chat/list",responseData);
+	}
+	//채팅방에서 입력중일 때 ... 표시
+	@MessageMapping("/chat/inputting")
+	public void ChatInputting(ChatMessage chatMsg) {
+		log.info("입력중인 메시지 정보{}",chatMsg);
+		
+		template.convertAndSend("/sub/chat/room/"+chatMsg.getMsgRoomNo(),chatMsg);
+	}
+
+	//채팅방에서 입력중이 아닐 때
+	@MessageMapping("/chat/cancel")
+	public void ChatCancel(ChatMessage chatMsg) {
+		log.info("입력중인 메시지 정보{}",chatMsg);
+		
+		template.convertAndSend("/sub/chat/room/"+chatMsg.getMsgRoomNo(),chatMsg);
+	}
 	
+	//알림 기능(방 초대)
+	@MessageMapping("/alarm/chat")
+	public void AlarmChat(ChatMessage msg) {
+		log.info("알람 : {}"+msg);
+		
+		template.convertAndSend("/sub/*",msg);
+	}
 	}

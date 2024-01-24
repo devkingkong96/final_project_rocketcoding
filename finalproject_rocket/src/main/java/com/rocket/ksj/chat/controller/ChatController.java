@@ -67,6 +67,7 @@ public class ChatController {
 		
 		//로그인한 회원 번호
 		int empNo=emp.getEmpNo();
+		Map<String, Object>empinfo=service.selectEmpInfo(empNo);
 		//로그인한 회원 제외한 직원 리스트 가져오기
 		List<Map<String, Object>>emplist=service.selectEmployeeList(empNo);
 		//로그인한 직원 채팅방 가져오기
@@ -76,7 +77,7 @@ public class ChatController {
 		
 		m.addAttribute("emplist",emplist);
 		m.addAttribute("chatlist",chatlist);
-		m.addAttribute("logempNo",empNo);
+		m.addAttribute("logempNo",empinfo);
 //		m.addAttribute("chatroomlist",chatroomlist);
 		
 		return "chat/chatlist";
