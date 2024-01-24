@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="inventoryattach">
+    <resultMap id="inventoryattachMap" type="inventoryattach">
+        <id column="iv_file_id" property="ivFileId" />
+        <result column="iv_file_name_ori" property="ivFileNameOri" />
+        <result column="iv_file_name_re" property="ivFileNameRe" />
+        <result column="iv_upload_date" property="ivUploadDate" />
+        <result column="iv_attach_isdel" property="ivAttachIsdel" />
+        <result property="ivId" column="IV_ID"/>
+    </resultMap>
+
+
+
+
+
+</mapper>

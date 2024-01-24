@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="branch">
+    <resultMap id="branchMap" type="branch">
+        <id column="branch_id" property="branchId" />
+        <result column="branch_name" property="branchName" />
+        <result column="branch_type" property="branchType" />
+        <result column="branch_isdel" property="branchIsdel" />
+        <result column="branch_addr" property="branchAddr" />
+
+    </resultMap>
+
+   
+</mapper>

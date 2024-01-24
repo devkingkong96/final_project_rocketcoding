@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="notice">
+	<resultMap type="notice" id="noticeMap">
+		<id column="NOTICE_NO" property="noticeNo"/>
+		<result column="NOTICE_TITLE" property="noticeTitle"/>
+		<result column="NOTICE_CONTENT" property="noticeContent"/>
+		<result column="NOTICE_VIEWS" property="noticeViews"/>
+		<result column="NOTICE_DATE" property="noticeDate"/>
+		<result column="EMP_NO" property="empNo"/>
+	</resultMap>
+	
+	<select id="selectNoticeMainPage" resultType="hashMap">
+		SELECT E.*,ROWNUM FROM(
+			SELECT * FROM NOTICE ORDER BY NOTICE_DATE DESC) E WHERE ROWNUM &lt;= 10
+	</select>
+	
+	
+	<select id="selectAll" resultType="hashMap">
+		SELECT * FROM EMPLOYEE
+	</select>
+	
+	
+	
+</mapper>

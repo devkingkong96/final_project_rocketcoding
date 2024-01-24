@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="product">
+    <resultMap id="productMap" type="product">
+        <id column="prd_id" property="prdId" />
+        <result column="prd_title" property="prdTitle" />
+        <result column="prd_author" property="prdAuthor" />
+        <result column="prd_genre" property="prdGenre" />
+        <result column="publish_Date" property="publishDate" />
+        <result column="prd_isdel" property="prdIsdel" />
+        <result column="prd_price" property="prdPrice" />
+        <result column="price_in_stk" property="priceInStk" />
+        <result column="price_out_stk" property="priceOutStk" />
+        <result property="pubId" column="PUB_ID"/>
+    </resultMap>
+
+   
+</mapper>
