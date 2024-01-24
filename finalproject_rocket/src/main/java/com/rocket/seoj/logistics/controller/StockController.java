@@ -519,6 +519,11 @@ public class StockController {
             prdIdList = new ArrayList<>();
             prdIdList.add("0"); // '0'을 기본값으로 사용
         }
+        int branchCount = branchIdList.size();
+//        branchCount.add(branchIdList.size() + "");
+        params.put("branchCount", String.valueOf(branchCount));
+
+
 
         params.put("branchIdList", branchIdList);
         params.put("prdIdList", prdIdList);
