@@ -23,12 +23,12 @@ CalendarApp.prototype.onSelect = function(start, end, allDay) {
 
     let prevForm=document.querySelector("#holy");
     if(prevForm==null) {
-      prevForm=document.createElement("form");
-      prevForm.setAttribute("id","holy");
-         prevForm.setAttribute("method", "get");
-       prevForm.setAttribute("action", `/docu/insertaprv`);
-   }
-   prevForm.innerHTML="";
+		prevForm=document.createElement("form");
+		prevForm.setAttribute("id","holy");
+  	 	prevForm.setAttribute("method", "get");
+    	prevForm.setAttribute("action", `/docu/insertaprv`);
+	}
+	prevForm.innerHTML="";
     // form 생성
 /*    var form = document.createElement("form");
     form.setAttribute("id","holy");
@@ -48,8 +48,8 @@ CalendarApp.prototype.onSelect = function(start, end, allDay) {
     endDateInput.setAttribute("name", "endDate");
     endDateInput.setAttribute("value", endDate);
     prevForm.appendChild(endDateInput);
-    
-    console.log(prevForm); // 생성된 form 출력
+ 	
+ 	console.log(prevForm); // 생성된 form 출력
     
    document.body.appendChild(prevForm);
 
@@ -74,9 +74,9 @@ CalendarApp.prototype.init = function() {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
-          events: this.$calendar[0].id === 'mycal1' ? null : "/myevents",
+       	events: this.$calendar[0].id === 'mycal1' ? null : "/myevents",
         eventDataTransform: function(eventData) {
-         
+			
     console.log(eventData);
 
     var color;
@@ -109,7 +109,7 @@ CalendarApp.prototype.init = function() {
         title: eventData.STATUS,
         start: startMoment.format('YYYY-MM-DD'),
         end: endMoment.format('YYYY-MM-DD'),
-        allDay: false,
+        allDay: true,
         backgroundColor: color,
         borderColor: color,
         textColor: 'white',
@@ -126,20 +126,27 @@ CalendarApp.prototype.init = function() {
             $this.onSelect(start, end, allDay); 
         } : null,
         selectAllow: function(selectInfo) {
-            var start = selectInfo.start;
-            var today = moment().startOf('day');
-          if (selectInfo.start < today) return false;
-            var end = selectInfo.end.clone().subtract(1, 'days');
-            while(end >= start) {
-                $("td[data-date='" + start.format('YYYY-MM-DD') + "']")
-                    .addClass('selected')
-                    .css({"background-color": "black", "color": "white"});
-                start.add(1, 'days');
-            }
-            return true;
+    var start = selectInfo.start;
+    var today = moment().startOf('day');
+    if (selectInfo.start < today) return false;
+
+    var end = selectInfo.end.clone().subtract(1, 'days');
+    var diffDays = end.diff(start, 'days');
+
+    if (diffDays > 14) {
+        return false;
+    }
+
+    while(end >= start) {
+        $("td[data-date='" + start.format('YYYY-MM-DD') + "']")
+            .addClass('selected')
+            .css({"background-color": "black", "color": "white"});
+        start.add(1, 'days');
+    }
+    return true;
         },
         drop:  function(date) { $this.onDrop($(this), date); },
-        eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }   
+        eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }	
     });
 };
 

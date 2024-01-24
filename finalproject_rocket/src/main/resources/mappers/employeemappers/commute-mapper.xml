@@ -58,6 +58,7 @@
 			FROM  COMMUTE c
 			JOIN EMPLOYEE e ON c.EMP_NO = e.EMP_NO
 			JOIN DWRULES d ON e.DWRULES_CODE = d.DWRULES_CODE
+			WHERE e.EMP_NO = #{empNo}	
 			WHERE e.EMP_NO = #{empNo} AND ROWNUM = 1	
 	</select>
 	

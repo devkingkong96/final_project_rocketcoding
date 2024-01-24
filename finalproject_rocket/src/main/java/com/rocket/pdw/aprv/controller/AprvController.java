@@ -537,5 +537,33 @@ public class AprvController {
 		
 		return "aprv/aprvsavefile";
 	}
-	 
+	@GetMapping("/countlist")
+	@ResponseBody
+	public String countList() {
+
+		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
+				// 타입이 BigDecimal이다..	
+				// 진행중인문서그리고 참조자가 아니어야함
+				.filter(map -> map.get("DOC_STATCD").equals(BigDecimal.ZERO)
+						&& !map.get("APRV_LV").equals(BigDecimal.valueOf(99)))
+				.collect(Collectors.toList());
+
+		List<Map<String, Object>> ckLvList = alist.stream().map(oldMap -> {
+			Map<String, Object> newMap = new HashMap<>();
+			BigDecimal aprvLv = (BigDecimal) oldMap.get("APRV_LV");
+			newMap.put("DOC_NO", oldMap.get("DOC_NO")); // DOC_NO 값은 그대로 복사
+			newMap.put("APRV_LV", aprvLv.subtract(BigDecimal.ONE)); // APRV_LV 값에서 1을 뺌
+			return newMap;
+		}).collect(Collectors.toList());
+
+		List<Map<String, Object>> ck = service.ckLvList(ckLvList);
+		
+		
+		List<Map<String, Object>> wlist = ck.stream().filter(map -> map.get("APRV_SQ").equals(BigDecimal.ONE))
+				.collect(Collectors.toList());
+		int size= wlist.size();
+		String resize = String.valueOf(size);
+		
+		return resize;
+	}
 }

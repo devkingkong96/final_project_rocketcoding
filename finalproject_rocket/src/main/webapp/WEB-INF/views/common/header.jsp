@@ -372,9 +372,18 @@
                             </a>
                         </li>
 						<li class="treeview">
-                            <a href="#">
-                                <img style="width: 28px; height: 28px; filter : grayscale(100%)"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy9Jc1pfkjTgTIyPDX2byAiDFXg9X-vbgiQA&usqp=CAU"><span class="path1"></span><span class="path2"></span></i>
-                                <span>전자결재</span>
+                            <a href="${path}/docu/lists/w">
+                            	<div style="position: relative; display: flex">
+                                <img style="width: 35px; height: 28px; filter : grayscale(100%); position: relative; z-index: 1;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy9Jc1pfkjTgTIyPDX2byAiDFXg9X-vbgiQA&usqp=CAU"><span class="path1"></span><span class="path2"></span></i>
+          						<div class="" style="position: absolute; top: -7; left: -5; z-index: 2; height: 18px; width: 18px; background-color: #A374DB; border-radius: 16px" >
+          						
+                                 <p id="countList" style="position: absolute; top: -2.2; left: 4.7; z-index: 3; color: white; font-size: 14px;">
+                                
+                                </p> 
+          						</div>
+                                </div>
+                                
+                                <span style="position: absolute; top: 10; left: 50;">전자결재</span>
                                 <span class="pull-right-container">
 					  <i class="fa fa-angle-right pull-right"></i>
 					</span>
@@ -463,7 +472,27 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
+
+
+$(document).ready(function(){
+    $.ajax({
+        url: `${path}/docu/countlist`,
+        type: 'GET',
+        success: function(response) {
+            console.log(response);
+            var res = response;
+            document.getElementById('countList').innerHTML = res;
+        }
+    });
+});
+
+
+</script>
+<script>
+	var sockJS=new SockJS("/ws/alarm");
+
 	/* var sockJS=new SockJS("/ws/alarm");
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 	var stomp=Stomp.over(sockJS);
 		
 	stomp.connect({},onConnected,onError);
