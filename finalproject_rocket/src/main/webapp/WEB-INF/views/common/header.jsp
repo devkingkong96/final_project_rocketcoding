@@ -491,7 +491,6 @@ $(document).ready(function(){
 	var sockJS=new SockJS("/ws/alarm");
 
 	/* var sockJS=new SockJS("/ws/alarm");
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 	var stomp=Stomp.over(sockJS);
 		
 	stomp.connect({},onConnected,onError);
