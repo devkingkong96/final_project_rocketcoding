@@ -5,15 +5,15 @@
 
 $(function () {
     "use strict";
-    $("[id^=datatable-1-3]").each(function () {
-        $(this).DataTable(
-            {
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            }
-        );
-    });
+    // $("[id^=datatable-1-3]").each(function () {
+    //     $(this).DataTable(
+    //         {
+    //             buttons: [
+    //                 'copy', 'csv', 'excel', 'pdf', 'print'
+    //             ]
+    //         }
+    //     );
+    // });
 
 
     $('#example1').DataTable();
