@@ -130,7 +130,11 @@
 </div>
 <!-- </form> -->
 <!-- /.modal -->
-
+<c:if test="${not empty loginEmp}">
+	<script>
+		alert("다른 기기에서 로그인되어 현재 로그인이 종료되었습니다.");
+	</script>
+</c:if>
 
 <!-- Vendor JS -->
 <script src="${path}/resources/js/vendors.min.js"></script>

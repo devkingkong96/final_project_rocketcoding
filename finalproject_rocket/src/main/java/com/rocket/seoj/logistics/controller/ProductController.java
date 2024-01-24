@@ -66,7 +66,7 @@ public class ProductController {
 //        log.debug("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ컨트롤러ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ" + String.valueOf(
 //                id) + ", " + columnName + ", " + tableName + ", " + value + ", " + parentTableName + ", " + parentColumnId + ", " + parentColumnName + ", " + columnId);
 
-        log.debug("업데이트 실행합니다");
+//        log.debug("업데이트 실행합니다");
         int result = 0;
 
         try {

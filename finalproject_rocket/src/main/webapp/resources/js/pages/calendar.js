@@ -109,6 +109,7 @@ CalendarApp.prototype.init = function() {
         title: eventData.STATUS,
         start: startMoment.format('YYYY-MM-DD'),
         end: endMoment.format('YYYY-MM-DD'),
+<<<<<<< HEAD
         allDay: true,
         backgroundColor: color,
         borderColor: color,
@@ -144,6 +145,36 @@ CalendarApp.prototype.init = function() {
         start.add(1, 'days');
     }
     return true;
+=======
+        allDay: false,
+        backgroundColor: color,
+        borderColor: color,
+        textColor: 'white',
+        className: 'custom-event'
+    };
+},
+        
+        editable: false,
+        droppable: true,
+        eventLimit: false,
+        selectable: this.isDateSelectable,
+        select: this.isDateSelectable ? function (start, end, allDay) {
+            $("td").removeClass('selected');
+            $this.onSelect(start, end, allDay); 
+        } : null,
+        selectAllow: function(selectInfo) {
+            var start = selectInfo.start;
+            var today = moment().startOf('day');
+          if (selectInfo.start < today) return false;
+            var end = selectInfo.end.clone().subtract(1, 'days');
+            while(end >= start) {
+                $("td[data-date='" + start.format('YYYY-MM-DD') + "']")
+                    .addClass('selected')
+                    .css({"background-color": "black", "color": "white"});
+                start.add(1, 'days');
+            }
+            return true;
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
         },
         drop:  function(date) { $this.onDrop($(this), date); },
         eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }   

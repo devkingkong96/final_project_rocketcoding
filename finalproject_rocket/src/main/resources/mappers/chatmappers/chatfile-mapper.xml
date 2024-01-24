@@ -6,6 +6,11 @@
 		<result column="ORIGINFILENAME" property="originFileName"/>
 		<result column="RENAMEDFILENAME" property="renamedFileName"/>
 		<result column="UPLOAD_AT" property="uploadAt"/>
+<<<<<<< HEAD
 		<result column="MESSAGE_ID" property="messageId"/>
+=======
+		<result column="CHFI_ROOM_NO" property="chFiRoomNo"/>
+		<result column="CHFI_EMP_NO" property="chFiEmpNo"/>
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 	</resultMap>
 </mapper>

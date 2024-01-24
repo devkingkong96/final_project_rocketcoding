@@ -58,7 +58,11 @@
 			FROM  COMMUTE c
 			JOIN EMPLOYEE e ON c.EMP_NO = e.EMP_NO
 			JOIN DWRULES d ON e.DWRULES_CODE = d.DWRULES_CODE
+<<<<<<< HEAD
 			WHERE e.EMP_NO = #{empNo}	
+=======
+			WHERE e.EMP_NO = #{empNo} AND ROWNUM = 1	
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 	</select>
 	
 	<select id="MypageCalendar" resultType="hashMap">

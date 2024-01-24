@@ -43,4 +43,6 @@
 		<typeAlias type="com.rocket.pdw.aprv.model.dto.Approval" alias="approval"/>
 		<typeAlias type="com.rocket.pdw.aprv.model.dto.ApprovalFile" alias="aprvfile"/>
 	</typeAliases>
+
 </configuration>
+

@@ -36,6 +36,7 @@ $.fn.editableTableWidget = function (options) {
                     return true;
                 }
                 originalContent = active.html();
+<<<<<<< HEAD
                 active.text(text).trigger(evt, text);
                 if (evt.result === false) {
                     active.html(originalContent);
@@ -91,6 +92,68 @@ $.fn.editableTableWidget = function (options) {
 
                     } else {
                         updateUrl = currentPagePath + '/differentUpdate';
+=======
+                console.log("Original Content:", originalContent);
+                console.log("Text:", text);
+                // alert("디버그");
+                // active.text(text).trigger(evt, text);
+                active.text(text);
+                if (evt.result === false) {
+                    active.html(originalContent);
+                } else if (window.location.pathname.includes('/inventory/list') || window.location.pathname.includes('/publisher/list') || window.location.pathname.includes('/product/list')) {
+                    var currentPagePath = window.location.pathname;
+                    console.log("Current Page Path:", currentPagePath);
+                    var pathSegments = currentPagePath.split('/');
+                    console.log("Path Segments:", pathSegments);
+                    // var parentTableName = active.data('data-parent-table');
+                    var parentTableName = pathSegments.length > 2 ? pathSegments[2] : '';
+                    console.log("ParentTable Name:", parentTableName.toUpperCase());
+
+                    var updateUrl = currentPagePath + '/tableupdate';
+                    console.log("Update URL:", updateUrl);
+                    var columnName = active.data('column-name');
+                    console.log("Column Name:", columnName);
+                    var tableName = active.data('table-name');
+                    console.log("Table Name:", tableName);
+                    var parentColumnName = active.data('parent-column');
+                    console.log("parent-column:", parentColumnName);
+
+
+                    var updateUrl;
+                    if (currentPagePath.includes('/inventory/list') || window.location.pathname.includes('/publisher/list') || window.location.pathname.includes('/product/list')) {
+                        updateUrl = currentPagePath + '/tableupdate';
+
+                        $.ajax({
+
+                            url: updateUrl,
+                            method: 'POST',
+                            data: {
+                                id: active.closest('tr').find('td:first').text(), // 첫 번째 셀의 텍스트(ID)
+                                columnName: columnName,
+                                value: text,
+                                tableName: tableName,
+                                parentTableName: parentTableName,
+                                parentColumnName: parentColumnName
+                            },
+                            success: function (response) {
+                                alert(response);
+                                active.text(text).trigger(evt, text);
+
+                            },
+                            error: function (jqXHR, textStatus, errorThrown, error, response, body) {
+
+                                /*alert(jqXHR.responseText);*/
+                                /*  alert((JSON.stringify(error)));*/
+                                alert(jqXHR.responseText);
+                                /*alert(xhr.responseText);*/
+                                /* alert(JSON.stringify(response));*/
+                                active.html(originalContent);
+                            }
+                        });
+
+                    } else {
+                        // updateUrl = currentPagePath + '/differentUpdate';
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
                     }
 
 

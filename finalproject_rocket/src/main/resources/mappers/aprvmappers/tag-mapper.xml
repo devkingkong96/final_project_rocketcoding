@@ -6,7 +6,9 @@
 		<result column="TAG_NAME" property="tagName"/>
 		<result column="TAG_CONT" property="tagCont"/>
 	</resultMap>
-  <!-- <insert id="inserttag" parameterType="tag">
+
+  <insert id="inserttag" parameterType="tag">
   	INSERT INTO TAG VALUES('4','테스트용',#{tagContent})
-  </insert> -->
+  </insert>
+
 </mapper>

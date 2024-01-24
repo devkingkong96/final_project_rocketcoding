@@ -70,7 +70,11 @@
             applyLabel: 'Apply',
             cancelLabel: 'Cancel',
             weekLabel: 'W',
+<<<<<<< HEAD
             customRangeLabel: 'Custom Range',
+=======
+            customRangeLabel: '직접 설정',
+>>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
             daysOfWeek: moment.weekdaysMin(),
             monthNames: moment.monthsShort(),
             firstDay: moment.localeData().firstDayOfWeek()

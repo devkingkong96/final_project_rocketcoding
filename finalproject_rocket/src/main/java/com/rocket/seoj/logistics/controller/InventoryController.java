@@ -18,7 +18,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -28,6 +31,7 @@ import java.io.Reader;
 import java.lang.reflect.Field;
 import java.sql.Clob;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -95,7 +99,7 @@ public class InventoryController {
 //        log.debug("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ컨트롤러ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ" + String.valueOf(
 //                id) + ", " + columnName + ", " + tableName + ", " + value + ", " + parentTableName + ", " + parentColumnId + ", " + parentColumnName + ", " + columnId);
 
-        log.debug("업데이트 실행합니다");
+//        log.debug("업데이트 실행합니다");
         int result = 0;
 
         try {
@@ -147,6 +151,25 @@ public class InventoryController {
                     .noContent()
                     .build();
         }
+
+        NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US); // 미국식 숫자 포맷을 사용합니다.
+
+        String[] keys = { "PRD_PRICE", "PRICE_IN_STK" };
+        for (String key : keys) {
+            if (prdInfo.containsKey(key) && prdInfo.get(key) != null) {
+                try {
+                    // 값이 숫자로 가정하고 처리합니다.
+                    Number number = (Number)prdInfo.get(key);
+                    String formatted = formatter.format(number);
+                    prdInfo.put(key, formatted); // 포맷된 문자열로 다시 넣습니다.
+                } catch (ClassCastException e) {
+                    // 숫자가 아닐 경우 예외 처리
+                    System.err.println(key + " is not a number.");
+                }
+            }
+        }
+
+
 //        log.debug("prdInfo: {}", prdInfo);
         return ResponseEntity.ok(prdInfo);
 
@@ -271,7 +294,7 @@ public class InventoryController {
 
             // TODO @transactional 되서 List<Integer>를 반환 안해도 될거같은데.. 물어보기
             result2 = service.insertInventoryAttach(fileList);
-            log.debug(String.valueOf(result2));
+//            log.debug(String.valueOf(result2));
         }
 /*        if (result2 != null) {
             for (Integer result : result2) {
@@ -368,7 +391,7 @@ public class InventoryController {
 
         try {
             String jsonMap = prdTitleToJson.writeValueAsString(prdTitleToIdMap);
-            log.debug(jsonMap);
+//            log.debug(jsonMap);
             model.addAttribute("jsonMap", jsonMap);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
@@ -457,7 +480,7 @@ public class InventoryController {
 
     @PostMapping("/logistics/inventory/list/delete")
     public ResponseEntity<?> deleteInventoryAndAttachments(@RequestParam("iv_id") Long inventoryId) {
-        log.debug("딜리트: " + inventoryId);
+//        log.debug("딜리트: " + inventoryId);
         boolean deletionSuccess = service.deleteInventoryAndAttachmentAndPrdIv(inventoryId);
 
         if (deletionSuccess) {
