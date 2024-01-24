@@ -5,9 +5,9 @@
 
 $(function () {
     "use strict";
-    $('#datatable-2-0').DataTable();
-
-    $('#datatable-2-1').DataTable();
+    // $('#datatable-2-0').DataTable();
+    //
+    // $('#datatable-2-1').DataTable();
     $('#example1').DataTable();
     $('#example2').DataTable({
         'paging': true,
