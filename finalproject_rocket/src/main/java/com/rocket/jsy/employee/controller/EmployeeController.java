@@ -3,7 +3,7 @@ package com.rocket.jsy.employee.controller;
 
 import static com.rocket.common.Getrequest.getParameterMap;
 
-import java.util.ArrayList;
+import java.sql.Clob;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
@@ -74,9 +73,32 @@ public class EmployeeController {
 	
 	@GetMapping("/employeeholidaylist")
 	public String employeeholidaylist(Model model) {
-		List<Map<String, Object>> employees=service.selectEmployeeHolidayAll();
-		model.addAttribute("employees",employees);
-		return "employee/employeeholidaylist";
+	    List<Map<String, Object>> employees = service.selectEmployeeHolidayAll();
+
+	    String textData = "";
+	    for (Map<String, Object> map : employees) {
+	        if(map.get("DOC_CONT") instanceof java.sql.Clob) { // CLOB_COLUMN은 실제 CLOB 데이터가 있는 컬럼 이름으로 대체해주세요.
+	            Clob text = (Clob) map.get("DOC_CONT");
+	            try {
+	                String clobContent = text.getSubString(1, (int) text.length());
+	                if (clobContent.startsWith("[") && clobContent.endsWith("]")) {
+	                    String[] contentArray = clobContent.substring(1, clobContent.length() - 1).split(",");
+	                    for (String content : contentArray) {
+	                        textData += content.trim();
+	                    }
+	                } else {
+	                    textData += clobContent;
+	                }
+	            } catch (Exception e1) {
+	                e1.printStackTrace();
+	            } finally {
+	                map.put("DOC_CONT", textData); // 변환된 문자열을 다시 맵에 넣습니다.
+	            }
+	        }
+	    }
+
+	    model.addAttribute("employees", employees);
+	    return "employee/employeeholidaylist";
 	}
 	 
 //	 @GetMapping("/myPageCalendar")
