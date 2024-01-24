@@ -463,7 +463,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
-	var sockJS=new SockJS("/ws/alarm");
+	/* var sockJS=new SockJS("/ws/alarm");
 	var stomp=Stomp.over(sockJS);
 		
 	stomp.connect({},onConnected,onError);
@@ -487,5 +487,5 @@
 		console.log("수신 확인");
 			
 		var chat=JSON.parse(payload.body);
-	}
+	} */
 </script>
