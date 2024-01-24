@@ -151,7 +151,7 @@
 
 
     <build>
-		<finalName>GJD71_rocket_final</finalName>
+      <finalName>GJD71_rocket_final</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -167,12 +167,12 @@
             </plugin>
         </plugins>
     </build>
-	
-	
-		<!--
-			파일업로드 라이브 러리 등록하기  
-			commons-io 2.7
-			commons-filetupload 1.4
-		-->
-	
+   
+   
+      <!--
+         파일업로드 라이브 러리 등록하기  
+         commons-io 2.7
+         commons-filetupload 1.4
+      -->
+   
 </project>
