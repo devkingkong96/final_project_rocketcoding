@@ -242,7 +242,7 @@
 			    $(document).ready(function() {
 			        var depName = '${loginEmp.dep.depName}';
 			        if (depName !== '인사팀') {
-			            $('#employeeHolidayList, #employeeCommuteList, #departmentList, #dwRulesList').click(function(e) {
+			            $('#employeeHolidayList, #employeeCommuteList, #departmentList, #dwRulesList, #employeeCommute').click(function(e) {
 			                e.preventDefault();
 			                alert('권한이 없습니다.');
 			            });
