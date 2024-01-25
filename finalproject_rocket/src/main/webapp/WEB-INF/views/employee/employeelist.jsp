@@ -174,15 +174,15 @@ $(document).ready(function(){
 
 	    $.ajax({
 	      type: "POST",
-	      url: "/employeeinsert", 
+	      url: "${path}/employeeinsert", 
 	      data: formData,
 	      success: function(response){
-		        alert("수정이 완료되었습니다.");
+		        alert("입력이 완료되었습니다.");
 		        $('#modal-modify').modal('hide'); 
 		        location.reload(); 
 		      },
 		      error: function(jqXHR, textStatus, errorThrown){
-		        alert("수정에 실패하였습니다. 오류 내용: " + errorThrown);
+		        alert("입력에 실패하였습니다. 오류 내용: " + errorThrown);
 		      }
 		    });
 		  });
@@ -304,7 +304,7 @@ $(document).ready(function() {
 
 	    $.ajax({
 	        type: "POST",
-	        url: "/employeeupdate",
+	        url: "${path}/employeeupdate",
 	        data: formData,
 	        success: function(response){
 	          alert("수정이 완료되었습니다.");

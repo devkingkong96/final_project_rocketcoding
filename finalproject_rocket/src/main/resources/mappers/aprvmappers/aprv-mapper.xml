@@ -67,7 +67,7 @@
            UPDATE DOCUMENT SET DOC_STATCD='1',U_DATE=SYSDATE WHERE DOC_NO='${DOC_NO}'
         </update>
         <update id="rejectAprv" parameterType="hashMap">
-           UPDATE APPROVAL SET APRV_SQ= '-1q',APRV_DATE=SYSDATE WHERE APRV_EMP='${EMP_NO}' AND DOC_NO = '${DOC_NO}'
+           UPDATE APPROVAL SET APRV_SQ= '-1',APRV_DATE=SYSDATE WHERE APRV_EMP='${EMP_NO}' AND DOC_NO = '${DOC_NO}'
         </update>
         <update id="rejectDocu" parameterType="hashMap">
            UPDATE DOCUMENT SET DOC_STATCD='-1',U_DATE=SYSDATE WHERE DOC_NO='${DOC_NO}'
