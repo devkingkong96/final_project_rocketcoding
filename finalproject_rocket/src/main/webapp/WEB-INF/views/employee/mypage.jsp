@@ -231,7 +231,7 @@ document.getElementById('startWork').addEventListener('click',function(){
     var storedDate = localStorage.getItem('startWork_' + empNo);
     var today = new Date().toISOString().slice(0,10);
     if(storedDate != today) {
-        sendData('/startWork');
+        sendData('${path}/startWork');
         localStorage.setItem('startWork_' + empNo, today);
         
         // 출근 시간을 로컬 스토리지에 저장
@@ -256,7 +256,7 @@ document.getElementById('endWork').addEventListener('click',function(){
     var storedDate = localStorage.getItem('endWork_' + empNo);
     var today = new Date().toISOString().slice(0,10);
     if(storedDate != today) {
-        sendData('/endWork');
+        sendData('${path}/endWork');
         localStorage.setItem('endWork_' + empNo, today);
         
      // 퇴근 시간을 로컬 스토리지에 저장하고 표시합니다.
@@ -285,7 +285,7 @@ function sendData(url) {
             var message;
             var now = new Date();
             var timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
-            if(url === "/endWork") {
+            if(url === "${path}/endWork") {
                 message = response.time + "시 " + response.message2;
                 var userConfirmed = confirm(message);
                 if(userConfirmed) {

@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li class="btn-group d-lg-inline-flex d-none">
-                        <div class="app-menu">
+                        <!-- <div class="app-menu">
                             <div class="search-bx mx-5">
                                 <form>
                                     <div class="input-group">
@@ -71,14 +71,14 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
+                        </div> -->
                     </li>
                 </ul>
             </div>
 
             <div class="navbar-custom-menu r-side">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown notifications-menu btn-group nav-item">
+                    <!-- <li class="dropdown notifications-menu btn-group nav-item">
                         <a href="#" class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon"
                            data-bs-toggle="dropdown" title="Notifications">
                             <i class="icon-Notifications"><span class="path1"></span><span class="path2"></span></i>
@@ -98,7 +98,7 @@
                                 </div>
                             </li>
                             <li>
-                                <!-- inner menu: contains the actual data -->
+                                inner menu: contains the actual data
                                 <ul class="menu sm-scrol">
                                     <li>
                                         <a href="#">
@@ -146,7 +146,7 @@
                                 <a href="#">View all</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- 			<li class="btn-group nav-item">
                                     <a href="#" class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon" title="" data-bs-toggle="modal" data-bs-target="#quick_actions_toggle">
                                         <i class="icon-Layout-arrange"><span class="path1"></span><span class="path2"></span></i>

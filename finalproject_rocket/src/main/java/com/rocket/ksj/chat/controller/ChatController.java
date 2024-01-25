@@ -98,8 +98,8 @@ public class ChatController {
 		String oriName="";
 		String reName="";
 		//serialize 값 가져오기
-		log.info("파일 업로드 정보 가져오기 upFile{}");
-		log.info("파일 업로드 정보 가져오기 upFile{}",file);
+//		log.info("파일 업로드 정보 가져오기 upFile{}");
+//		log.info("파일 업로드 정보 가져오기 upFile{}",file);
 		
 			File file1 = new File(path);
 	        if(!file1.exists()) {
@@ -220,7 +220,7 @@ public class ChatController {
 //		log.info("방 번호{}",param.get("roomId"));
 		
 		List<Map<String, Object>>result=service.modalSearch(param);
-		log.info("방 번호{}",result);
+//		log.info("방 번호{}",result);
 		
 		return result;
 	}
@@ -228,7 +228,7 @@ public class ChatController {
 	@PostMapping("/list/roomListSearch")
 	@ResponseBody
 	public List<Map<String, Object>> roomListSearch(@RequestBody Map<String, Object>param){
-		log.info("방 리스트 찾기{}",param);
+//		log.info("방 리스트 찾기{}",param);
 		
 		List<Map<String, Object>>result=service.roomListSearch(param);
 		return result;
@@ -238,7 +238,7 @@ public class ChatController {
 	@PostMapping("/list/empListSearch")
 	@ResponseBody
 	public List<Map<String, Object>> empListSearch(@RequestBody Map<String, Object>param){
-		log.info("멤버리스트 찾기{}",param);
+//		log.info("멤버리스트 찾기{}",param);
 		
 		List<Map<String, Object>>result=service.empListSearch(param);
 		return result;
@@ -247,7 +247,7 @@ public class ChatController {
 	@PostMapping("/room/numOfChatRoom")
 	@ResponseBody
 	public int numOfChatRoom(@RequestBody Map<String, Object>param) {
-		log.info("방 번호 인원수 체크용 : {}",param.get("roomId"));
+//		log.info("방 번호 인원수 체크용 : {}",param.get("roomId"));
 		int result=roomService.numberOfChatRoom(Integer.parseInt((String)param.get("roomId")));
 		return result;
 	}
