@@ -142,7 +142,7 @@ $(document).ready(function() {
 
         $('#depTitle').text(depName + ' 부서상세화면');
         $.ajax({
-            url: '/departmentdetail', 
+            url: '${path}/departmentdetail', 
             method: 'get',
             data: { depName: depName },
             success: function(data) {
