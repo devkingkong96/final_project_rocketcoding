@@ -406,6 +406,7 @@
                                         <li class='<%= request.getRequestURI().contains("docu") ? "active" : "" %>'>
                                             <a href="${path}/docu/lists/w"><i class="icon-Commit"><span
                                                     class="path1"></span><span class="path2"></span></i>대기</a>
+                                                    
                                         </li>
                                         <li class='<%= request.getRequestURI().contains("docu") ? "active" : "" %>'>
                                             <a href="${path}/docu/lists/v"><i class="icon-Commit"><span
