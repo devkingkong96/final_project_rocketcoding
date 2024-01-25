@@ -53,7 +53,7 @@ public class AprvController {
 	// 진행중인 전체 문서
 	// map.get("DOC_STATCD").equals(BigDecimal.ZERO) 문서상태가 0
 	@GetMapping("/lists/a")
-	public String a(Model m) {
+	public String selectListAll(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
 				// 타입이 BigDecimal이다..
 				// 진행중인문서
@@ -66,7 +66,7 @@ public class AprvController {
 	// 3.자기 결재순서일때 대기
 	// 진행중인 결재문서들의 전 결재자가 결재를했으면 리스트에 담음.
 	@GetMapping("/lists/w")
-	public String w(Model m) {
+	public String selectListWait(Model m) {
 
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
 				// 타입이 BigDecimal이다..	
@@ -99,7 +99,7 @@ public class AprvController {
 	// 4.참조자라면 확인
 	// 진행중이고 APRV_LV이=99
 	@GetMapping("/lists/v")
-	public String v(Model m) {
+	public String selectListVali(Model m) {
 		List<Map<String, Object>> vlist = getAprvListByEmpNo().stream()
 				.filter(map -> map.get("APRV_LV").equals(BigDecimal.valueOf(99))
 						&& map.get("DOC_STATCD").equals(BigDecimal.ZERO)
@@ -112,7 +112,7 @@ public class AprvController {
 
 	// 5.결재라인에 있으면 예정
 	@GetMapping("/lists/e")
-	public String e(Model m) {
+	public String selectListExpect(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
 				// 진행중인문서그리고 참조자가 아니어야함
 				.filter(map -> map.get("DOC_STATCD").equals(BigDecimal.ZERO)
@@ -139,7 +139,7 @@ public class AprvController {
 	// 6.결재라인에 있고 결재했으면 진행
 	// APRV_SQ=1 (결재완료) // DOC_STATCD가 ==0
 	@GetMapping("/lists/p")
-	public String p(Model m) {
+	public String selectListProgress(Model m) {
 		List<Map<String, Object>> plist = getAprvListByEmpNo().stream()
 				.filter(map -> map.get("APRV_SQ").equals(BigDecimal.ONE)
 						&& map.get("DOC_STATCD").equals(BigDecimal.ZERO))
@@ -151,7 +151,7 @@ public class AprvController {
 
 	// ========================================문서함================================================
 	@GetMapping("/box/all")
-	public String all(Model m) {
+	public String selectBoxAll(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
 				.filter(map -> !map.get("DOC_STATCD").equals(BigDecimal.ZERO)).collect(Collectors.toList());
 
@@ -160,7 +160,7 @@ public class AprvController {
 	}
 
 	@GetMapping("/box/write")
-	public String writer(Model m) {
+	public String selectBoxWrite(Model m) {
 		Employee e = (Employee) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int no = e.getEmpNo();
 
@@ -174,7 +174,7 @@ public class AprvController {
 	}
 
 	@GetMapping("/box/aprv")
-	public String aprv(Model m) {
+	public String selectBoxAprv(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream().filter(
 				map -> !map.get("DOC_STATCD").equals(BigDecimal.ZERO) && map.get("APRV_SQ").equals(BigDecimal.ONE))
 				.collect(Collectors.toList());
@@ -184,7 +184,7 @@ public class AprvController {
 	}
 
 	@GetMapping("/box/refer")
-	public String refer(Model m) {
+	public String selectBoxRefer(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
 				.filter(map -> !map.get("DOC_STATCD").equals(BigDecimal.ZERO)
 						&& map.get("APRV_LV").equals(BigDecimal.valueOf(99)))
@@ -195,7 +195,7 @@ public class AprvController {
 	}
 
 	@GetMapping("/box/return")
-	public String aprvreturn(Model m) {
+	public String selectBoxReturn(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
 				.filter(map -> map.get("DOC_STATCD").equals(BigDecimal.valueOf(-1))).collect(Collectors.toList());
 
