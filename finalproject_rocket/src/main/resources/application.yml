@@ -56,3 +56,4 @@ logging:
     '[org.springframework.web]': info
 pattern:
   console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+contextPath: /GDJ71_rocket_final
