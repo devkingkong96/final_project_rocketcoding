@@ -1,4 +1,4 @@
-var sockJS=new SockJS("/ws/chat");
+var sockJS=new SockJS(path+"/ws/chat");
   			  			var stomp=Stomp.over(sockJS);
   			  			
   			  			//Stomp 연결 시 실행

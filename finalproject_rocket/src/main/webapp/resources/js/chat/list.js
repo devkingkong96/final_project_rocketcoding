@@ -2,7 +2,7 @@
  * 
  */
  
-var sockJS=new SockJS("/ws/list");
+var sockJS=new SockJS(path+"/ws/list");
 var stomp=Stomp.over(sockJS);
 
  //Stomp 연결 시 실행
