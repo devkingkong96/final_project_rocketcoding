@@ -144,7 +144,7 @@
 	var alreadyLoggedIn = '${loginEmp}'; // 서버에서 전달한 로그인 여부 변수
 	
 	if (alreadyLoggedIn) {
-	  alert("다른 사용자가 이미 해당 계정으로 로그인했습니다. 동시 접속은 허용되지 않습니다.");
+	  alert("다른 사용자가 해당 계정으로 로그인했습니다. 동시 접속은 허용되지 않습니다.");
 	}
 
     document.getElementById('sendEmail').addEventListener('click', function () {

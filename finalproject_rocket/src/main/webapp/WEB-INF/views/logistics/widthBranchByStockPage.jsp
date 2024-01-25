@@ -3439,6 +3439,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                     </tbody>
                                     <tfoot style="background-color: #E6E6FA;">
                                     <tr>
+<%--                                        하이--%>
                                         <th colspan="2" style="text-align: center;">합계</th>
 
 

@@ -216,6 +216,14 @@
         AND prd_id IN (SELECT prd_id FROM SelectedProducts)
         AND branch_id IN (SELECT branch_id FROM SelectedBranches)
         ),
+        RecentStock AS (
+        SELECT s.prd_id, s.branch_id, s.stk_stock
+        FROM stock s
+        JOIN BranchProductRecentStockDate bprsd ON s.branch_id = bprsd.branch_id
+        AND s.prd_id = bprsd.prd_id AND s.stk_date = bprsd.recent_date
+        WHERE s.branch_id IN (SELECT branch_id FROM SelectedBranches) -- branchIdList에 따른 필터
+        AND s.prd_id IN (SELECT prd_id FROM SelectedProducts) -- prdIdList에 따른 필터
+        ),
         BranchStockSum AS (
         SELECT branch_id,
         SUM(stk_stock) AS total_branch_stock
@@ -267,7 +275,7 @@
             </choose>
         </if>
         ) AS TOTAL_PRICE_ALLPRD, -- 모든 품목에 대한 전체 판매가
-        SUM(s.stk_stock) OVER () AS TOTAL_STOCK_BY_ALLPRD,
+        SUM(rs.stk_stock) OVER () AS TOTAL_STOCK_BY_ALLPRD,
         COALESCE(BS1.total_branch_stock, 0) AS Branch1_Stock_Sum,
         COALESCE(BS2.total_branch_stock, 0) AS Branch2_Stock_Sum,
         COALESCE(BS3.total_branch_stock, 0) AS Branch3_Stock_Sum,
@@ -283,6 +291,7 @@
         FROM stock s
         JOIN product p ON s.prd_id = p.prd_id
         JOIN branch b ON s.branch_id = b.branch_id
+        JOIN RecentStock rs ON s.prd_id = rs.prd_id AND s.branch_id = rs.branch_id
         JOIN BranchProductRecentStockDate rsd ON s.stk_date = rsd.recent_date
         JOIN SelectedBranchStock sbs ON s.prd_id = sbs.prd_id AND s.branch_id = sbs.branch_id
 

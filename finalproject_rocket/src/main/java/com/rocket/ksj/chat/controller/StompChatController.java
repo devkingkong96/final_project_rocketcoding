@@ -104,7 +104,7 @@ public class StompChatController {
 	//채팅방에서 모달 초대된 직원 목록 빼기
 	@MessageMapping("/chat/leave")
 	public void RoomDeleteEmployees(ChatMessage msg) {
-		log.info("받아온 메시지 정보 : {}",msg);
+//		log.info("받아온 메시지 정보 : {}",msg);
 		
 		template.convertAndSend("/sub/chat/room/"+msg.getMsgRoomNo(),msg);
 	}
@@ -112,7 +112,7 @@ public class StompChatController {
 	//리스트에서 채팅방 생성(초대한 멤버들 리스트 갱신 시키기)
 	@MessageMapping("/list/invite")
 	public void ListInviteEmployees(List<Object>param) {
-		log.info("초대한 리스트 MessageMapping{}",param);
+//		log.info("초대한 리스트 MessageMapping{}",param);
 		Map<String, Object>responseData = new HashMap<>();
 		responseData.put("inviteemps",param);
 		responseData.put("type", "CREATEROOM");
@@ -122,7 +122,7 @@ public class StompChatController {
 	//채팅방에서 초대한 멤버들 리스트 갱신 시키기)
 	@MessageMapping("/list/refresh")
 	public void ListRefreshEmployees(List<Object>param) {
-		log.info("초대한 리스트 MessageMapping{}",param);
+//		log.info("초대한 리스트 MessageMapping{}",param);
 		Map<String, Object>responseData = new HashMap<>();
 		responseData.put("refreshemps",param);
 		responseData.put("type", "REFRESHROOM");
@@ -132,7 +132,7 @@ public class StompChatController {
 	//채팅방에서 입력중일 때 ... 표시
 	@MessageMapping("/chat/inputting")
 	public void ChatInputting(ChatMessage chatMsg) {
-		log.info("입력중인 메시지 정보{}",chatMsg);
+//		log.info("입력중인 메시지 정보{}",chatMsg);
 		
 		template.convertAndSend("/sub/chat/room/"+chatMsg.getMsgRoomNo(),chatMsg);
 	}
@@ -140,7 +140,7 @@ public class StompChatController {
 	//채팅방에서 입력중이 아닐 때
 	@MessageMapping("/chat/cancel")
 	public void ChatCancel(ChatMessage chatMsg) {
-		log.info("입력중인 메시지 정보{}",chatMsg);
+//		log.info("입력중인 메시지 정보{}",chatMsg);
 		
 		template.convertAndSend("/sub/chat/room/"+chatMsg.getMsgRoomNo(),chatMsg);
 	}
@@ -148,7 +148,7 @@ public class StompChatController {
 	//알림 기능(방 초대)
 	@MessageMapping("/alarm/chat")
 	public void AlarmChat(ChatMessage msg) {
-		log.info("알람 : {}"+msg);
+//		log.info("알람 : {}"+msg);
 		
 		template.convertAndSend("/sub/*",msg);
 	}
