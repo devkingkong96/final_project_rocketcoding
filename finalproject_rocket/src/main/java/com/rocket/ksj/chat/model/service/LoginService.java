@@ -52,9 +52,9 @@ public class LoginService {
 	}
 	
 	public void sendEmail(String email,String empNo,String tmpPwd) {
-		log.info("이메일{}",email);
-		log.info("이메일{}",empNo);
-		log.info("이메일{}",tmpPwd);
+//		log.info("이메일{}",email);
+//		log.info("이메일{}",empNo);
+//		log.info("이메일{}",tmpPwd);
 		String subject="[RocketERP] 임시비밀번호 발급 안내";
 		String msg="";
 		msg+="<div align='center' style='border:1px solid black; font-family:verdana'>";
