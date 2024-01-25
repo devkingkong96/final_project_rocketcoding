@@ -58,28 +58,15 @@
 			FROM  COMMUTE c
 			JOIN EMPLOYEE e ON c.EMP_NO = e.EMP_NO
 			JOIN DWRULES d ON e.DWRULES_CODE = d.DWRULES_CODE
-			WHERE e.EMP_NO = #{empNo} AND ROWNUM = 1	
+			WHERE e.EMP_NO = #{empNo}
 	</select>
 	
 	<select id="MypageCalendar" resultType="hashMap">
-		<!-- SELECT
-		      CASE 
-		            WHEN ROUND((TO_DATE(substr(c.COM_ENROLL,10,5), 'HH24:MI') - TO_DATE(d.DWRULES_START, 'HH24:MI')) * 24, 2) >= 0 THEN '지각'
-		            WHEN TO_DATE(substr(c.COM_END,10,5), 'HH24:MI') BETWEEN TO_DATE(d.DWRULES_EARLY, 'HH24:MI') AND TO_DATE(d.DWRULES_END, 'HH24:MI') THEN '조퇴'
-		            ELSE '출근' 
-		      END AS status,
-		       c.COM_ENROLL AS START_DAY,
-		       NULL AS END_DAY
-		FROM  COMMUTE c
-		JOIN EMPLOYEE e ON c.EMP_NO = e.EMP_NO
-		JOIN DWRULES d ON e.DWRULES_CODE = d.DWRULES_CODE
-		WHERE e.EMP_NO = #{empNo}
-		UNION
-		SELECT DECODE(DOC_STATCD,'0','신청','1','승인','반려') AS STATUS, START_DATE, END_DATE FROM DOCUMENT
-		WHERE EMP_NO=#{empNo} AND DOC_TAG=1 -->
 		SELECT
+		TO_DATE(to_char(c.COM_ENROLL,'HH24:mi'), 'HH24:MI') as st,
+		
       CASE 
-            WHEN ROUND((TO_DATE(substr(c.COM_ENROLL,10,5), 'HH24:MI') - TO_DATE(d.DWRULES_START, 'HH24:MI')) * 24, 2) >= 0 THEN '지각'
+            WHEN ROUND((TO_DATE(to_char(c.COM_ENROLL,'HH24:mi'), 'HH24:MI') - TO_DATE(d.DWRULES_START, 'HH24:MI')) * 24, 2) >= 0 THEN '지각'
             WHEN TO_DATE(substr(c.COM_END,10,5), 'HH24:MI') BETWEEN TO_DATE(d.DWRULES_EARLY, 'HH24:MI') AND TO_DATE(d.DWRULES_END, 'HH24:MI') THEN '조퇴'
             ELSE '출근' 
       END AS status,
@@ -90,7 +77,7 @@
 		JOIN DWRULES d ON e.DWRULES_CODE = d.DWRULES_CODE
 		WHERE e.EMP_NO = #{empNo}
 		UNION
-		SELECT DECODE(DOC_STATCD, '0', '휴가신청', '1', '휴가승인') AS STATUS, TO_CHAR(START_DATE,'YYYY-MM-DD HH24:MI'), END_DATE FROM DOCUMENT
+		SELECT null, DECODE(DOC_STATCD, '0', '휴가신청', '1', '휴가승인') AS STATUS, TO_CHAR(START_DATE,'YYYY-MM-DD HH24:MI'), END_DATE FROM DOCUMENT
 		WHERE EMP_NO=#{empNo} AND DOC_TAG=1 AND DECODE(DOC_STATCD, '0', '휴가신청', '1', '휴가승인') IS NOT NULL
 	</select>
 	

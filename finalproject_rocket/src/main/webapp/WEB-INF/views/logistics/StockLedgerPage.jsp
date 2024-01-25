@@ -1409,9 +1409,9 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                           </div>
                                                       </div>--%>
 
-                                    <c:forEach items="${groupedBySendBrcIdAndPrdId}" var="sendBrcEntry">
+                                    <c:forEach items="${groupedBySendBrcIdAndPrdId}" var="sendBrcEntry" varStatus="status2">
                                         <%--                                    <h2>Branch ID: ${sendBrcEntry.key}</h2>--%>
-                                        <c:forEach items="${sendBrcEntry.value}" var="prdEntry" varStatus="status">
+                                        <c:forEach items="${sendBrcEntry.value}" var="prdEntry" varStatus="status4">
                                             <%--                                        <h3>Product ID: ${prdEntry.key}</h3>--%>
                                             <div style="overflow: hidden; width: 60%; margin-right: auto;"
                                                  class="top">
@@ -1456,7 +1456,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
 
 
                                                 <c:set var="previousMonth" value=""/> <!-- 이전 달의 이름을 저장하는 변수 초기화 -->
-                                                <c:forEach items="${prdEntry.value}" var="record" varStatus="status">
+                                                <c:forEach items="${prdEntry.value}" var="record" varStatus="status3">
                                                     <c:if test="${status.first}">
                                                         <!-- 각 섹션의 첫 번째 레코드에 PREVIOUS_STOCK 값 출력 -->
                                                         <tr class="bt-1 border-primary">
@@ -1555,7 +1555,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                             <div style="overflow: hidden; width: 60%; margin-right: auto;"
                                                  class="bottom">
                                                 <p style="float: left; margin-left:20px; margin-top:10px;">
-                                                    [ ${status.index + 1} 페이지
+                                                    [ ${status4.index + 1} 페이지
                                                     ]</p>
                                                     <%--     <p style="float: right; margin-top: 40px; margin-right:40px;">기간
                                                              : ${startDateHiddenValue}
@@ -1571,6 +1571,7 @@ src="https://cdn.datatables.net/datetime/1.5.1/js/dataTables.dateTime.min.js"></
                                                 </p>
                                             </div>
                                         </c:forEach>
+
                                     </c:forEach>
                                 </div>
                             </div>

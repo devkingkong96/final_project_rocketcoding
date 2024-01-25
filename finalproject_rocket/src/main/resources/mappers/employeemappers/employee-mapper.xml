@@ -94,7 +94,7 @@
                   #{empEmail},
                   #{depCode},
                   #{dwruleCode},
-                  rocket20240125_12241730991_75.png
+                  null
               )
     </insert>
 
