@@ -263,10 +263,10 @@ function onError(){
   						mediaBodyDiv.appendChild(firstParagraph);
 
   						// 두 번째 p 요소를 생성합니다.
-  						var secondParagraph = document.createElement("p");
-  						/* secondParagraph.textContent = "참여 인원 수 : " + data.EMP_COUNT; */
+  						/* var secondParagraph = document.createElement("p");
+  						secondParagraph.textContent = "참여 인원 수 : " + data.EMP_COUNT;
 						secondParagraph.textContent = "마지막 채팅 내역 : ";
-  						mediaBodyDiv.appendChild(secondParagraph);
+  						mediaBodyDiv.appendChild(secondParagraph); */
 
   						mediaDiv.appendChild(mediaBodyDiv);
 
@@ -446,10 +446,10 @@ function onError(){
   						mediaBodyDiv.appendChild(firstParagraph);
 
   						// 두 번째 p 요소를 생성합니다.
-  						var secondParagraph = document.createElement("p");
+  						/* var secondParagraph = document.createElement("p");
   						secondParagraph.textContent = "참여 인원 수 : " + data.EMP_COUNT;
 
-  						mediaBodyDiv.appendChild(secondParagraph);
+  						mediaBodyDiv.appendChild(secondParagraph); */
 
   						mediaDiv.appendChild(mediaBodyDiv);
 

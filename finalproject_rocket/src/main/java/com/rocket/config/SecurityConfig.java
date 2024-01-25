@@ -4,11 +4,14 @@ import com.rocket.security.DBConnectionProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -16,6 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final DBConnectionProvider dbprovider;
+//    private final AuthenticationFailureHandler customFailureHandler;
 
     @Bean
     SecurityFilterChain authenticationPath(HttpSecurity http) throws Exception {
@@ -32,7 +36,8 @@ public class SecurityConfig {
                 .formLogin(formlogin->{
                     formlogin.loginPage("/login") //로그인 페이지
                              .successForwardUrl("/")
-                             .failureForwardUrl("/login")
+//                             .failureHandler(customFailureHandler)
+//                             .failureForwardUrl("/login")
                              .usernameParameter("empNo")
                              .passwordParameter("empPw");
                 })
@@ -70,4 +75,10 @@ public class SecurityConfig {
     public SessionRegistry sessionRegistry() {
     	return new SessionRegistryImpl();
     }
+    
+//    //에러 핸들러
+//    @Bean
+//    AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
+//    	return authenticationConfiguration.getAuthenticationManager();
+//    }
 }
