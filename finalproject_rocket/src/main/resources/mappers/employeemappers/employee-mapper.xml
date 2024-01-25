@@ -94,7 +94,7 @@
                   #{empEmail},
                   #{depCode},
                   #{dwruleCode},
-                  null
+                  'rocket20240125_11241101356_891.png'
               )
     </insert>
 
