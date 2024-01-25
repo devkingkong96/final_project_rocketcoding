@@ -48,7 +48,7 @@ logging:
   level:
     '[com.rocket]': debug
     '[jdbc.sqlonly]': off
-    '[jdbc.resultsettable]': debug
+    '[jdbc.resultsettable]': off
     '[jdbc.audit]': off
     '[jdbc.resultset]': off
     '[jdbc.connection]': error
