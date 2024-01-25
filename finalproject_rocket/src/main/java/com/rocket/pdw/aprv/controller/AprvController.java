@@ -72,7 +72,8 @@ public class AprvController {
 				// 타입이 BigDecimal이다..	
 				// 진행중인문서그리고 참조자가 아니어야함
 				.filter(map -> map.get("DOC_STATCD").equals(BigDecimal.ZERO)
-						&& !map.get("APRV_LV").equals(BigDecimal.valueOf(99)))
+						&& !map.get("APRV_LV").equals(BigDecimal.valueOf(99))
+					    && map.get("APRV_SQ").equals(BigDecimal.ZERO))
 				.collect(Collectors.toList());
 
 		List<Map<String, Object>> ckLvList = alist.stream().map(oldMap -> {
@@ -90,6 +91,8 @@ public class AprvController {
 				.collect(Collectors.toList());
 		
 		m.addAttribute("lists", wlist);
+		
+		System.out.println("wlist : "+wlist);
 		return "aprv/aprvlists";
 	}
 

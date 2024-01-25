@@ -405,7 +405,7 @@
                                                     class="path1"></span><span class="path2"></span></i>전체</a></li>
                                         <li class='<%= request.getRequestURI().contains("docu") ? "active" : "" %>'>
                                             <a href="${path}/docu/lists/w"><i class="icon-Commit"><span
-                                                    class="path1"></span><span class="path2"></span></i>대기</a>
+                                                    class="path1"></span><span class="path2"></span></i>대기 [<span id="countList2" style="font-size: large;"></span>]</a>
                                                     
                                         </li>
                                         <li class='<%= request.getRequestURI().contains("docu") ? "active" : "" %>'>
@@ -479,9 +479,10 @@ $(document).ready(function(){
         url: `${path}/docu/countlist`,
         type: 'GET',
         success: function(response) {
-            console.log(response);
+            
             var res = response;
             document.getElementById('countList').innerHTML = res;
+            document.getElementById('countList2').innerHTML = res;
         }
     });
 });
