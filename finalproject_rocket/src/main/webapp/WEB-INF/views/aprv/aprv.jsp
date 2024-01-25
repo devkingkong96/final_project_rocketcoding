@@ -262,9 +262,6 @@ const docNo = "${docNo}";
 const empNo = "${user.empNo}";
 
 
-    
-
-
  function aprv() {
     $.ajax({
         type: "POST",
@@ -294,13 +291,13 @@ const empNo = "${user.empNo}";
 
 <script>
 function reject() {
-    $.ajax({
+	$.ajax({
         type: "POST",
-        url: `${path}/docu/rejectAprv`,
+        url: `${path}/docu/rejectaprv`,
         data: {
             DOC_NO: docNo,
             EMP_NO: empNo
-        },
+        }, 
         dataType: "text",
         success: function(response){
         	console.log(response);

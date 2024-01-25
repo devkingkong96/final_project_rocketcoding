@@ -400,10 +400,7 @@ public class AprvController {
 		
 		
 		int result = service.updateAprv(reqAll);
-		
-		
-		
-		
+	
 			
 		if (result > 0) {
 			return ResponseEntity.ok().body("결재 성공");
@@ -415,7 +412,7 @@ public class AprvController {
 
 
 	}
-	@PostMapping("/rejectAprv")
+	@PostMapping("/rejectaprv")
 	@ResponseBody
 	public ResponseEntity<?> rejectAprv(HttpServletRequest req) {
 		
@@ -545,7 +542,8 @@ public class AprvController {
 				// 타입이 BigDecimal이다..	
 				// 진행중인문서그리고 참조자가 아니어야함
 				.filter(map -> map.get("DOC_STATCD").equals(BigDecimal.ZERO)
-						&& !map.get("APRV_LV").equals(BigDecimal.valueOf(99)))
+						&& !map.get("APRV_LV").equals(BigDecimal.valueOf(99))
+					    && map.get("APRV_SQ").equals(BigDecimal.ZERO))
 				.collect(Collectors.toList());
 
 		List<Map<String, Object>> ckLvList = alist.stream().map(oldMap -> {
@@ -561,6 +559,8 @@ public class AprvController {
 		
 		List<Map<String, Object>> wlist = ck.stream().filter(map -> map.get("APRV_SQ").equals(BigDecimal.ONE))
 				.collect(Collectors.toList());
+		
+		
 		int size= wlist.size();
 		String resize = String.valueOf(size);
 		
