@@ -66,6 +66,7 @@
                                                placeholder="비밀번호">
                                     </div>
                                 </div>
+                                <%-- <div><p><c:if test="${not empty errormsg }"><c:out value="${errormsg }"></c:out></c:if></p></div> --%>
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="checkbox">

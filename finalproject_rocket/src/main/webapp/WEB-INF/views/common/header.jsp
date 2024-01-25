@@ -405,7 +405,7 @@
                                                     class="path1"></span><span class="path2"></span></i>전체</a></li>
                                         <li class='<%= request.getRequestURI().contains("docu") ? "active" : "" %>'>
                                             <a href="${path}/docu/lists/w"><i class="icon-Commit"><span
-                                                    class="path1"></span><span class="path2"></span></i>대기</a>
+                                                    class="path1"></span><span class="path2"></span></i>대기 [<span id="countList2" style="font-size: large;"></span>]</a>
                                                     
                                         </li>
                                         <li class='<%= request.getRequestURI().contains("docu") ? "active" : "" %>'>
@@ -472,16 +472,17 @@
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 <script>
-
+var path='${path}';
 
 $(document).ready(function(){
     $.ajax({
         url: `${path}/docu/countlist`,
         type: 'GET',
         success: function(response) {
-            console.log(response);
+            
             var res = response;
             document.getElementById('countList').innerHTML = res;
+            document.getElementById('countList2').innerHTML = res;
         }
     });
 });
@@ -489,7 +490,7 @@ $(document).ready(function(){
 
 </script>
 <script>
-	var sockJS=new SockJS("/ws/alarm");
+	/* var sockJS=new SockJS("/ws/alarm"); */
 
 	/* var sockJS=new SockJS("/ws/alarm");
 	var stomp=Stomp.over(sockJS);

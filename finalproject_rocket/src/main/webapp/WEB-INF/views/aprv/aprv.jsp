@@ -73,7 +73,7 @@
 																	    <img src="https://approval.office.hiworks.com/gabia.biz/approval/sign/approval/A/2/87786" 
 																	        style="width: 70%; height: auto; max-width: none;" 
 																	        alt="아이콘">
-																	    <p style="color: gray; margin: 0;"><fmt:formatDate value="${doc.APRV_DATE }" pattern="yyyy-MM-DD"/></p>
+																	    <p style="color: gray; margin: 0;"><fmt:formatDate value="${doc.APRV_DATE }" pattern="yyyy-MM-dd"/></p>
 																	</td>
 																															        
 														        
@@ -93,6 +93,7 @@
 														                <img src="https://approval.office.hiworks.com/gabia.biz/approval/sign/approval/A/4/87789" 
 														                    style="width: 100%; height: 100%"
 														                    alt="아이콘">
+														                <p style="color: gray; margin: 0;"><fmt:formatDate value="${doc.APRV_DATE }" pattern="yyyy-MM-dd"/></p>
 														            </td>
 														        </c:if>
 														    </c:if>
@@ -175,10 +176,10 @@
                     <td>기간</td>
                     <td >
                     <p id="startDate"></p>
-                    	<fmt:formatDate value="${docu[0]['START_DATE']}" pattern="yyyy-MM-DD"/>
+                    	<fmt:formatDate value="${docu[0]['START_DATE']}" pattern="yyyy-MM-dd"/>
                     
                     <p id="endDate"></p>
-                    	<fmt:formatDate value="${docu[0]['END_DATE']}" pattern="yyyy-MM-DD"/>
+                    	<fmt:formatDate value="${docu[0]['END_DATE']}" pattern="yyyy-MM-dd"/>
                     </td>
                 </tr>
                 <tr>
@@ -192,7 +193,7 @@
                 </tr>
                 <tr style="height: 500px">
                     <td colspan="2" style="text-align: center;">상기와 같은 이유로 휴가를 신청합니다.<br><br><br><br><br><br>
-                   	<fmt:formatDate value="${docu[0]['U_DATE']}" pattern="yyyy-MM-DD"/>
+                   	<fmt:formatDate value="${docu[0]['U_DATE']}" pattern="yyyy-MM-dd"/>
                    	</td> 
                 </tr>
             </tbody>
