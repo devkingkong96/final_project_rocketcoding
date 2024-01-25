@@ -63,8 +63,8 @@
 	
 	<select id="MypageCalendar" resultType="hashMap">
 		SELECT
-		TO_DATE(substr(c.COM_ENROLL,10,5), 'HH24:MI') as start,
-		TO_DATE(d.DWRULES_START, 'HH24:MI') as dw,
+		to_char(TO_DATE(substr(c.COM_ENROLL,10,5), 'HH24:MI'),'yy/mm/dd hh24:mi') as startd,
+		to_char(TO_DATE(d.DWRULES_START, 'HH24:MI'),'yy/mm/dd hh24:mi') as dw,
       CASE 
             WHEN ROUND((TO_DATE(substr(c.COM_ENROLL,10,5), 'HH24:MI') - TO_DATE(d.DWRULES_START, 'HH24:MI')) * 24, 2) >= 0 THEN '지각'
             WHEN TO_DATE(substr(c.COM_END,10,5), 'HH24:MI') BETWEEN TO_DATE(d.DWRULES_EARLY, 'HH24:MI') AND TO_DATE(d.DWRULES_END, 'HH24:MI') THEN '조퇴'
