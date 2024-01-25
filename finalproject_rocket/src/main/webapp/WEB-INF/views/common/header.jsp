@@ -372,18 +372,17 @@
                             </a>
                         </li>
 						<li class="treeview">
-                            <a href="${path}/docu/lists/w">
+                            <a href="#">
                             	<div style="position: relative; display: flex">
                                 <img style="width: 35px; height: 28px; filter : grayscale(100%); position: relative; z-index: 1;"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy9Jc1pfkjTgTIyPDX2byAiDFXg9X-vbgiQA&usqp=CAU"><span class="path1"></span><span class="path2"></span></i>
-          						<div class="" style="position: absolute; top: -7; left: -5; z-index: 2; height: 18px; width: 18px; background-color: #A374DB; border-radius: 16px" >
+          						<div class="" style="position: absolute; top: -7px; left: -5px; z-index: 2; height: 18px; width: 18px; background-color: #A374DB; border-radius: 16px" >
           						
-                                 <p id="countList" style="position: absolute; top: -2.2; left: 4.7; z-index: 3; color: white; font-size: 14px;">
-                                
+                                 <p id="countList" style="position: absolute; top: -2.2px; left: 4.7px; z-index: 3; color: white; font-size: 14px;">
+											
                                 </p> 
           						</div>
                                 </div>
-                                
-                                <span style="position: absolute; top: 10; left: 50;">전자결재</span>
+                                <span style="position: absolute; top: 10px; left: 50px;">전자결재</span>
                                 <span class="pull-right-container">
 					  <i class="fa fa-angle-right pull-right"></i>
 					</span>
@@ -485,14 +484,13 @@ $(document).ready(function(){
         }
     });
 });
-
+ 
 
 </script>
 <script>
 	var sockJS=new SockJS("/ws/alarm");
 
 	/* var sockJS=new SockJS("/ws/alarm");
->>>>>>> branch 'dev' of https://github.com/devkingkong96/final_project_rocketcoding.git
 	var stomp=Stomp.over(sockJS);
 		
 	stomp.connect({},onConnected,onError);

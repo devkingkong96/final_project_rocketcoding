@@ -104,7 +104,7 @@
 	                                              <div class="media-list media-list-hover" id="empslist${e.EMP_NO }">
 	                                                <div class="media py-10 px-0 align-items-center">
 	                                                  <p class="avatar avatar-lg status-success">
-	                                                    <img src="${path}/resources/images/avatar/1.jpg" alt="...">
+	                                                    <img src="${path}/resources/upload/profile/${e.EMP_FILE}" alt="...">
 	                                                  </p>
 	                                                  <div class="media-body">
 	                                                    <p class="fs-20">

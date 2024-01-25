@@ -333,7 +333,7 @@ function onError(){
 
   						// avatar 내부의 img 요소를 생성합니다.
   						var img = document.createElement("img");
-  						img.src = "${path}/resources/images/avatar/1.jpg";
+  						img.src = path + "/resources/upload/profile/" + data.EMP_FILE;
   						img.alt = "...";
   						avatar.appendChild(img);
 

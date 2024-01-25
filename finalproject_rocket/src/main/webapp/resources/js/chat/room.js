@@ -72,6 +72,7 @@ var sockJS=new SockJS(path+"/ws/chat");
   			  					var depName = chat.depName;
   			  					var empLv = chat.empLv;
   			  					var empName = chat.msgEmpName;
+  			  					var empFile = chat.empFile;
   			  					
   			  					console.log("empNo:"+empNo);
   			  					
@@ -97,7 +98,7 @@ var sockJS=new SockJS(path+"/ws/chat");
   			  						$avatar.classList.add('avatar', 'avatar-lg', 'status-success');
 
   			  						var $avatarImage = document.createElement('img');
-  			  						$avatarImage.src = path+'/resources/images/avatar/1.jpg';
+  			  						$avatarImage.src = path + '/resources/upload/profile/' + empFile;
   			  						$avatarImage.alt = '...';
 
   			  						var $mediaBody = document.createElement('div');
@@ -170,7 +171,7 @@ var sockJS=new SockJS(path+"/ws/chat");
   			  						$avatar.classList.add('avatar', 'avatar-lg', 'status-success');
 
   			  						var $avatarImage = document.createElement('img');
-  			  						$avatarImage.src = path+'/resources/images/avatar/1.jpg';
+  			  						$avatarImage.src = path + '/resources/upload/profile/' + map.EMP_FILE;
   			  						$avatarImage.alt = '...';
 
   			  						var $mediaBody = document.createElement('div');
@@ -631,7 +632,8 @@ var sockJS=new SockJS(path+"/ws/chat");
   				  						type:"LEAVEROOM",
   				  						empLv:userlv,
   				  	  					depName:userdept,
-  				  	  					msgEmpName:username
+  				  	  					msgEmpName:username,
+  				  	  					empFile:userfile
   				  				}
   				  				$.ajax({
   				  					url:path+'/chat/room/'+roomId,
@@ -752,7 +754,7 @@ var sockJS=new SockJS(path+"/ws/chat");
   						  						$avatar.classList.add('avatar', 'avatar-lg', 'status-success');
   					
   						  						var $avatarImage = document.createElement('img');
-  						  						$avatarImage.src = path+'/resources/images/avatar/1.jpg';
+  						  						$avatarImage.src = path + '/resources/upload/profile/' + data.EMP_FILE;
   						  						$avatarImage.alt = '...';
   					
   						  						var $mediaBody = document.createElement('div');

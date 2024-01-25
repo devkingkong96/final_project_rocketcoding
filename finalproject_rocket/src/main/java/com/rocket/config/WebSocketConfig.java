@@ -23,10 +23,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 //		registry.addEndpoint("/ws/chat").setAllowedOrigins("*").withSockJS(); //.withSockJs(); ->연결될 엔드포인트
 		registry.addEndpoint("/ws/chat").setAllowedOrigins("http://localhost:8080").withSockJS(); //Sockjs는 보안이슈로 와일드카드 허용 X
 		registry.addEndpoint("/ws/list").setAllowedOrigins("http://localhost:8080").withSockJS(); //채팅방 목록
-		registry.addEndpoint("/ws/alarm").setAllowedOrigins("http://localhost:8080").withSockJS(); 
-		registry.addEndpoint("/ws/chat").setAllowedOrigins("http://14.36.141.71:15555/"+path).withSockJS();
+//		registry.addEndpoint("/ws/alarm").setAllowedOrigins("http://localhost:8080").withSockJS(); 
+		registry.addEndpoint("/ws/chat").setAllowedOrigins("http://14.36.141.71:15555/"+path).withSockJS(); //채팅방
 		registry.addEndpoint("/ws/list").setAllowedOrigins("http://14.36.141.71:15555/"+path).withSockJS(); 
-		registry.addEndpoint("/ws/alarm").setAllowedOrigins("http://14.36.141.71:15555/"+path).withSockJS();
+//		registry.addEndpoint("/ws/alarm").setAllowedOrigins("http://14.36.141.71:15555/"+path).withSockJS();
 	}
 	
 	@Override

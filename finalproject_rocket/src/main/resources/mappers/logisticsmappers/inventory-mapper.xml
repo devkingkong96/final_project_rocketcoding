@@ -176,6 +176,8 @@
         ORDER BY iv_date DESC
 
     </select>
+
+
     <!-- <update id="updateColumn" parameterType="map"> UPDATE EMPLOYEE SET
         EMP_NAME = '김영희' WHERE EMP_NO = (SELECT send_emp_id FROM INVENTORY WHERE
         iv_id = 163); </update> -->

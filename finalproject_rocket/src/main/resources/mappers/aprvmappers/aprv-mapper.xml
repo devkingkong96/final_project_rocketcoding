@@ -74,7 +74,7 @@
         </update>
         
         <select id="cheackSaveFile" parameterType="_int" resultType="hashMap">
-           SELECT * FROM DOCUMENT WHERE DOC_STATCD = 2 AND EMP_NO = '${no}' ORDER BY U_DATE DESC 
+           SELECT * FROM DOCUMENT WHERE DOC_STATCD = 2 AND EMP_NO = '${no}' ORDER BY U_DATE DESC
         </select>
         <update id="updateDocuBySave" parameterType="hashMap">
            UPDATE DOCUMENT SET DOC_STATCD='0',U_DATE=SYSDATE,DOC_TITLE='${DOC_TITLE}' WHERE DOC_NO='${DOC_NO}'
@@ -82,7 +82,7 @@
         
         <insert id="fistAprv" parameterType="hashMap">
           <choose>
-              <when test="DOC_NO != ''">
+              <when test="DOC_NO != null">
                   INSERT INTO APPROVAL VALUES(SEQ_APRV_NO.NEXTVAL,'${APRV_SQ}','${APRV_LV}',NULL,'${DOC_NO}',SYSDATE,'${APRV_EMP}')        
               </when>
               <otherwise>
@@ -90,10 +90,9 @@
               </otherwise>
           </choose>
       </insert>
-      
       <insert id="insertAprv" parameterType="hashMap">
           <choose >
-              <when  test="DOC_NO != ''" >
+              <when  test="DOC_NO != null" >
                   INSERT INTO APPROVAL VALUES(SEQ_APRV_NO.NEXTVAL,'${APRV_SQ}','${APRV_LV}',NULL,'${DOC_NO}',NULL,'${APRV_EMP}')        
               </when>
               <otherwise>
@@ -109,5 +108,8 @@
         </select>
         <select id="countSaveList" parameterType="_int" resultType="int">
            SELECT COUNT(*) FROM DOCUMENT WHERE DOC_STATCD=2 AND EMP_NO='${no}'
-        </select> 
+        </select>
+        <delete id="deleteSaveFile">
+			DELETE DOCUMENT WHERE DOC_STATCD=2
+		</delete> 
 </mapper>
