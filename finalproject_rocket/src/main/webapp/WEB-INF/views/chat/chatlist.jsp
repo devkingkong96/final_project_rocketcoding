@@ -54,7 +54,7 @@
 												  <span class="float-end fs-10"><fmt:formatDate value="${c.CREATED_AT }" pattern="yyyy.MM.dd" /></span>
 												</p>
 												<%-- <p>참여 인원 수 : <c:out value="${c.EMP_COUNT }"/></p> --%>
-												<p>마지막 채팅 내역 : </p>
+												<!-- <p>마지막 채팅 내역 : </p> -->
 											  </div>
 											  <input type="checkbox" id="ch${c.CHATROOM_NO }" class="filled-in chk-col-danger" name="roomCheck" value="${c.CHATROOM_NO}"/>
 												<label for="ch${c.CHATROOM_NO }"> </label>
