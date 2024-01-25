@@ -81,7 +81,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-    <form id="departmentForm" action="/department/add" method="post">
+    <form id="departmentForm" action="${path}/department/add" method="post">
         <table class="table table-striped-columns">
             <tr>
                 <td>부서명</td>
