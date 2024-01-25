@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="col-lg-3 col-12">
                                 <div class="user-bg">
-                                    <form action="${path }/upload" method="post" enctype="multipart/form-data">
+                                    <form action="${path}/upload" method="post" enctype="multipart/form-data">
                                         <input type="file" id="fileUpload" style="display:none" name="file" onchange="form.submit()"/>
                                         <img src="${path}/resources/upload/profile/${loginEmp.empFile}" alt="user" width="200px" height="200px" id="userImage" onclick="document.getElementById('fileUpload').click();"/>
                                     </form>

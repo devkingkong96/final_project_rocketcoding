@@ -182,7 +182,7 @@ $(document).ready(function() {
         var employeeName = $(this).val();
 
         $.ajax({
-            url: '/employeesearch',
+            url: '${path}/employeesearch',
             method: 'get',
             data: { employeeName: employeeName },
             success: function(byname) {
@@ -212,7 +212,7 @@ $(document).ready(function() {
         console.log(dataToSend);  
 
         $.ajax({
-            url: '/employeeCalendar',
+            url: '${path}/employeeCalendar',
             method: 'get',
             data: dataToSend,/*  */
             success: function(byname) {
@@ -252,7 +252,7 @@ $(document).ready(function() {
         eventLimit: true,
         events: function(start, end, timezone, callback) {
             $.ajax({
-                url: '/myevents/' + employeeName,
+                url: '${path}/myevents/' + employeeName,
                 method: 'GET',
                 success: function(data) {
                 	var events = data.map(function(event) {
