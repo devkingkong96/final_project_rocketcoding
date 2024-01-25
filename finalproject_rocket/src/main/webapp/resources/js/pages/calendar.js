@@ -26,7 +26,7 @@ CalendarApp.prototype.onSelect = function(start, end, allDay) {
 		prevForm=document.createElement("form");
 		prevForm.setAttribute("id","holy");
   	 	prevForm.setAttribute("method", "get");
-    	prevForm.setAttribute("action", `/docu/insertaprv`);
+    	prevForm.setAttribute("action", path+`/docu/insertaprv`);
 	}
 	prevForm.innerHTML="";
     // form 생성
