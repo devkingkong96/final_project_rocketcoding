@@ -74,7 +74,7 @@ CalendarApp.prototype.init = function() {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
-       	events: this.$calendar[0].id === 'mycal1' ? null : "/myevents",
+       	events: this.$calendar[0].id === 'mycal1' ? null : path+"/myevents",
         eventDataTransform: function(eventData) {
 			
     console.log(eventData);
