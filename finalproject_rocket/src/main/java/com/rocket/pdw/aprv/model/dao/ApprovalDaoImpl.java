@@ -51,12 +51,6 @@ public class ApprovalDaoImpl implements ApprovalDao{
 	@Transactional
 	public int insertAprvDocu(SqlSession session, Map<String, Object> reqAll) {
 	    
-		System.out.println(reqAll);
-		System.out.println(reqAll.get("START_DATE"));
-		System.out.println(reqAll.get("START_DATE"));
-		System.out.println(reqAll.getClass());
-		System.out.println(reqAll.get("START_DATE").getClass());
-		System.out.println(reqAll.get("END_DATE").getClass());
 		try {
 		//임시저장된거 다시 저장하기	
 		if(reqAll.containsKey("DOC_NO")) {
