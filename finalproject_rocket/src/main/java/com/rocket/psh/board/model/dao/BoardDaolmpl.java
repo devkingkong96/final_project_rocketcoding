@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import com.rocket.psh.board.model.dto.Fboard;
 import com.rocket.psh.board.model.dto.FboardFile;
 
-import jakarta.transaction.Transactional;
 
 @Repository
 
