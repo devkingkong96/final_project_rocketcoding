@@ -102,7 +102,7 @@
           </choose>
       </insert>
         <insert id="savedocu" parameterType="hashMap">
-           INSERT INTO DOCUMENT VALUES(SEQ_DOC_NO.NEXTVAL,'${DOC_TAG}','${DOC_TITLE}','${DOC_CONT}',2,SYSDATE,${EMP_NO},'${START_DATE}','${END_DATE}')
+           INSERT INTO DOCUMENT VALUES(SEQ_DOC_NO.NEXTVAL,'${DOC_TAG}','${DOC_TITLE}','${DOC_CONT}',2,SYSDATE,${EMP_NO},TO_DATE(#{START_DATE},'YYYY-MM-DD'),TO_DATE(#{END_DATE},'YYYY-MM-DD'))
         </insert>
         <select id="selectSaveList" parameterType="_int" resultType="hashMap">
            SELECT * FROM DOCUMENT WHERE DOC_STATCD=2 AND EMP_NO='${no}'
