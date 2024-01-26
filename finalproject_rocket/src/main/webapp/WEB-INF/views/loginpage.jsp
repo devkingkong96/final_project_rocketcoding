@@ -131,22 +131,22 @@
 </div>
 <!-- </form> -->
 <!-- /.modal -->
-<c:if test="${not empty loginEmp}">
+<%-- <c:if test="${not empty loginEmp}">
 	<script>
 		alert("다른 기기에서 로그인되어 현재 로그인이 종료되었습니다.");
 	</script>
-</c:if>
+</c:if> --%>
 
 <!-- Vendor JS -->
 <script src="${path}/resources/js/vendors.min.js"></script>
 <script src="${path}/resources/js/pages/chat-popup.js"></script>
 <script src="${path}/resources/assets/icons/feather-icons/feather.min.js"></script>
 <script>
-	var alreadyLoggedIn = '${loginEmp}'; // 서버에서 전달한 로그인 여부 변수
+	/* var alreadyLoggedIn = '${loginEmp}'; // 서버에서 전달한 로그인 여부 변수
 	
 	if (alreadyLoggedIn) {
 	  alert("다른 사용자가 해당 계정으로 로그인했습니다. 동시 접속은 허용되지 않습니다.");
-	}
+	} */
 
     document.getElementById('sendEmail').addEventListener('click', function () {
         const empNo = document.getElementById('empNo').value;
