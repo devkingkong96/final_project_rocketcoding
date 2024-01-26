@@ -23,7 +23,7 @@
             FBOARD_CONTENT, FBOARD_VIEWS, FBOARD_DATE, FBOARD_YN
         ) VALUES (
             SEQ_FBOARD_NO.NEXTVAL, #{empNo}, #{fboardTitle},
-            #{fboardContent},0,SYSDATE,'Y'
+            #{fboardContent},0,SYSDATE,'N'
         )
     </insert>
 
