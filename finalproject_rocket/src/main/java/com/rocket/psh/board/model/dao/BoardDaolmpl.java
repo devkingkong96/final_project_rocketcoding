@@ -79,6 +79,12 @@ public class BoardDaolmpl implements BoardDao {
 		// TODO Auto-generated method stub
 		return session.insert("fboard.insertFboardFile2",ff);
 	}
+
+	@Override
+	public int deleteComment(SqlSession session, int commentNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
     
 	
 	

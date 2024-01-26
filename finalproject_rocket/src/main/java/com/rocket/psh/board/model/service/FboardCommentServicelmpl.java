@@ -1,13 +1,10 @@
 package com.rocket.psh.board.model.service;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rocket.pdw.aprv.model.dao.ApprovalDao;
 import com.rocket.psh.board.model.dao.FboardCommentDao;
 
 import lombok.RequiredArgsConstructor;
@@ -17,11 +14,28 @@ import lombok.RequiredArgsConstructor;
 public class FboardCommentServicelmpl implements FboardCommentService {
 
     private final FboardCommentDao fboardCommentDao;
-
-    @Override
-    public int insertComment(Map<String, Object> commentMap) {
-        
-        return fboardCommentDao.insertComment(commentMap);
-    }
-
+    private final SqlSession session;
+    
+	@Override
+	public int insertComment(Map<String, Object> commentMap) {
+		// TODO Auto-generated method stub
+		return insertComment(commentMap);
+	}
+	@Override
+	public int updateComment(Map<String, Object> commentMap) {
+		// TODO Auto-generated method stub
+		return updateComment(commentMap);
+	}
+	@Override
+	public int deleteComment(Map<String, Object> commentMap) {
+		// TODO Auto-generated method stub
+		return fboardCommentDao.deleteComment(session,commentMap);
+	}
+	@Override
+	public int deleteComment(int commentNo, int fboardNo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }
