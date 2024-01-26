@@ -19,23 +19,26 @@ public class FboardCommentServicelmpl implements FboardCommentService {
 	@Override
 	public int insertComment(Map<String, Object> commentMap) {
 		// TODO Auto-generated method stub
-		return insertComment(commentMap);
+		return fboardCommentDao.insertComment(session,commentMap);
 	}
 	@Override
 	public int updateComment(Map<String, Object> commentMap) {
 		// TODO Auto-generated method stub
-		return updateComment(commentMap);
+		return fboardCommentDao.updateComment(session,commentMap);
 	}
+
 	@Override
-	public int deleteComment(Map<String, Object> commentMap) {
+	public int deleteComment(int commentNo) {
 		// TODO Auto-generated method stub
-		return fboardCommentDao.deleteComment(session,commentMap);
+		return fboardCommentDao.deleteComment(session, commentNo);
 	}
-	@Override
-	public int deleteComment(int commentNo, int fboardNo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+	
+//	@Override
+//	public int deleteComment(int commentNo, int fboardNo) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 	
 	
 }

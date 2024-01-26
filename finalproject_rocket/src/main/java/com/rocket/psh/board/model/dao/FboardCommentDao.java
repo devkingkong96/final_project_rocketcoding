@@ -22,5 +22,4 @@ public interface FboardCommentDao {
 
 	int insertComment(SqlSession sesion,Map<String, Object> reqAll);
 
-	int deleteComment(SqlSession sesion, Map<String, Object> commentData);
 }

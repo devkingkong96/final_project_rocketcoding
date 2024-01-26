@@ -330,7 +330,7 @@ public class BoardController {
 	    	param.put("commentNo", commentNo);
 //	    	param.put("fboardNo", fboardNo);
 	    	
-	        int result = commService.deleteComment(param);
+	        int result = commService.deleteComment(commentNo);
 	        if (result == 0) {
 	            return "error";
 	        }
