@@ -291,7 +291,7 @@
                                     <div class="col-12">
                                         <div class="col-12">
                                             
-                                                <h1 class="box-title text-primary" id="peo-heder">People</h1>
+                                                <h1 class="box-title text-primary" id="peo-heder" style="margin-right: 30px;">People</h1>
                                             
                                             <div class="column" id="dep-container" >
                                                 <!--인원들출력란  -->
@@ -300,13 +300,13 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h1 style="position: static; margin-right: 40px">결재자</h1>
-                                    <div class="column" style="width: 100%; height: 100%" id="aprv">
+                                    <h1 style="position: static; margin-right: 40px; margin-left: 50px;">결재자</h1>
+                                    <div class="column" style="width: 100%; height: 100%; position: fixed;" id="aprv">
                                     </div>
                                 </div>
                                 <div>
                                     <h1 style="position: static;">참조자</h1>
-                                    <div class="column" style="width: 100%; height: 100%;border: 2px"  id="reader">
+                                    <div class="column" style="width: 100%; height: 100%;border: 2px; margin-right : 20px; position: fixed;"  id="reader">
                                     </div>
                                 </div>
                             </div>

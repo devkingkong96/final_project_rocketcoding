@@ -208,7 +208,7 @@ public class AprvController {
 	// ==================================================================
 
 	
-	  @RequestMapping("/insertaprv")
+	  @GetMapping("/insertaprv")
 	    public String insertAprvView(@RequestParam(value = "startDate", required = false) String startDate, 
 									 @RequestParam(value = "endDate", required = false) String endDate,
 										Model m, 
@@ -308,6 +308,7 @@ public class AprvController {
 	@PostMapping("/submit") 
 	@ResponseBody
 	public ResponseEntity<?> submitDocu(HttpServletRequest req) {
+		
 		HashMap<String, Object> reqAll = getParameterMap(req);
   	
 		log.info("reqAll{}",reqAll);
