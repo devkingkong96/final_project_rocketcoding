@@ -72,6 +72,13 @@ public class FboardServicelmpl implements FboardService {
 		// TODO Auto-generated method stub
 		return dao.deleteFboard(session, fboardNo);
 	}
+
+	@Override
+	public int deleteComment(int commentNo) {
+		// TODO Auto-generated method stub
+		return dao.deleteComment(session, commentNo);
+	}
+	
 	
 	
 	
