@@ -265,6 +265,7 @@
                                     , autocam: true
                                     , publish_key: 'pub-c-6ee7f3b6-134c-41cc-8221-b66f0806f1c8'
                                     , subscribe_key: 'sub-c-f2fe376d-283b-47a7-a6dc-f4819d38cbed'
+                                    , ssl: false
                                 });
 
                                 // Debugging Output
