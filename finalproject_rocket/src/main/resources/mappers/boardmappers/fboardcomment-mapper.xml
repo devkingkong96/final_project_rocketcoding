@@ -6,6 +6,7 @@
 		<result column="FBD_COMMENT" property="fbdComment"/>
 		<result column="FBD_COMMENT_DATE" property="fbdCommentDate"/>
 		<result column="FBOARD_NO" property="fboardNo"/>
+		<result column="FBD_COMMENT_YN" property="fbdCommentYN"/>
 		<association javaType="employee" property="writer">
 			<id column="commentWriterId" property="empNo"/>
 			<result column="writer" property="empName"/>
@@ -35,16 +36,17 @@
 		
 	  <!-- 댓글 수정 -->
 	  <update id="updateComment" parameterType="java.util.HashMap">
-	    UPDATE Comments
-	    SET fbdComment = #{fbdComment}
-	    WHERE commentNo = #{commentNo}
+	    UPDATE FBOARDCOMMENT
+	    SET FBD_COMMENT = #{fbdComment}
+	    WHERE COMMENT_NO = #{commentNo}
 	      AND FBD_COMMENT_YN = 'N'
 	  </update>
 	
 	  <!-- 댓글 삭제여부 업데이트 (실제 삭제는 하지 않음) -->
-	  <update id="deleteComment" parameterType="java.util.HashMap">
-	    UPDATE Comments
+	  <update id="deleteComment" parameterType="_int">
+	    UPDATE FBOARDCOMMENT
 	    SET FBD_COMMENT_YN = 'Y'
-	    WHERE commentNo = #{commentNo}
+	    WHERE COMMENT_NO = #{commentNo}
 	  </update>
+	  
 </mapper>

@@ -27,23 +27,6 @@
 </style>
 <div class="content-wrapper">
     <div class="container-full">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="me-auto">
-                    <h4 class="page-title">Editors</h4>
-                    <div class="d-inline-block align-items-center">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Forms</li>
-                                <li class="breadcrumb-item active" aria-current="page">Editors</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -229,12 +212,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="myBtn"></button>
                         </div>
                         <div class="modal-body">
-                                <h3>결재하면 수정하실수없습니다 정말 결재하시겠습니까?</h3>
+                                <h3>결재하면 수정하실수없습니다. 정말 결재하시겠습니까?</h3>
                             <div id="flex-cotainer" style="display: flex">
                                 
-                                <button type="button" class="btn btn-danger text-start"  onclick="aprv();"> 결재 </button>
+                                <button type="button" class="btn btn-info text-start"  onclick="aprv();"> 결재 </button>
                                 
-                                <button type="button" class="btn btn-danger text-start"  onclick="reject();"> 반려 </button>
+                                <button type="button" class="btn btn-warning text-start"  onclick="reject();"> 반려 </button>
                                 
                                 <button type="button" class="btn btn-danger text-start" data-bs-dismiss="modal"> 닫기 </button>
                                 

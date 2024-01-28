@@ -36,23 +36,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <div class="container-full">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="me-auto">
-                    <h4 class="page-title">Editors</h4>
-                    <div class="d-inline-block align-items-center">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Forms</li>
-                                <li class="breadcrumb-item active" aria-current="page">Editors</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Main content -->
         <section class="content">
             <div class="row">
@@ -291,7 +274,7 @@
                                     <div class="col-12">
                                         <div class="col-12">
                                             
-                                                <h1 class="box-title text-primary" id="peo-heder">People</h1>
+                                                <h1 class="box-title text-primary" id="peo-heder" style="margin-right: 30px;">People</h1>
                                             
                                             <div class="column" id="dep-container" >
                                                 <!--인원들출력란  -->
@@ -300,13 +283,13 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <h1 style="position: static; margin-right: 40px">결재자</h1>
-                                    <div class="column" style="width: 100%; height: 100%" id="aprv">
+                                    <h1 style="position: static; margin-right: 40px; margin-left: 50px;">결재자</h1>
+                                    <div class="column" style="width: 100%; height: 100%; position: fixed;" id="aprv">
                                     </div>
                                 </div>
                                 <div>
                                     <h1 style="position: static;">참조자</h1>
-                                    <div class="column" style="width: 100%; height: 100%;border: 2px"  id="reader">
+                                    <div class="column" style="width: 100%; height: 100%;border: 2px; margin-right : 20px; position: fixed;"  id="reader">
                                     </div>
                                 </div>
                             </div>

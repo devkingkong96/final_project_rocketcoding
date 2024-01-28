@@ -132,6 +132,7 @@
 														<c:choose>
 															<c:when test="${fboard.comments.get(0).commentNo!=0 }">
 																<c:forEach var="comment" items="${fboard.comments }">
+																	<c:if test="${comment.fbdCommentYN eq 'N' }">
 																	<tr>
 																		<td colspan="4">
 																			<sup>${comment.fbdCommentDate }
@@ -141,11 +142,12 @@
 																		
 																		<td style="text-align:right">
 																			<c:if test="${comment.writer.empNo eq loginEmp.empNo}">
-																				<button class="btn btn-outline-warning" onclick="updateComment">수정</button>
-																				<button class="btn btn-outline-danger">삭제</button>
+																				<button class="btn btn-outline-warning" onclick="showEditCommentModal(${comment.commentNo}, '${comment.fbdComment}');">수정</button>
+																				<button class="btn btn-outline-danger" onclick="deleteComment('${comment.commentNo}')">삭제</button>
 																			</c:if>
 																		</td>
 																	</tr>
+																	</c:if>
 																</c:forEach>
 															</c:when>
 			 														
@@ -157,6 +159,32 @@
 														</c:choose>
 														</tbody>
 													</table>
+													
+													<!-- 댓글 수정 모달 -->
+													<div id="editCommentModal" class="modal fade" role="dialog">
+													  <div class="modal-dialog">
+													
+													    <!-- 모달 내용 -->
+													    <div class="modal-content">
+													      <div class="modal-header">
+													        <h5 class="modal-title">댓글 수정</h5>
+													        <button type="button" class="close" data-dismiss="modal">&times;</button>
+													      </div>
+													      <div class="modal-body">
+													        <input type="hidden" id="editCommentNo" value="">
+													        <textarea id="editCommentContent" class="form-control"></textarea>
+													      </div>
+													      <div class="modal-footer">
+													        <button type="button" class="btn btn-primary" onclick="updateComment();">저장</button>
+													        <button type="button" class="btn btn-default" data-bs-dismiss="modal">닫기</button>
+													      </div>
+													    </div>
+													
+													  </div>
+													</div>
+													
+													
+													
 												</div>
 											</div>
 										</div>
@@ -186,54 +214,60 @@ function fboardEdit(fboardNo){
     document.body.appendChild(form);
     form.submit();
 }
+function deleteComment(commentNo){
+	location.replace('${path}/board/comment/deleteComent.do?commentNo='+commentNo+"&fboardNo=${fboard.fboardNo}");
+	
+}
+function updateComment() {
+	  var commentNo = $('#editCommentNo').val();
+	  var updateContent = $('#editCommentContent').val();
 
-function updateComment(commentNo, fboardNo) {
-    var fboardNo = $('#fboardNo').val();
-    console.log("수정로그-fboardNo 확인: " + $('#fboardNo').val());
-    var commentNo = $('#commentNo').val();
-    console.log("수정로그-commentNo 확인: " + $('#commentNo').val());
-    var updateContent = $('#updateContent' + commentNo).val();
+	  if(updateContent === '') {
+	    alert("수정할 내용을 입력하세요.");
+	    return;
+	  }
 
-    if(updateContent =='') {
-        alert("수정 할 내용을 입력하세요");
-        return;
-    } 
+	  $.ajax({
+	    type: 'post',
+	    url: '${path}/board/comment/updateComment.do',
+	    data: {
+	    	"fboardNo":${fboard.fboardNo},
+	      "fbdComment": updateContent,
+	      "commentNo": commentNo
+	    },
+	    success: function(data) {
+	    	
+	      
+	        alert(data.msg);
+	        $('#editCommentModal').modal('hide');
+	        // 댓글 목록을 다시 불러오는 함수를 호출합니다.
+	    	location.reload();
+	    },
+	    error: function() {
+	      alert('통신실패');
+	    }
+	  });
+	}
 
-    $.ajax({
-        type:'post',
-        url: '/stationery/CommentUpdate',
-        data: JSON.stringify(
-            {
-                "fbdComment": updateContent,
-                "commentNo": commentNo,
-                "fboardNo": fboardNo
-            }
-        ),
-        contentType:'application/json',
-        success:function(data){
-            if(data ==='UpdateSuccess') {
-                alert('댓글이 수정되었습니다!');
-                getCommentList();
-            } else {
-                alert('댓글 수정에 실패했습니다.');
-            }
-        },
-        error:function() {
-            alert('통신실패');
-        }
-    });   
-};
+function showEditCommentModal(commentNo, commentContent) {
+	  // 모달에 댓글 번호와 내용을 세팅합니다.
+	  $('#editCommentNo').val(commentNo);
+	  $('#editCommentContent').val(commentContent);
+
+	  // 모달을 띄웁니다.
+	  $('#editCommentModal').modal('show');
+	}
 
 </script>
 <!-- Vendor JS -->
-<script src="src/resources/js/vendors.min.js"></script>
-<script src="src/resources/js/pages/chat-popup.js"></script>
-<script src="src/resources/js/assets/icons/feather-icons/feather.min.js"></script>
-<script src="src/resources/js/assets/vendor_components/datatable/datatables.min.js"></script>
+<script src="${path }/resources/js/vendors.min.js"></script>
+<script src="${path }/resources/js/pages/chat-popup.js"></script>
+<script src="${path }/resources/js/assets/icons/feather-icons/feather.min.js"></script>
+<script src="${path }/resources/js/assets/vendor_components/datatable/datatables.min.js"></script>
 
 <!-- CRMi App -->
-<script src="src/resources/js/template.js"></script>
+<script src="${path }/resources/js/template.js"></script>
 
-<script src="src/resources/js/pages/data-table.js"></script>
+<script src="${path }/resources/js/pages/data-table.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
