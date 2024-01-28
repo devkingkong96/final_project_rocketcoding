@@ -257,17 +257,14 @@
                             <script>(() => {
                                 'use strict';
 
-                                // ~Warning~ You must get your own API Keys for non-demo purposes.
-                                // ~Warning~ Get your PubNub API Keys: https://www.pubnub.com/get-started/
-                                // The phone *number* can by any string value
 
                                 let session = null;
                                 // const number = Math.ceil(Math.random() * 10000);
                                 const phone = PHONE({
                                     number: string2
                                     , autocam: true
-                                    , publish_key: 'pub-c-c7a39af1-7609-44d4-b2af-6d8a6acc0f7d'
-                                    , subscribe_key: 'sub-c-406b0c1a-ed00-4b93-8bbd-e5beaed77ce2'
+                                    , publish_key: 'pub-c-6ee7f3b6-134c-41cc-8221-b66f0806f1c8'
+                                    , subscribe_key: 'sub-c-f2fe376d-283b-47a7-a6dc-f4819d38cbed'
                                 });
 
                                 // Debugging Output
@@ -340,7 +337,7 @@
                     </div>
                 </div>
             </div>
-    </div>
+
 
     </section>
 </div>

@@ -11,6 +11,10 @@ public class MeetingController {
 
     @GetMapping("/meeting")
     public String meetingPage() {
+
+
+
+
         return "meeting/meeting"; // JSP 파일 이름 (zoomForm.jsp)
     }
 
