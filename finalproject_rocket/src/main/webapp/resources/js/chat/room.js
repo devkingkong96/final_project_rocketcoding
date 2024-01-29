@@ -74,7 +74,6 @@ var sockJS=new SockJS(path+"/ws/chat");
   			  					var empName = chat.msgEmpName;
   			  					var empFile = chat.empFile;
   			  					
-  			  					console.log("empNo:"+empNo);
   			  					
   									var delDiv = document.getElementById('attendlist'+empNo);
   									console.log("delDiv:"+delDiv);

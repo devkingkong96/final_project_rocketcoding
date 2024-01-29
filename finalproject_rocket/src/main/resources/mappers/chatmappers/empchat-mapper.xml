@@ -17,14 +17,12 @@
 					SELECT EMCH_EMP_NO FROM EMP_CHAT
 					WHERE CH_ROOM_NO=#{roomId}
 				)
-				ORDER BY EMP_NAME ASC
 	</select>
 	
 	<select id="selectEmployeeList" parameterType="_int" resultType="hashMap">
 		SELECT * FROM EMPLOYEE 
 				JOIN DEPARTMENT USING(DEP_CODE)
 				WHERE EMP_NO!=#{empNo}
-				ORDER BY EMP_NAME ASC
 	</select>
 	
 	<select id="selectEmpInfo" parameterType="_int" resultType="hashMap">

@@ -47,7 +47,6 @@
                 #{item}
             </foreach>-->
 
-
         <if test="prdIdList != null">
             <choose>
                 <!-- 첫 번째 요소가 '0'이거나 리스트가 비어있으면 모든 상품을 선택 -->
@@ -491,7 +490,6 @@
         </if>
         AND p.prd_isdel = 'N'
         AND b.branch_isdel = 'N'
-
     </select>
 
 
