@@ -94,7 +94,7 @@
                   #{empEmail},
                   #{depCode},
                   #{dwruleCode},
-                  null
+                  DEFAULT
               )
     </insert>
 
