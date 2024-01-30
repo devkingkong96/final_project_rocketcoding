@@ -209,7 +209,7 @@ function fboardDelete(fboardNo) {
 function fboardEdit(fboardNo){
 	var form = document.createElement('form');
     form.setAttribute('method', 'get');
-    form.setAttribute('action', '/board/fboardupdate');
+    form.setAttribute('action', '${path}/board/fboardupdate');
     form.innerHTML = '<input type="hidden" name="fboardNo" value="' + fboardNo + '">';
     document.body.appendChild(form);
     form.submit();
