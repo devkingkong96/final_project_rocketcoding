@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.naming.factory.FactoryBase;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rocket.psh.board.model.dto.Fboard;
 import com.rocket.psh.board.model.dto.FboardFile;
@@ -63,6 +64,7 @@ public class BoardDaolmpl implements BoardDao {
     }
 
     @Override
+    @Transactional
     public int deleteFboard(SqlSession session, int fboardNo) {
         return session.delete("fboard.deleteFboard", fboardNo);
     }

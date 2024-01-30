@@ -3,7 +3,11 @@
 #server.port=8080
 server:
   port: 8080
-
+#  ssl:
+#    key-store: classpath:mykeystore.p12
+#    key-store-password: mypassword
+#    keyStoreType: PKCS12
+#    keyAlias: mykey
 #spring.datasource.driver-class-name
 spring:
   datasource:
@@ -20,6 +24,13 @@ spring:
       max-file-size: 10MB
       max-request-size: 100MB
   #spring.mvc.view.prfix/suffix
+  pubnub:
+    publishKey: 'your-publish-key'
+    subscribeKey: 'your-subscribe-key'
+    ssl: false
+
+
+
   mvc:
     view:
       suffix: .jsp

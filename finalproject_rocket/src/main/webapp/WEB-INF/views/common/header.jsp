@@ -357,14 +357,65 @@
 
                         </li>
                         <!-- 물류 메뉴 끝-->
-
-                        <li>
-                            <a href="${pageContext.request.contextPath}/board/fboardlist.do">
+						<!-- 사원 관리 메뉴 시작  -->
+						<ul class="treeview-menu">
+						    <li class="treeview">
+						        <a href="#"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>
+						            <span>사원 관리</span>
+						            <i class="fa fa-angle-right pull-right"></i> 
+						        </a>
+						        <a href="${pageContext.request.contextPath}/board/fboardlist.do">
                                 <i class="glyphicon glyphicon-list-alt"><span class="path1"></span><span
                                         class="path2"></span></i>
                                 <span>게시판</span>
+                            	</a>
+						        <ul class="treeview-menu">
+						            <li class='<%= request.getRequestURI().contains("/employeelist") ? "active" : "" %>'>
+						                <a href="${path}/employeelist" id="employeeInfoManage"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>사원 정보관리</a>
+						            </li>
+						            <li class='<%= request.getRequestURI().contains("/employeeholidaylist") ? "active" : "" %>'>
+						                <a href="${path}/employeeholidaylist" id="employeeHolidayList"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>사원별 휴가사용 조회</a>
+						            </li>
+						            <li class='<%= request.getRequestURI().contains("/employeecommute") ? "active" : "" %>'>
+						                <a href="${path}/employeecommute" id="employeeCommute"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>사원별 근태관리</a>
+						            </li>
+						        </ul>
+						    </li>
+						    <li class='<%= request.getRequestURI().contains("/departmentlist") ? "active" : "" %>'>
+						        <a href="${path}/departmentlist" id="departmentList"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>부서 관리</a>
+						    </li>
+						    <li class='<%= request.getRequestURI().contains("/dwruleslist") ? "active" : "" %>'>
+						        <a href="${path}/dwruleslist" id="dwRulesList"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>근무시간 관리</a>
+						    </li>
+						</ul>
+						<!-- 사원 관리 메뉴 끝 -->
+                        <!-- 게시판 메뉴 시작 -->
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-list-alt"><span class="path1"></span><span class="path2"></span></i>
+                                <span>게시판</span>
+                                <span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+
+
+
                             </a>
+                            <ul class="treeview-menu">
+
+                                <li class='<%= request.getRequestURI().contains("/notice") ? "active" : "" %>'>
+                                    <a href="${path}/notice/notice.do"><i class="icon-Commit"><span
+                                            class="path1"></span><span
+                                            class="path2"></span></i>공지사항</a></li>
+                                <li class='<%= request.getRequestURI().contains("/board") ? "active" : "" %>'>
+                                    <a href="${path}/board/fboardlist.do"><i class="icon-Commit"><span
+                                            class="path1"></span><span
+                                            class="path2"></span></i>자유 게시판</a></li>
+                            </ul>
+
                         </li>
+                        <!-- 게시판 메뉴끝 -->
+                        <!-- 채팅 메뉴시작  -->
                         <li>
                             <a href="${path }/chat/list">
                                 <i class="fa fa-comments"></i>
@@ -455,6 +506,12 @@
                                     </ul>
                                 </li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="${path }/meeting">
+                                <i class="si-call-out si" style="font-size: 20px !important;"></i>
+                                <span>화상 회의</span>
+                            </a>
                         </li>
                     </ul>
                     <div class="sidebar-widgets">
