@@ -44,13 +44,10 @@ public class EmployeeController {
 	        int empNo = Integer.parseInt(userDetails.getUsername());
 	        Map<String, Object> employee = service.selectEmployeeByNo(empNo);
 	        Map<String, Object> coomute = mypageservice.selectEmployeeByNo(empNo);
-//	        List<Map<String, Object>> mycalendar = mypageservice.selectEmployeeByCalendar(empNo);
 	        log.info("Employee: " + employee.toString());
 	        log.info("Coomute: " + coomute.toString());
-//	        log.info("mycalendar:" + mycalendar.toString());
 	        model.addAttribute("employee", employee);
 	        model.addAttribute("coomute", coomute);
-//	        model.addAttribute("mycalendar", mycalendar);	        
 	    }
 	    return "employee/mypage";
 	}
@@ -75,9 +72,9 @@ public class EmployeeController {
 	public String employeeholidaylist(Model model) {
 	    List<Map<String, Object>> employees = service.selectEmployeeHolidayAll();
 
-	    String textData = "";
 	    for (Map<String, Object> map : employees) {
-	        if(map.get("DOC_CONT") instanceof java.sql.Clob) { // CLOB_COLUMN은 실제 CLOB 데이터가 있는 컬럼 이름으로 대체해주세요.
+	        String textData = "";
+	        if(map.get("DOC_CONT") instanceof java.sql.Clob) { 
 	            Clob text = (Clob) map.get("DOC_CONT");
 	            try {
 	                String clobContent = text.getSubString(1, (int) text.length());
@@ -92,7 +89,7 @@ public class EmployeeController {
 	            } catch (Exception e1) {
 	                e1.printStackTrace();
 	            } finally {
-	                map.put("DOC_CONT", textData); // 변환된 문자열을 다시 맵에 넣습니다.
+	                map.put("DOC_CONT", textData); 
 	            }
 	        }
 	    }
@@ -100,12 +97,6 @@ public class EmployeeController {
 	    model.addAttribute("employees", employees);
 	    return "employee/employeeholidaylist";
 	}
-	 
-//	 @GetMapping("/myPageCalendar")
-//	 @ResponseBody
-//	    public List<Map<String, Object>> myPageCalendar() {
-//	        return service.selectEmployeeMyPageCalendar();
-//	    }
 	 
 	 @PostMapping("/employeeinsert")
 	 @ResponseBody
