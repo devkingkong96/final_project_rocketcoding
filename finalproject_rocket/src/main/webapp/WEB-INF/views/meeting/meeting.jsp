@@ -25,7 +25,7 @@
 %>
 <%--<title>로켓코딩ERP</title>--%>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-    <jsp:param name="title" value="재고 현황 조회"/>
+    <jsp:param name="title" value="화상 회의"/>
 </jsp:include>
 <script type="text/javascript"
         src="${path }/resources/assets/vendor_components/moment/moment.js"></script>
@@ -175,15 +175,15 @@
             <div class="content-header" style="margin-bottom:10px;">
                 <div class="d-flex align-items-center">
                     <div class="me-auto">
-                        <h5 class="page-title">재고 현황 검색</h5>
+                        <h5 class="page-title">화상회의</h5>
                         <div class="d-inline-block align-items-center">
                             <nav>
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="${path}/"> <i
                                             class="mdi mdi-home-outline"></i></a></li>
-                                    <li class="breadcrumb-item" aria-current="page">재고 관리</li>
-                                    <li class="breadcrumb-item active" aria-current="page">재고 현황 검색
-                                    </li>
+                                    <li class="breadcrumb-item" aria-current="page">화상회의</li>
+                           <%--         <li class="breadcrumb-item active" aria-current="page">재고 현황 검색
+                                    </li>--%>
                                 </ol>
                             </nav>
                         </div>

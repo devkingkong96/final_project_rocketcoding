@@ -3,7 +3,11 @@
 #server.port=8080
 server:
   port: 8080
-
+#  ssl:
+#    key-store: classpath:mykeystore.p12
+#    key-store-password: mypassword
+#    keyStoreType: PKCS12
+#    keyAlias: mykey
 #spring.datasource.driver-class-name
 spring:
   datasource:
