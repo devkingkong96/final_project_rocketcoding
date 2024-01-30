@@ -254,19 +254,47 @@
                                 string2 = string2 + Math.ceil(Math.random() * 10000);
 
                             </script>
+
+            <%--                <script>
+
+
+                                const phone = PHONE({
+                                    number: string2, &lt;%&ndash; 이 변수의 정의는 이 코드 밖에서 이루어져야 함 &ndash;%&gt;
+                                    autocam: true,
+                                    publish_key: publishKey,
+                                    subscribe_key: subscribeKey,
+                                    ssl: ssl
+                                });
+                            </script>--%>
+
+
+
                             <script>(() => {
                                 'use strict';
-
+                                <%-- JSP Expression Language를 사용하여 서버 사이드 변수 값을 JavaScript 변수에 할당 --%>
+                                const publishKey = '${publishKey}';
+                                const subscribeKey = '${subscribeKey}';
+                                const ssl = ${ssl}; <%-- boolean 값은 따옴표 없이 직접 할당 --%>
 
                                 let session = null;
                                 // const number = Math.ceil(Math.random() * 10000);
+
                                 const phone = PHONE({
+                                    number: string2, <%-- 이 변수의 정의는 이 코드 밖에서 이루어져야 함 --%>
+                                    autocam: true,
+                                    publish_key: publishKey,
+                                    subscribe_key: subscribeKey,
+                                    ssl: ssl
+                                });
+
+
+                       /*         const phone = PHONE({
                                     number: string2
                                     , autocam: true
                                     , publish_key: 'pub-c-6ee7f3b6-134c-41cc-8221-b66f0806f1c8'
                                     , subscribe_key: 'sub-c-f2fe376d-283b-47a7-a6dc-f4819d38cbed'
                                     , ssl: false
-                                });
+                                });*/
 
                                 // Debugging Output
                                 phone.debug(info => console.info(info));
