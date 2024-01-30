@@ -100,7 +100,7 @@
 				<div id="info_fx" style="font-size:200%">
 					내용:${fboard.fboardContent }
 				</div>
-				<form method="post" id="fboardcomment" action="/board/comment/insertComment.do">
+				<form method="post" id="fboardcomment" action="${path }/board/comment/insertComment.do">
 					<hr color="black" size="5">
 					<h4 class="box-title text-info mb-0"><i class="ti-user me-15"></i>댓글
 					</h4>

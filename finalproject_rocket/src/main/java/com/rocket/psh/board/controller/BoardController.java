@@ -250,7 +250,9 @@ public class BoardController {
 	            // TODO: 권한 검사 로직 구현
 	            service.deleteFboard(fboardNo);
 	            mv.setViewName("redirect:/board/fboardlist.do");
+	            log.info("+++++++++++++++++++++++dadasd++++++++++++++++++++++++++++++{}",fboardNo);
 	        } catch (Exception e) {
+	        	log.info("+++++++++++++++++++++++dadasd++++++++++++++++++++++++++++++{}",e);
 	            mv.setViewName("redirect:/board/fboardlist.do");
 	            mv.addObject("errorMessage", "게시글 삭제 중 오류가 발생했습니다.");
 	        }
