@@ -78,7 +78,7 @@
 					    <h3 class="box-title">자유 게시판</h3>
     					<hr color="black" size="7">
     					<h4 class="left-box">${fboard.fboardDate }</h4>
-    					<h4 class="right-box">작성자: ${fboard.empNo } 추천:${fboard.fboardViews }</h4>
+    					<h4 class="right-box">작성자: 임대선</h4>
     					<input class="btn btn-outline-primary" type="button" value="목록" onclick="location.href='/board/fboardlist.do'">
 						<input class="btn btn-outline-danger delete_btn" type="button" value="삭제" onclick="fboardDelete(${fboard.fboardNo})">
 						<input class="btn btn-outline-warning edit_btn" type="button" value="수정" onclick="fboardEdit(${fboard.fboardNo})">

@@ -39,7 +39,7 @@
                        <tr style="cursor: pointer;" onclick="window.location.href='${path}/board/fboardView/'+${row.FBOARD_NO}">
                             <td>${row.FBOARD_NO}</td>
                             <td>${row.FBOARD_TITLE}</td>
-                            <td>${row.EMP_NO}</td>
+                            <td>${row.EMP_NAME}</td>
                             <td>${row.FBOARD_VIEWS}</td>
                             <td><fmt:formatDate value="${row.FBOARD_DATE}" pattern="yyyy MM dd"/></td>
                         </tr>

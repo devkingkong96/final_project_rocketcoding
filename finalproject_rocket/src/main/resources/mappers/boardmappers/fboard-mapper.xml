@@ -13,7 +13,9 @@
 	</resultMap>
 		
 	<select id="selectFboardMainPage" resultType="map">
-		SELECT * FROM FBOARD ORDER BY FBOARD_DATE DESC
+		SELECT * FROM FBOARD
+		 JOIN EMPLOYEE USING(EMP_NO) 
+		 ORDER BY FBOARD_DATE DESC
 	</select>
 	
 	<!-- 게시글 삽입 -->

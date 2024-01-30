@@ -104,7 +104,7 @@ public class BoardController {
 	    
 	    
 	 // 게시글 작성 처리
-	    @PostMapping("/fboardWrite")
+	    @PostMapping("/fboardWriteEnd")
 	    public ModelAndView submitFboardWrite(MultipartFile upfile,Fboard fboardDTO, BindingResult result,HttpSession session) {
 	        ModelAndView mv = new ModelAndView();
 	        Employee em = (Employee) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
