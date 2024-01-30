@@ -200,7 +200,7 @@ function fboardDelete(fboardNo) {
     if(confirm('게시글을 삭제하시겠습니까?')) {
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/board/fboarddelete');
+        form.setAttribute('action', '${path}/board/fboarddelete');
         form.innerHTML = '<input type="hidden" name="fboardNo" value="' + fboardNo + '">';
         document.body.appendChild(form);
         form.submit();
