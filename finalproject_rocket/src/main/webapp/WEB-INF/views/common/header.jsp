@@ -456,6 +456,12 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="${path }/meeting">
+                                <i class="si-call-out si" style="font-size: 20px !important;"></i>
+                                <span>화상 회의</span>
+                            </a>
+                        </li>
                     </ul>
                     <div class="sidebar-widgets">
                         <div class="copyright text-center m-25">
