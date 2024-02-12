@@ -18,12 +18,6 @@ import java.sql.Clob;
 import java.sql.SQLException;
 import java.util.*;
 
-/**
- * Brief description of functions
- *
- * @author J
- * @version 2024-01-12
- */
 @Controller
 @RequestMapping("/logistics")
 @RequiredArgsConstructor
@@ -57,32 +51,22 @@ public class StockController {
         for (Map.Entry<String, Object> entry : params.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
-//            log.error("key : {}, value : {}", key, value);
-            // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-/*            // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-            if (value instanceof String[]) {
-                log.error(key + ": " + Arrays.toString((String[])value));
-            } else {
-                log.error(key + ": " + value);
-            }*/
         }
         Map<String, String[]> paramMap = request.getParameterMap();
 
-        // branchId와 prdId 파라미터를 배열로 추출
         String[] branchIdArray = paramMap.get("branchId");
         String[] prdIdArray = paramMap.get("prdId");
 
-        // 배열을 List로 변환
         List<String> branchIdList = branchIdArray != null ? Arrays.asList(branchIdArray) : new ArrayList<>();
         List<String> prdIdList = prdIdArray != null ? Arrays.asList(prdIdArray) : new ArrayList<>();
 
         if (branchIdList == null || branchIdList.isEmpty()) {
             branchIdList = new ArrayList<>();
-            branchIdList.add("0"); // '0'을 기본값으로 사용
+            branchIdList.add("0");
         }
         if (prdIdList == null || prdIdList.isEmpty()) {
             prdIdList = new ArrayList<>();
-            prdIdList.add("0"); // '0'을 기본값으로 사용
+            prdIdList.add("0");
         }
 
         params.put("branchIdList", branchIdList);
@@ -90,45 +74,24 @@ public class StockController {
 
         List<Map<String, Object>> daybyStockList = service.stockLedger(params);
 
-        // daybyStockList의 각 항목에 대해 반복
-/*        for (Map<String, Object> item : daybyStockList) {
-            log.error("================================================");
-            // 각 Map의 키-값 쌍에 대해 반복
-            for (Map.Entry<String, Object> entry : item.entrySet()) {
-                String key = entry.getKey();
-                Object value = entry.getValue();
-
-                // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-                if (value instanceof String[]) {
-                    log.error("Key: " + key + ", Value: " + Arrays.toString((String[])value));
-                } else {
-                    log.error("Key: " + key + ", Value: " + value);
-                }
-            }
-        }*/
         Map<String, Map<String, List<Map<String, Object>>>> groupedBySendBrcIdAndPrdId = new HashMap<>();
 
         for (Map<String, Object> record : daybyStockList) {
             String sendBrcId = String.valueOf(record.get("SEND_BRC_ID"));
             String prdId = String.valueOf(record.get("PRD_ID"));
 
-            // send_brc_id에 해당하는 맵을 가져오거나 새로 생성
             Map<String, List<Map<String, Object>>> prdIdMap = groupedBySendBrcIdAndPrdId.computeIfAbsent(sendBrcId,
                                                                                                          k -> new HashMap<>());
 
-            // prd_id에 해당하는 리스트를 가져오거나 새로 생성
             List<Map<String, Object>> prdIdListForTable = prdIdMap.computeIfAbsent(prdId, k -> new ArrayList<>());
             prdIdListForTable.add(record);
         }
 
-
-// 각 prd_id에 대한 리스트를 stk_date에 따라 정렬
         groupedBySendBrcIdAndPrdId.forEach((sendBrcId, prdIdMap) -> {
             prdIdMap.forEach((prdId, records) -> {
                 records.sort((record1, record2) -> {
                     Date date1 = (Date)record1.get("STK_DATE");
                     Date date2 = (Date)record2.get("STK_DATE");
-                    // null 처리
                     if (date1 == null && date2 == null) {
                         return 0;
                     }
@@ -139,21 +102,15 @@ public class StockController {
                         return 1;
                     }
 
-                    return date1.compareTo(date2); // 오름차순 정렬
+                    return date1.compareTo(date2);
                 });
             });
         });
 
-        // 결과 출력 (예시)
         groupedBySendBrcIdAndPrdId.forEach((sendBrcId, prdIdMap) -> {
-//            log.error("Send Branch ID: " + sendBrcId);
             prdIdMap.forEach((prdId, records) -> {
-//                log.error("  Product ID: " + prdId);
                 for (Map<String, Object> record : records) {
-//                    log.error("    Stock Date: " + record.get("STK_DATE"));
-                    // 다른 필드들 출력
-//                    log.error("    Stock: " + record.get("STK_STOCK"));
-                    // 기타 필요한 필드들에 대한 로그 출력
+
                 }
             });
         });
@@ -163,7 +120,6 @@ public class StockController {
         Set<Object> prdIdSet = new HashSet<>();
         for (Map<String, Object> map : daybyStockList) {
             Object popPrdId = map.get("PRD_ID");
-            /*            log.error("{}", popPrdId);*/
             if (!prdIdSet.contains(popPrdId)) {
                 prdIdSet.add(popPrdId);
                 uniqueList.add(map);
@@ -178,7 +134,6 @@ public class StockController {
             if (!brcNameSet.contains(popBrcName)) {
 
                 brcNameSet.add(popBrcName);
-//                log.error("popBrcName : {}", popBrcName);
                 branchNameUniqueList.add(map);
             }
         }
@@ -207,8 +162,6 @@ public class StockController {
         model.addAttribute("branchList", branchList);
         model.addAttribute("productList", selectAllProduct);
         return "logistics/searchStockLedger";
-//        return "redirect:/logistics/searchDaybyStock";
-        /*        return "logistics/searchDaybyStock";*/
     }
 
 
@@ -216,35 +169,21 @@ public class StockController {
     public String selectStockByProduct(HttpServletRequest request, Model model) {
         HashMap<String, Object> params = Getrequest.getParameterMap(request);
 
-//        for (Map.Entry<String, Object> entry : params.entrySet()) {
-//            String key = entry.getKey();
-//            Object value = entry.getValue();
-//
-//            // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-//            if (value instanceof String[]) {
-//                log.error(key + ": " + Arrays.toString((String[])value));
-//            } else {
-//                log.error(key + ": " + value);
-//            }
-//        }
-
         Map<String, String[]> paramMap = request.getParameterMap();
 
-// branchId와 prdId 파라미터를 배열로 추출
         String[] branchIdArray = paramMap.get("branchId");
         String[] prdIdArray = paramMap.get("prdId");
 
-// 배열을 List로 변환
         List<String> branchIdList = branchIdArray != null ? Arrays.asList(branchIdArray) : new ArrayList<>();
         List<String> prdIdList = prdIdArray != null ? Arrays.asList(prdIdArray) : new ArrayList<>();
 
         if (branchIdList == null || branchIdList.isEmpty()) {
             branchIdList = new ArrayList<>();
-            branchIdList.add("0"); // '0'을 기본값으로 사용
+            branchIdList.add("0");
         }
         if (prdIdList == null || prdIdList.isEmpty()) {
             prdIdList = new ArrayList<>();
-            prdIdList.add("0"); // '0'을 기본값으로 사용
+            prdIdList.add("0");
         }
 
         params.put("branchIdList", branchIdList);
@@ -252,29 +191,10 @@ public class StockController {
 
         List<Map<String, Object>> daybyStockList = service.selectStockByProduct(params);
 
-
-//        // daybyStockList의 각 항목에 대해 반복
-//        for (Map<String, Object> item : daybyStockList) {
-//            log.error("================================================");
-//            // 각 Map의 키-값 쌍에 대해 반복
-//            for (Map.Entry<String, Object> entry : item.entrySet()) {
-//                String key = entry.getKey();
-//                Object value = entry.getValue();
-//
-//                // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-//                if (value instanceof String[]) {
-//                    log.error("Key: " + key + ", Value: " + Arrays.toString((String[])value));
-//                } else {
-//                    log.error("Key: " + key + ", Value: " + value);
-//                }
-//            }
-//        }
         if (prdIdList.contains("0")) {
-            // prdIdList를 새로운 값들로 채우기
             prdIdList = Arrays.asList("1", "2", "3", "4", "5");
         }
         if (branchIdList.contains("0")) {
-            // prdIdList를 새로운 값들로 채우기
             branchIdList = Arrays.asList("1", "2", "3", "4", "5");
         }
         List<Map<String, Object>> uniqueList = new ArrayList<>();
@@ -282,13 +202,12 @@ public class StockController {
         Set<Object> prdIdSet = new HashSet<>();
         for (Map<String, Object> map : daybyStockList) {
             Object popPrdId = map.get("PRD_ID");
-            /*            log.error("{}", popPrdId);*/
+            /*            log.debug("{}", popPrdId);*/
             if (!prdIdSet.contains(popPrdId)) {
                 prdIdSet.add(popPrdId);
                 uniqueList.add(map);
             }
         }
-
 
         List<Map<String, Object>> branchNameUniqueList = new ArrayList<>();
 
@@ -298,7 +217,6 @@ public class StockController {
             if (!brcNameSet.contains(popBrcName)) {
 
                 brcNameSet.add(popBrcName);
-//                log.error("popBrcName : {}", popBrcName);
                 branchNameUniqueList.add(map);
             }
         }
@@ -315,17 +233,9 @@ public class StockController {
 
         Map<String, String[]> paramMap = request.getParameterMap();
 
-// branchId와 prdId 파라미터를 배열로 추출
         String[] branchIdArray = paramMap.get("branchId");
         String[] prdIdArray = paramMap.get("prdId");
-//        if (prdIdArray != null) {
-//            for (String prdId : prdIdArray) {
-//                log.error("prdId: " + (prdId != null ? prdId : "null") + " dddddddddddddddddddddddddd");
-//            }
-//        } else {
-//            log.error("prdId: null");
-//        }
-// 배열을 List로 변환
+
         List<String> branchIdList = branchIdArray != null ? Arrays.asList(branchIdArray) : new ArrayList<>();
         List<String> prdIdList = prdIdArray != null ? Arrays.asList(prdIdArray) : new ArrayList<>();
 
@@ -333,13 +243,13 @@ public class StockController {
                 .get(0)
                 .equals("")) {
             branchIdList = new ArrayList<>();
-            branchIdList.add("0"); // '0'을 기본값으로 사용
+            branchIdList.add("0");
         }
         if (prdIdList == null || prdIdList.isEmpty() || prdIdList
                 .get(0)
                 .equals("")) {
             prdIdList = new ArrayList<>();
-            prdIdList.add("0"); // '0'을 기본값으로 사용
+            prdIdList.add("0");
         }
 
         params.put("branchIdList", branchIdList);
@@ -373,30 +283,18 @@ public class StockController {
             }
         }
 
-
-        // daybyStockList의 각 항목에 대해 반복
         for (Map<String, Object> item : daybyStockList) {
-            // 각 Map의 키-값 쌍에 대해 반복
-//            log.error("================================================");
             for (Map.Entry<String, Object> entry : item.entrySet()) {
                 String key = entry.getKey();
                 Object value = entry.getValue();
 
-//                // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-//                if (value instanceof String[]) {
-//                    log.error("Key: " + key + ", Value: " + Arrays.toString((String[])value));
-//                } else {
-//                    log.error("Key: " + key + ", Value: " + value);
-//                }
             }
         }
 
         if (prdIdList.contains("0")) {
-            // prdIdList를 새로운 값들로 채우기
             prdIdList = Arrays.asList("1", "2", "3", "4", "5");
         }
         if (branchIdList.contains("0")) {
-            // prdIdList를 새로운 값들로 채우기
             branchIdList = Arrays.asList("1", "2", "3", "4", "5");
         }
 
@@ -410,7 +308,6 @@ public class StockController {
         Set<Object> prdIdSet = new HashSet<>();
         for (Map<String, Object> map : daybyStockList) {
             Object popPrdId = map.get("PRD_ID");
-//            log.error("{}", popPrdId);
             if (!prdIdSet.contains(popPrdId)) {
                 prdIdSet.add(popPrdId);
                 uniqueList.add(map);
@@ -423,9 +320,7 @@ public class StockController {
         for (Map<String, Object> map : daybyStockList) {
             Object popBrcName = map.get("BRANCH_NAME");
             if (!brcNameSet.contains(popBrcName)) {
-
                 brcNameSet.add(popBrcName);
-//                log.error("popBrcName : {}", popBrcName);
                 branchNameUniqueList.add(map);
             }
         }
@@ -446,8 +341,6 @@ public class StockController {
         model.addAttribute("branchList", branchList);
         model.addAttribute("productList", selectAllProduct);
         return "logistics/searchStockByBranch";
-//        return "redirect:/logistics/searchDaybyStock";
-        /*        return "logistics/searchDaybyStock";*/
     }
 
     @RequestMapping("stock/dayby")
@@ -458,97 +351,38 @@ public class StockController {
             String key = entry.getKey();
             Object value = entry.getValue();
 
-            // 값이 String 배열인 경우 Arrays.toString()을 사용하여 출력
-//            if (value instanceof String[]) {
-//                log.error(key + ": " + Arrays.toString((String[])value));
-//            } else {
-//                log.error(key + ": " + value);
-//            }
         }
-
-/*
-
-        HashMap<String, Object> params = Getrequest.getParameterMap(request);
-
-
-*/
-/*        // branchId가 null이면 0으로 대체
-        String branchIdStr = (String)params.get("branchId");
-        int branchId = (branchIdStr != null && !branchIdStr.isEmpty()) ? Integer.parseInt(branchIdStr) : 0;
-        params.put("branchId", branchId);
-
-        // prdId가 null이면 0으로 대체
-        String prdIdStr = (String)params.get("prdId");
-        int prdId = (prdIdStr != null && !prdIdStr.isEmpty()) ? Integer.parseInt(prdIdStr) : 0;
-        params.put("prdId", prdId);*//*
-
-
-
-        // 여기서 branchId와 prdId가 배열 형태로 오면 리스트로 변환됨
-        List<String> branchIdList = (List<String>)params.get("branchId");
-        List<String> prdIdList = (List<String>)params.get("prdId");
-
-        // 여기서는 List를 그대로 사용하거나, 0이나 null 체크를 해서 빈 리스트를 생성할 수 있음
-        if (branchIdList == null || branchIdList.isEmpty()) {
-            branchIdList = new ArrayList<>(); // 빈 리스트를 생성
-            branchIdList.add("0"); // 지점 선택이 없을 경우 기본값으로 '0' 추가
-        }
-        if (prdIdList == null || prdIdList.isEmpty()) {
-            prdIdList = new ArrayList<>();
-            prdIdList.add("0"); // 품목 선택이 없을 경우 기본값으로 '0' 추가
-        }
-
-        params.put("branchIdList", branchIdList);
-        params.put("prdIdList", prdIdList);
-*/
         Map<String, String[]> paramMap = request.getParameterMap();
 
-// branchId와 prdId 파라미터를 배열로 추출
         String[] branchIdArray = paramMap.get("branchId");
         String[] prdIdArray = paramMap.get("prdId");
 
-// 배열을 List로 변환
         List<String> branchIdList = branchIdArray != null ? Arrays.asList(branchIdArray) : new ArrayList<>();
         List<String> prdIdList = prdIdArray != null ? Arrays.asList(prdIdArray) : new ArrayList<>();
         int branchCount = 0;
         if (branchIdList == null || branchIdList.isEmpty()) {
             branchIdList = new ArrayList<>();
-            branchIdList.add("0"); // '0'을 기본값으로 사용
+            branchIdList.add("0");
             branchCount = 0;
         }else{
             branchCount = branchIdList.size();
         }
         if (prdIdList == null || prdIdList.isEmpty()) {
             prdIdList = new ArrayList<>();
-            prdIdList.add("0"); // '0'을 기본값으로 사용
+            prdIdList.add("0");
         }
-//        branchCount.add(branchIdList.size() + "");
-        log.error("branchCount : {}", branchCount);
+        log.debug("branchCount : {}", branchCount);
         params.put("branchCount", branchCount);
         params.put("branchIdList", branchIdList);
         params.put("prdIdList", prdIdList);
 
-
-        /*        log.debug("{}", params);*/
-
         List<Map<String, Object>> daybyStockList = service.selectDaybyStock(params);
 
-/*        log.debug("{}", daybyStockList.size());
-
-        for (Map<String, Object> map : daybyStockList) {
-            for (Map.Entry<String, Object> entry : map.entrySet()) {
-                String key = entry.getKey();
-                Object value = entry.getValue();
-                log.debug(key + ": " + value);
-            }
-            log.debug("------------------------");
-        }*/
         List<Map<String, Object>> uniqueList = new ArrayList<>();
 
         Set<Object> prdIdSet = new HashSet<>();
         for (Map<String, Object> map : daybyStockList) {
             Object popPrdId = map.get("PRD_ID");
-            /*            log.error("{}", popPrdId);*/
             if (!prdIdSet.contains(popPrdId)) {
                 prdIdSet.add(popPrdId);
                 uniqueList.add(map);
@@ -569,18 +403,12 @@ public class StockController {
         model.addAttribute("branchList", branchList);
         model.addAttribute("productList", selectAllProduct);
         return "logistics/searchStockbyDay";
-//        return "redirect:/logistics/searchDaybyStock";
-        /*        return "logistics/searchDaybyStock";*/
     }
 
     public void printFieldNames(Object obj) {
         Class<?> objClass = obj.getClass();
         Field[] fields = objClass.getDeclaredFields();
 
-//        log.debug("Field names of class " + objClass.getName() + ":");
-//        for (Field field : fields) {
-//            log.debug(field.getName());
-//        }
     }
 
     public String clobToString(Clob data) {

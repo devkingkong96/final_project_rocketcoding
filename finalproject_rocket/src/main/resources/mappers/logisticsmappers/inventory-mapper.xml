@@ -66,15 +66,6 @@
                      END ASC
     </select>
 
-
-    <!-- <select id="selectAllInventories" resultType="hashMap"> SELECT * FROM
-        INVENTORY WHERE iv_isdel = 'N' SELECT * FROM INVENTORY LEFT JOIN BRANCH b1
-        ON i.send_brc_id = b1.branch_id LEFT JOIN BRANCH b2 ON i.recieve_brc_id =
-        b2.branch_id LEFT JOIN EMPLOYEE e1 ON i.send_emp_id = e1.EMP_NO LEFT JOIN
-        EMPLOYEE e2 ON i.recieve_emp_id = e2.EMP_NO left join DOCUMENT d on i.DOC_NO
-        = d.DOC_NO left join prdinventory pi on i.iv_id = pi.iv_id where i.iv_id
-        = #{ivId} WHERE i.iv_isdel = 'N' and ROWNUM <![CDATA[ <= ]]> 20 </select> -->
-
     <insert id="insertInventory" parameterType="inventory">
 
         INSERT INTO INVENTORY (iv_id, iv_type, iv_date, iv_deadline, iv_isdel,
@@ -177,10 +168,6 @@
 
     </select>
 
-
-    <!-- <update id="updateColumn" parameterType="map"> UPDATE EMPLOYEE SET
-        EMP_NAME = '김영희' WHERE EMP_NO = (SELECT send_emp_id FROM INVENTORY WHERE
-        iv_id = 163); </update> -->
     <update id="updateColumn" parameterType="map">
         UPDATE ${tableName}
         SET ${parentColumnName} = '${value}'
@@ -200,9 +187,6 @@
         set iv_isdel = 'Y'
         where iv_id = ${inventoryId}
     </update>
-    <!-- <delete id="deleteInventoryColumn" parameterType="long"> delete inventory
-        where iv_id = ${inventoryId} </delete> -->
-
 
     <select id="countInventories" resultType="_int">
         SELECT COUNT(*)
@@ -215,24 +199,6 @@
         FROM INVENTORY
         WHERE iv_id = #{ivId.ivId}
     </select>
-
-    <!-- <insert id="insertInventory" parameterType="inventory">
-         INSERT INTO INVENTORY (iv_id, iv_type, iv_date, iv_isdel,
-         iv_edit_date, iv_vat_type, iv_memo, send_brc_id, recieve_brc_id,
-         send_emp_id, recieve_emp_id, DOC_NO)
-         VALUES (SEQ_INVENTORY_ID.nextval,
-         #{dafwe.ivType}, #{ivDate}, #{ivIsdel},
-         #{ivEditDate}, #{ivVatType},
-         #{ivMemo}, #{sendBrcId.sendBrcId},
-         #{recieveBrcId.recieveBrcId},
-         #{sendEmpId.sendEmpId},
-         #{recieveEmpId.recieveEmpId}, #{docNo.docNo})
-
-         <selectKey keyProperty="ivId" resultType="long" order="AFTER">
-             SELECT
-             SEQ_INVENTORY_ID.CURRVAL FROM DUAL
-         </selectKey>
-     </insert>-->
 
     <update id="updateInventory" parameterType="inventory">
         UPDATE INVENTORY

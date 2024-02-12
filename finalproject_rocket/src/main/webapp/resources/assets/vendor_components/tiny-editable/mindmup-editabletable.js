@@ -38,8 +38,7 @@ $.fn.editableTableWidget = function (options) {
                 originalContent = active.html();
                 console.log("Original Content:", originalContent);
                 console.log("Text:", text);
-                // alert("디버그");
-                // active.text(text).trigger(evt, text);
+
                 active.text(text);
                 if (evt.result === false) {
                     active.html(originalContent);
@@ -48,21 +47,13 @@ $.fn.editableTableWidget = function (options) {
                     console.log("Current Page Path:", currentPagePath);
                     var pathSegments = currentPagePath.split('/');
                     console.log("Path Segments:", pathSegments);
-                    // var parentTableName = active.data('data-parent-table');
 
-
-                    // pathSegments 배열에서 "rocket" 문자열의 인덱스를 찾습니다.
                     var rocketIndex = pathSegments.indexOf("GJD71_rocket_final");
 
-                    // "rocket" 다음 인덱스의 값을 가져옵니다.
-                    // "rocket"이 없으면 기존 로직대로 배열의 세 번째 요소를 사용합니다.
                     var parentTableName = rocketIndex !== -1 && pathSegments.length > rocketIndex + 2 ? pathSegments[rocketIndex + 2] : pathSegments[2];
 
 
                     console.log("ParentTable Name:", parentTableName.toUpperCase());
-
-                    /*                    var parentTableName = pathSegments.length > 2 ? pathSegments[2] : '';
-                                        console.log("ParentTable Name:", parentTableName.toUpperCase());*/
 
                     var updateUrl = currentPagePath + '/tableupdate';
                     console.log("Update URL:", updateUrl);
@@ -109,32 +100,6 @@ $.fn.editableTableWidget = function (options) {
                     } else {
                         // updateUrl = currentPagePath + '/differentUpdate';
                     }
-
-
-                    /*	var id = active.closest('tr').find('td:first').text();
-                        var updateUrl = '/table/editable' + '?id=' + encodeURIComponent(id) + '&value=' + encodeURIComponent
-                    (text);*/
-
-                    /*					fetch(updateUrl, {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json'
-                                            },
-                                            body: JSON.stringify(data)
-                                        }).then(response => {
-                                            if (!response.ok) {
-                                                throw new Error('Network response was not ok');
-                                            }
-                                            return response.text();
-                                        }).then(response => {
-                                            alert(response);
-                                            active.text(text).trigger(evt, text);
-                                        }).catch(error => {
-                                            alert(error);
-                                            active.html(originalContent);
-                                        });
-
-                    */
 
                 }
             },

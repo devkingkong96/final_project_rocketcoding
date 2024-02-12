@@ -10,7 +10,6 @@
 
     </resultMap>
 
-    <!--    #{branchId}-->
     <select id="branchempinfo" resultType="hashMap" parameterType="long">
         select *
         from EMPLOYEE E
