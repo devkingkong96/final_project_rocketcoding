@@ -13,7 +13,10 @@
 	</resultMap>
 		
 	<select id="selectFboardMainPage" resultType="map">
-		SELECT * FROM FBOARD ORDER BY FBOARD_DATE DESC
+		SELECT * FROM FBOARD
+		 JOIN EMPLOYEE USING(EMP_NO) 
+		 WHERE FBOARD_YN = 'N'
+		 ORDER BY FBOARD_DATE DESC
 	</select>
 	
 	<!-- 게시글 삽입 -->
@@ -36,8 +39,8 @@
             FBOARD_CONTENT as "fboardContent",
             FBOARD_VIEWS as "fboardViews",
             FBOARD_DATE as "fboardDate",
-            FBOARD_YN as "fboard_Yn"
         FROM FBOARD
+       
     </select>
 
     <!-- 게시글 상세 조회 -->
@@ -66,8 +69,8 @@
     </update>
 
     <!-- 게시글 삭제 -->
-    <delete id="deleteFboard" parameterType="int">
-        DELETE FROM FBOARD WHERE FBOARD_NO = #{fboardNo}
+    <delete id="deleteFboard" parameterType="_int">
+        UPDATE FBOARD SET FBOARD_YN = 'Y' WHERE FBOARD_NO = #{fboardNo}
     </delete>
     
     

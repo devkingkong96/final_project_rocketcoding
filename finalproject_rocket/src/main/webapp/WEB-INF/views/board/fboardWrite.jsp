@@ -19,7 +19,7 @@
 		   <!-- Main content -->
 			<div class="row">			  
 				<div class="col-lg-12 col-12">
-					<form class="form" action="${path }/board/fboardWrite" method="post" enctype="multipart/form-data">
+					<form class="form" action="${path }/board/fboardWriteEnd" method="post" enctype="multipart/form-data">
 					  <div class="box">
 						<div class="box-header with-border">
 						  <h4 class="box-title">자유 게시판</h4>
@@ -36,7 +36,6 @@
 									</div>
 								  </div>								
 								</div>								
-                  
 								<div class="form-group">
 								  <label class="form-label"></label>
 								  <label class="file">

@@ -149,7 +149,7 @@ public class AprvController {
 		return "aprv/aprvlists";
 	}
 
-	// ========================================문서함================================================
+	
 	@GetMapping("/box/all")
 	public String selectBoxAll(Model m) {
 		List<Map<String, Object>> alist = getAprvListByEmpNo().stream()
