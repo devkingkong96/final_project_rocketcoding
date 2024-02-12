@@ -229,8 +229,7 @@
                                                     style="margin-right:10px;"></i>
                                                 출판일</label>
                                             <input class="form-control" id="publishDate" name="publishDate"
-                                                   type="date"
-                                                   id="example-datetime-local-input" required>
+                                                   type="date" required>
 
                                         </div>
 

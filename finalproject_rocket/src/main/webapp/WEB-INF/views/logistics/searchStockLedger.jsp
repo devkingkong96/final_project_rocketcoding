@@ -529,12 +529,14 @@
 
                                     <input type="hidden" name="branchId" value=""/>
                                     <input type="hidden" name="prdId" value=""/>
-                                    <div class="col-lg-5 col-12" style="margin:5px; margin-top:20px" ;><label
+                                    <div class="col-lg-5 col-12" style="margin:5px; margin-top:20px;" ><label
                                             class=" form-label">
                                         <i class="si-organization si" style="margin-right:10px;"></i>지점</label>
-
+                                                <select
                                                 class="chooseBrc form-control select2" name="branchId"
                                                 data-placeholder="지점" style="width: 100%;" multiple="multiple">
+                                                <option></option>
+                                                <c:forEach var="entry" items="${branchList }">
                                             <option></option>
                                             <c:forEach var="entry" items="${branchList }">
 
