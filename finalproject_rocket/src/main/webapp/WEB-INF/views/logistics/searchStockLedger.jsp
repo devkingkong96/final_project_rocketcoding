@@ -502,11 +502,15 @@
                                         <label class="form-label" style="margin:5px;">
                                             <i class="si-calendar si"></i>
                                             기간 설정</label>
+               
+
                                         <div class="input-group">
                                             <button type="button"
                                                     class="waves-effect waves-light btn btn-flat btn-light mb-5 pull-right"
                                                     id="daterange-btn">
+                                                    <span>
 
+                                                    </span>
                                                 <i class="fa fa-caret-down"></i>
                                             </button>
                                         </div>
@@ -523,20 +527,19 @@
                                         var startDateHidden = document.getElementById('start-date-hidden').value;
                                         var endDateHidden = document.getElementById('end-date-hidden').value;
 
+
                                         $('#start-date-hidden').val(startDateString3);
                                         $('#end-date-hidden').val(endDateString3);
                                     </script>
 
                                     <input type="hidden" name="branchId" value=""/>
                                     <input type="hidden" name="prdId" value=""/>
-                                    <div class="col-lg-5 col-12" style="margin:5px; margin-top:20px;" ><label
+                                    <div class="col-lg-5 col-12" style="margin:5px; margin-top:20px;"><label
                                             class=" form-label">
                                         <i class="si-organization si" style="margin-right:10px;"></i>지점</label>
-                                                <select
+                                        <select
                                                 class="chooseBrc form-control select2" name="branchId"
                                                 data-placeholder="지점" style="width: 100%;" multiple="multiple">
-                                                <option></option>
-                                                <c:forEach var="entry" items="${branchList }">
                                             <option></option>
                                             <c:forEach var="entry" items="${branchList }">
 
