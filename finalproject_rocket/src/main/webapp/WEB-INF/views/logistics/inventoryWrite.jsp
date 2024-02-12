@@ -488,7 +488,6 @@
 
                                 <div class="box-body p-12">
 
-
                                     <div class="col-6
                                         " style="margin-bottom: 20px;">
                                         <div class="col-12" style="margin-bottom: 5px;">
