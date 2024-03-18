@@ -9,13 +9,11 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.TimeZone" %>
 <%@ page import="java.util.Date" %>
-<%-- <%@ page import="org.apache.logging.log4j.LogManager" %>
-<%@ page import="org.apache.logging.log4j.Logger" %> --%>
+
 
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <c:set var="loginEmp" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 
-<%--<%@ taglib prefix="seo_num" uri="/WEB-INF/views/logistics/formatNumber.tag" %>--%>
 
 
 <%
@@ -23,7 +21,6 @@
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-ddHH:mm");
     String formattedNow = now.format(formatter);
 %>
-<%--<title>로켓코딩ERP</title>--%>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
     <jsp:param name="title" value="화상 회의"/>
 </jsp:include>
@@ -33,12 +30,10 @@
 
 <style>
 
-    /* To hide */
     #zmmtg-root {
         display: none;
     }
 
-    /* To show */
     #zmmtg-root {
         display: block;
     }
@@ -80,21 +75,8 @@
 
     .box-table {
         margin-bottom: 400px;
-        /*margin-left: 50px;*/
-        /*width: 95%;*/
         align-content: center;
     }
-
-    /*    .section-margin {
-            margin-left: 20px;
-            !*margin: 50px;*!
-            !*margin-top: -10px;*!
-
-        }*/
-
-    /*    div {
-            margin: 10px;
-        }*/
 
     textarea.form-control {
         width: 200px;
@@ -106,17 +88,10 @@
         vertical-align: middle;
         position: relative;
         top: 10px;
-
     }
-
     .error-border {
-        /*border: 2px solid red !important;*/
         border-color: red !important;
     }
-
-    /*.table-striped tbody tr:nth-of-type(odd) {*/
-    /*    background-color: #FFFFFF;*/
-    /*}*/
 
     html, body {
         min-width: 0 !important;
@@ -159,19 +134,18 @@
     }
 
     .small-btn {
-        padding: 5px 10px; /* 상하 좌우 패딩 조정 */
-        font-size: 12px; /* 폰트 크기 조정 */
-        border-radius: 4px; /* 버튼의 모서리를 둥글게 */
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 4px;
     }
 </style>
 
 
 <div class="content-wrapper">
     <div class="container-full">
-        <!-- Main content -->
+
         <section class="content">
 
-            <!-- Content Header (Page header) -->
             <div class="content-header" style="margin-bottom:10px;">
                 <div class="d-flex align-items-center">
                     <div class="me-auto">
@@ -182,8 +156,7 @@
                                     <li class="breadcrumb-item"><a href="${path}/"> <i
                                             class="mdi mdi-home-outline"></i></a></li>
                                     <li class="breadcrumb-item" aria-current="page">화상회의</li>
-                           <%--         <li class="breadcrumb-item active" aria-current="page">재고 현황 검색
-                                    </li>--%>
+
                                 </ol>
                             </nav>
                         </div>
@@ -206,13 +179,11 @@
                         <div class="box-body">
 
                             <div>
-                                <%--       <div name="${loginEmp.empName}"></div>--%>
-                                <!-- your number -->
+
                                 <br>
                                 <div id="number" style="margin-left:10px;"></div>
                                 <br>
 
-                                <!-- camera -->
                                 <div>
                                     <button id="startcam" class="btn btn-primary small-btn" style="display: none;">카메라
                                         켜기
@@ -225,7 +196,6 @@
                                     </button>
                                 </div>
 
-                                <!-- dialer/calling -->
                                 <div>
                                     <button id="startcall" class="btn btn-primary small-btn">화상통화 걸기</button>
                                     <input id="dial" placeholder="상대방 화상통화 코드 입력"></div>
@@ -236,15 +206,12 @@
                             </div>
                             <br>
 
-                            <!-- Video Feeds -->
                             <div id="video-out">
-                                <%--          <div style="position: absolute; bottom: 0; left: 30%; transform: translateX(-50%); background-color: rgba(0,0,0,0.5); color: white; padding: 5px;">
-                                              ${loginEmp.empName}
-                                          </div>--%>
+
                             </div>
 
 
-                            <!-- Libs and Scripts -->
+
                             <script src="${path}/resources/js/call/webrtc-v2.js"></script>
                             <script>playCount = 0;</script>
                             <script>
@@ -255,84 +222,54 @@
 
                             </script>
 
-            <%--                <script>
-
-
-                                const phone = PHONE({
-                                    number: string2, &lt;%&ndash; 이 변수의 정의는 이 코드 밖에서 이루어져야 함 &ndash;%&gt;
-                                    autocam: true,
-                                    publish_key: publishKey,
-                                    subscribe_key: subscribeKey,
-                                    ssl: ssl
-                                });
-                            </script>--%>
-
-
-
                             <script>(() => {
                                 'use strict';
-                                <%-- JSP Expression Language를 사용하여 서버 사이드 변수 값을 JavaScript 변수에 할당 --%>
+
                                 const publishKey = '${publishKey}';
                                 const subscribeKey = '${subscribeKey}';
-                                const ssl = ${ssl}; <%-- boolean 값은 따옴표 없이 직접 할당 --%>
+                                const ssl = ${ssl};
 
                                 let session = null;
-                                // const number = Math.ceil(Math.random() * 10000);
+
 
                                 const phone = PHONE({
-                                    number: string2, <%-- 이 변수의 정의는 이 코드 밖에서 이루어져야 함 --%>
+                                    number: string2,
                                     autocam: true,
                                     publish_key: publishKey,
                                     subscribe_key: subscribeKey,
                                     ssl: ssl
                                 });
 
-
-                       /*         const phone = PHONE({
-                                    number: string2
-                                    , autocam: true
-                                    , publish_key: 'pub-c-6ee7f3b6-134c-41cc-8221-b66f0806f1c8'
-                                    , subscribe_key: 'sub-c-f2fe376d-283b-47a7-a6dc-f4819d38cbed'
-                                    , ssl: false
-                                });*/
-
-                                // Debugging Output
                                 phone.debug(info => console.info(info));
 
-                                // Show Number
+
                                 phone.$('number').innerHTML = '<h4>화상통화 코드: ' + string2 + '</h4>';
 
 
-                                // Start Camera
                                 phone.bind(
                                     'mousedown,touchstart'
                                     , phone.$('startcam')
                                     , event => phone.camera.start()
                                 );
 
-                                // Stop Camera
                                 phone.bind(
                                     'mousedown,touchstart'
                                     , phone.$('stopcam')
                                     , event => phone.camera.stop()
                                 );
 
-                                // Local Camera Display
                                 phone.camera.ready(video => {
                                     phone.$('video-out').appendChild(video);
                                 });
 
-                                // As soon as the phone is ready we can make calls
                                 phone.ready(() => {
 
-                                    // Start Call
                                     phone.bind(
                                         'mousedown,touchstart'
                                         , phone.$('startcall')
                                         , event => session = phone.dial(phone.$('dial').value)
                                     );
 
-                                    // Stop Call
                                     phone.bind(
                                         'mousedown,touchstart'
                                         , phone.$('stopcall')
@@ -342,20 +279,17 @@
                                 });
 
                                 phone.receive(function (session) {
-                                    // Display Your Friend's Live Video
                                     session.connected(function (session) {
                                         if (!session.isVideoAppended) {
                                             phone.$('video-out').appendChild(session.video);
-                                            session.isVideoAppended = true; // 이미 video를 추가했음을 표시
+                                            session.isVideoAppended = true;
                                         }
                                     });
                                 });
 
                             })();
 
-                            // 화상 통화 끄기 버튼을 클릭할 때 실행될 함수
                             document.getElementById("stopcall").addEventListener("click", function () {
-                                // video-container div를 찾아서 삭제
                                 var videoContainer = document.getElementById("video-container");
                                 if (videoContainer) {
                                     videoContainer.parentNode.removeChild(videoContainer);

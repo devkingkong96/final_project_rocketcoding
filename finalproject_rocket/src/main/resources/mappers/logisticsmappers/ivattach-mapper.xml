@@ -23,15 +23,4 @@
         where iv_id = ${inventoryId}
     </delete>
 
-    <!-- 오라클 11g라서 실행 안됨-->
-    <!--    <insert id="insertInventoryAttach">
-            insert into inventory_attach(iv_file_id, iv_file_name_ori, iv_file_name_re, iv_upload_date, iv_attach_isdel,
-            iv_id)
-            values
-
-            <foreach item="item" collection="list" separator=",">
-                (SEQ_IV_FILE_ID.nextval, #{item.ivFileNameOri}, #{item.ivFileNameRe}, sysdate, 'N', #{item.ivId})
-            </foreach>
-        </insert>-->
-
 </mapper>
