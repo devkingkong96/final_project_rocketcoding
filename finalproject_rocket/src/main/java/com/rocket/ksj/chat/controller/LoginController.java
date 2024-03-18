@@ -125,7 +125,8 @@ public class LoginController {
 	
 	
 	@RequestMapping("/login")
-	public String login() {
+	public String login(@RequestParam(value="errorMessage",required = false)String error,Model model) {
+		model.addAttribute("errorMessage",error);
 		return "loginpage";
 	}
 	

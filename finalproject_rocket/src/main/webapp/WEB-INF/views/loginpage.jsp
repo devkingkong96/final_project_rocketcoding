@@ -23,7 +23,11 @@
     <!-- Style-->
     <link rel="stylesheet" href="${path}/resources/css/style.css">
     <link rel="stylesheet" href="${path}/resources/css/skin_color.css">
-
+<style>
+	 .error-message {
+        color: red;
+    }
+</style>
 </head>
 
 <body class="hold-transition theme-primary bg-img"
@@ -37,7 +41,7 @@
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="bg-white rounded10 shadow-lg">
                         <div class="content-top-agile p-20 pb-0">
-                            <h2 class="text-primary">Rocket Coding ERP</h2>
+                            <h2 class="text-primary">PaperDia</h2>
                             <p class="mb-0">서점 ERP</p>
                         </div>
                         <div class="p-40">
@@ -66,6 +70,11 @@
                                                placeholder="비밀번호">
                                     </div>
                                 </div>
+                                <c:if test="${not empty errorMessage}">
+								    <div class="error-message">
+								        <p><strong>${errorMessage}</strong></p>
+								    </div>
+								</c:if>
                                 <%-- <div><p><c:if test="${not empty errormsg }"><c:out value="${errormsg }"></c:out></c:if></p></div> --%>
                                 <div class="row">
                                     <div class="col-6">

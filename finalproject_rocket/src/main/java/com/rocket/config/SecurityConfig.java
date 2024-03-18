@@ -1,5 +1,6 @@
 package com.rocket.config;
 
+import com.rocket.ksj.chat.controller.CustomAuthenticationFailureHandler;
 import com.rocket.security.DBConnectionProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,7 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 public class SecurityConfig {
 
     private final DBConnectionProvider dbprovider;
-//    private final AuthenticationFailureHandler customFailureHandler;
+    private final CustomAuthenticationFailureHandler customFailureHandler;
 
     @Bean
     SecurityFilterChain authenticationPath(HttpSecurity http) throws Exception {
@@ -36,7 +37,7 @@ public class SecurityConfig {
                 .formLogin(formlogin->{
                     formlogin.loginPage("/login") //로그인 페이지
                              .successForwardUrl("/")
-//                             .failureHandler(customFailureHandler)
+                             .failureHandler(customFailureHandler)
 //                             .failureForwardUrl("/login")
                              .usernameParameter("empNo")
                              .passwordParameter("empPw");
