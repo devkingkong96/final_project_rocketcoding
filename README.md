@@ -52,3 +52,16 @@
     ◎ 재고관리 <br>
 
 
+<br><br><br><br>
+- 화면설계서(오븐)
+<br>
+
+|<img width="1436" src="https://github.com/devkingkong96/goodee_final_project_rocketcoding/assets/148295592/9640dcff-3e62-420f-b96f-7f7568206cc3"/>|<img width="1436" src="https://github.com/devkingkong96/goodee_final_project_rocketcoding/assets/148295592/7a12b24f-b400-4a9f-9b22-0f640c309148"/>|
+|:-:|:-:|
+| 도서 등록 예시 | 출판사 관리 예시 |
+
+- ERD
+<picture>
+<img height="500" src="https://github.com/devkingkong96/goodee_final_project_rocketcoding/assets/148295592/b405ffc7-aad1-4963-90d2-211bba7f4642"/>
+</picture>
+<br><br>
